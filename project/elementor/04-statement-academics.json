@@ -1,0 +1,219 @@
+{
+ "version": "0.4",
+ "title": "BSDA — Statement: Academics",
+ "type": "section",
+ "content": [
+  {
+   "id": "02d7027",
+   "elType": "section",
+   "settings": {
+    "layout": "full_width",
+    "gap": "no",
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "44",
+     "right": "44",
+     "bottom": "0",
+     "left": "44",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "02d7026",
+     "elType": "column",
+     "settings": {
+      "_column_size": 50,
+      "_inline_size": null,
+      "background_background": "classic",
+      "background_image": {
+       "url": "/wp-content/uploads/bsda/classroom.jpg",
+       "id": ""
+      },
+      "background_position": "center center",
+      "background_size": "cover",
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      },
+      "min_height": {
+       "unit": "px",
+       "size": 420,
+       "sizes": []
+      }
+     },
+     "elements": [],
+     "isInner": false
+    },
+    {
+     "id": "02d7025",
+     "elType": "column",
+     "settings": {
+      "_column_size": 50,
+      "_inline_size": null,
+      "background_background": "classic",
+      "background_color": "#F4F2ED",
+      "padding": {
+       "unit": "px",
+       "top": "60",
+       "right": "60",
+       "bottom": "60",
+       "left": "60",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "02d7021",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "Academics",
+        "header_size": "div",
+        "align": "left",
+        "title_color": "#4A6FD0",
+        "typography_typography": "custom",
+        "typography_font_family": "Archivo",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 12.5,
+         "sizes": []
+        },
+        "typography_font_weight": "900",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.2,
+         "sizes": []
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d7022",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "Equipped to learn",
+        "header_size": "h2",
+        "align": "left",
+        "title_color": "#131A2E",
+        "typography_typography": "custom",
+        "typography_font_family": "Archivo",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 46,
+         "sizes": []
+        },
+        "typography_font_weight": "900",
+        "typography_text_transform": "uppercase",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.03,
+         "sizes": []
+        },
+        "_margin": {
+         "unit": "px",
+         "top": "14",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d7023",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p>A balanced curriculum of academics, creative arts and physical activity, built on inquiry and critical thinking. We teach Pre-K through 8th grade, and the first years of school are the most intensive learning years of a child&rsquo;s life.</p>",
+        "text_color": "#5A6180",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17,
+         "sizes": []
+        },
+        "typography_font_weight": "500",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.68,
+         "sizes": []
+        },
+        "_margin": {
+         "unit": "px",
+         "top": "16",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d7024",
+       "elType": "widget",
+       "widgetType": "button",
+       "settings": {
+        "text": "Explore grades",
+        "link": {
+         "url": "/student-life",
+         "is_external": "",
+         "nofollow": "",
+         "custom_attributes": ""
+        },
+        "align": "left",
+        "size": "md",
+        "background_color": "#4A6FD0",
+        "button_text_color": "#FFFFFF",
+        "border_radius": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": true
+        },
+        "text_padding": {
+         "unit": "px",
+         "top": "17",
+         "right": "30",
+         "bottom": "17",
+         "left": "30",
+         "isLinked": false
+        },
+        "typography_typography": "custom",
+        "typography_font_family": "Archivo",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 13.5,
+         "sizes": []
+        },
+        "typography_font_weight": "900",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 1.4,
+         "sizes": []
+        }
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  }
+ ],
+ "page_settings": []
+}

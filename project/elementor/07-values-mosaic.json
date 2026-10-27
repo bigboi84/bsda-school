@@ -1,0 +1,712 @@
+{
+ "version": "0.4",
+ "title": "BSDA — Values mosaic",
+ "type": "section",
+ "content": [
+  {
+   "id": "02d804f",
+   "elType": "section",
+   "settings": {
+    "layout": "full_width",
+    "gap": "default",
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "44",
+     "right": "44",
+     "bottom": "0",
+     "left": "44",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "02d804e",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": null,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "02d803f",
+       "elType": "section",
+       "settings": {
+        "gap": "default"
+       },
+       "elements": [
+        {
+         "id": "02d8038",
+         "elType": "column",
+         "settings": {
+          "_column_size": 25,
+          "_inline_size": null,
+          "background_background": "classic",
+          "background_color": "#131A2E",
+          "padding": {
+           "unit": "px",
+           "top": "26",
+           "right": "26",
+           "bottom": "26",
+           "left": "26",
+           "isLinked": false
+          },
+          "min_height": {
+           "unit": "px",
+           "size": 236,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "02d8036",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "1938",
+            "header_size": "div",
+            "align": "left",
+            "title_color": "#FFFFFF",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 44,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1,
+             "sizes": []
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d8037",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Founded in Bay Ridge, Brooklyn &mdash; one classroom in a church basement.</p>",
+            "text_color": "#8A93B6",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.5,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "10",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d803b",
+         "elType": "column",
+         "settings": {
+          "_column_size": 25,
+          "_inline_size": null,
+          "background_background": "classic",
+          "background_color": "#8CC63F",
+          "padding": {
+           "unit": "px",
+           "top": "26",
+           "right": "26",
+           "bottom": "26",
+           "left": "26",
+           "isLinked": false
+          },
+          "min_height": {
+           "unit": "px",
+           "size": 236,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "02d8039",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Pre-K &ndash; 8",
+            "header_size": "div",
+            "align": "left",
+            "title_color": "#16240A",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 38,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1,
+             "sizes": []
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d803a",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Every grade, one building on Ocean Avenue.</p>",
+            "text_color": "#2C4212",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.5,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "10",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d803e",
+         "elType": "column",
+         "settings": {
+          "_column_size": 50,
+          "_inline_size": null,
+          "background_background": "classic",
+          "background_image": {
+           "url": "/wp-content/uploads/bsda/building-front.jpg",
+           "id": ""
+          },
+          "background_position": "center center",
+          "background_size": "cover",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          },
+          "min_height": {
+           "unit": "px",
+           "size": 236,
+           "sizes": []
+          },
+          "background_overlay_background": "classic",
+          "background_overlay_color": "#0C1120",
+          "background_overlay_opacity": {
+           "unit": "",
+           "size": 0.45,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "02d803c",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "1260 Ocean Ave",
+            "header_size": "div",
+            "align": "left",
+            "title_color": "#FFFFFF",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 28,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d803d",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Our home in Flatbush since the 1980s.</p>",
+            "text_color": "#D6DBEC",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.5,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "10",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      },
+      {
+       "id": "02d8049",
+       "elType": "section",
+       "settings": {
+        "gap": "default"
+       },
+       "elements": [
+        {
+         "id": "02d8042",
+         "elType": "column",
+         "settings": {
+          "_column_size": 25,
+          "_inline_size": null,
+          "background_background": "classic",
+          "background_image": {
+           "url": "/wp-content/uploads/bsda/hero-stem.jpg",
+           "id": ""
+          },
+          "background_position": "center center",
+          "background_size": "cover",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          },
+          "min_height": {
+           "unit": "px",
+           "size": 236,
+           "sizes": []
+          },
+          "background_overlay_background": "classic",
+          "background_overlay_color": "#0C1120",
+          "background_overlay_opacity": {
+           "unit": "",
+           "size": 0.45,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "02d8040",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "STEM",
+            "header_size": "div",
+            "align": "left",
+            "title_color": "#FFFFFF",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 28,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d8041",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Build days, circuits and motorized planes.</p>",
+            "text_color": "#D6DBEC",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.5,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "10",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d8045",
+         "elType": "column",
+         "settings": {
+          "_column_size": 25,
+          "_inline_size": null,
+          "background_background": "classic",
+          "background_color": "#FFD24A",
+          "padding": {
+           "unit": "px",
+           "top": "26",
+           "right": "26",
+           "bottom": "26",
+           "left": "26",
+           "isLinked": false
+          },
+          "min_height": {
+           "unit": "px",
+           "size": 236,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "02d8043",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "11",
+            "header_size": "div",
+            "align": "left",
+            "title_color": "#2E2306",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 44,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1,
+             "sizes": []
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d8044",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Faculty and staff who know every student by name.</p>",
+            "text_color": "#453712",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.5,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "10",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d8048",
+         "elType": "column",
+         "settings": {
+          "_column_size": 50,
+          "_inline_size": null,
+          "background_background": "classic",
+          "background_image": {
+           "url": "/wp-content/uploads/bsda/students-worship.jpg",
+           "id": ""
+          },
+          "background_position": "center center",
+          "background_size": "cover",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          },
+          "min_height": {
+           "unit": "px",
+           "size": 236,
+           "sizes": []
+          },
+          "background_overlay_background": "classic",
+          "background_overlay_color": "#0C1120",
+          "background_overlay_opacity": {
+           "unit": "",
+           "size": 0.45,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "02d8046",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Worship &amp; choir",
+            "header_size": "div",
+            "align": "left",
+            "title_color": "#FFFFFF",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 28,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d8047",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Students lead the whole school in song and prayer.</p>",
+            "text_color": "#D6DBEC",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.5,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "10",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      },
+      {
+       "id": "02d804d",
+       "elType": "section",
+       "settings": {
+        "gap": "default"
+       },
+       "elements": [
+        {
+         "id": "02d804c",
+         "elType": "column",
+         "settings": {
+          "_column_size": 100,
+          "_inline_size": null,
+          "background_background": "classic",
+          "background_color": "#F4F2ED",
+          "padding": {
+           "unit": "px",
+           "top": "26",
+           "right": "26",
+           "bottom": "26",
+           "left": "26",
+           "isLinked": false
+          },
+          "min_height": {
+           "unit": "px",
+           "size": 236,
+           "sizes": []
+          }
+         },
+         "elements": [
+          {
+           "id": "02d804a",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "2",
+            "header_size": "div",
+            "align": "left",
+            "title_color": "#131A2E",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 44,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1,
+             "sizes": []
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d804b",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Accreditations &mdash; Adventist Accrediting Association and NCPSA.</p>",
+            "text_color": "#5A6180",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.5,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "10",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  }
+ ],
+ "page_settings": []
+}

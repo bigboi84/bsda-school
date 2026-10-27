@@ -1,0 +1,828 @@
+{
+ "version": "0.4",
+ "title": "BSDA — Footer",
+ "type": "section",
+ "content": [
+  {
+   "id": "02d80b3",
+   "elType": "section",
+   "settings": {
+    "layout": "full_width",
+    "gap": "default",
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "20",
+     "right": "44",
+     "bottom": "44",
+     "left": "44",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "02d80b2",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": null,
+      "background_background": "classic",
+      "background_color": "#0C1120",
+      "padding": {
+       "unit": "px",
+       "top": "60",
+       "right": "52",
+       "bottom": "44",
+       "left": "52",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "02d80ab",
+       "elType": "section",
+       "settings": {
+        "gap": "default"
+       },
+       "elements": [
+        {
+         "id": "02d808c",
+         "elType": "column",
+         "settings": {
+          "_column_size": 28,
+          "_inline_size": null,
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "20",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "02d8087",
+           "elType": "widget",
+           "widgetType": "image",
+           "settings": {
+            "image": {
+             "url": "/wp-content/uploads/bsda/logo-white.svg",
+             "id": ""
+            },
+            "image_size": "full",
+            "align": "left",
+            "width": {
+             "unit": "px",
+             "size": 52,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "12",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d8088",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Brooklyn Seventh-day Adventist School",
+            "header_size": "div",
+            "align": "left",
+            "title_color": "#FFFFFF",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 19,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "none",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.25,
+             "sizes": []
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d8089",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>Discover the joy of learning. Pre-K thru 8th Grade in Brooklyn, NY &mdash; building character and equipping minds for a brighter future.</p>",
+            "text_color": "#8A93B6",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.68,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "18",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d808a",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "(718) 859-1313",
+            "header_size": "div",
+            "align": "left",
+            "title_color": "#FFD24A",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 18,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "none",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.03,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "14",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d808b",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p><a href=\"mailto:admissions@bsda.school\">admissions@bsda.school</a><br><a href=\"https://www.facebook.com/BrooklynSDAElementary\" target=\"_blank\" rel=\"noopener\">Facebook</a></p>",
+            "text_color": "#8A93B6",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.68,
+             "sizes": []
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "6",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d8096",
+         "elType": "column",
+         "settings": {
+          "_column_size": 25,
+          "_inline_size": null,
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "02d808d",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Quick links",
+            "header_size": "h3",
+            "align": "left",
+            "title_color": "#8CC63F",
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "18",
+             "left": "0",
+             "isLinked": false
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 12,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.2,
+             "sizes": []
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d8095",
+           "elType": "widget",
+           "widgetType": "icon-list",
+           "settings": {
+            "icon_list": [
+             {
+              "_id": "02d808e",
+              "text": "About",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/about",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d808f",
+              "text": "Faculty &amp; Staff",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/faculty",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d8090",
+              "text": "Admissions",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/admissions",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d8091",
+              "text": "Enrollment form",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/apply",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d8092",
+              "text": "Student life",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/student-life",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d8093",
+              "text": "Events",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/events",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d8094",
+              "text": "News",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/news",
+               "is_external": "",
+               "nofollow": ""
+              }
+             }
+            ],
+            "space_between": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "text_color": "#B9C0DA",
+            "icon_color": "#8CC63F",
+            "text_color_hover": "#FFD24A",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "500"
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d80a0",
+         "elType": "column",
+         "settings": {
+          "_column_size": 25,
+          "_inline_size": null,
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "02d8097",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Giving &amp; shop",
+            "header_size": "h3",
+            "align": "left",
+            "title_color": "#8CC63F",
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "18",
+             "left": "0",
+             "isLinked": false
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 12,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.2,
+             "sizes": []
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d809f",
+           "elType": "widget",
+           "widgetType": "icon-list",
+           "settings": {
+            "icon_list": [
+             {
+              "_id": "02d8098",
+              "text": "Fundraisers",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/fundraisers",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d8099",
+              "text": "12 Stones Fund",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/give",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d809a",
+              "text": "55 in 25",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/fundraisers",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d809b",
+              "text": "Fruit Fundraiser",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/fundraisers",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d809c",
+              "text": "Donor dashboard",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/portals",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d809d",
+              "text": "Store",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/store",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d809e",
+              "text": "Yearbooks",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/yearbooks",
+               "is_external": "",
+               "nofollow": ""
+              }
+             }
+            ],
+            "space_between": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "text_color": "#B9C0DA",
+            "icon_color": "#8CC63F",
+            "text_color_hover": "#FFD24A",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "500"
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d80aa",
+         "elType": "column",
+         "settings": {
+          "_column_size": 25,
+          "_inline_size": null,
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "02d80a1",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Portals &amp; legal",
+            "header_size": "h3",
+            "align": "left",
+            "title_color": "#8CC63F",
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "18",
+             "left": "0",
+             "isLinked": false
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 12,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2.2,
+             "sizes": []
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d80a9",
+           "elType": "widget",
+           "widgetType": "icon-list",
+           "settings": {
+            "icon_list": [
+             {
+              "_id": "02d80a2",
+              "text": "Students (soon)",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/portals",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d80a3",
+              "text": "Parents (soon)",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/portals",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d80a4",
+              "text": "School Board (soon)",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/portals",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d80a5",
+              "text": "Contact",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/contact",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d80a6",
+              "text": "Privacy policy",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/privacy",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d80a7",
+              "text": "Legal notice",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/legal",
+               "is_external": "",
+               "nofollow": ""
+              }
+             },
+             {
+              "_id": "02d80a8",
+              "text": "Cookies",
+              "selected_icon": {
+               "value": "",
+               "library": ""
+              },
+              "link": {
+               "url": "/cookies",
+               "is_external": "",
+               "nofollow": ""
+              }
+             }
+            ],
+            "space_between": {
+             "unit": "px",
+             "size": 11,
+             "sizes": []
+            },
+            "text_color": "#B9C0DA",
+            "icon_color": "#8CC63F",
+            "text_color_hover": "#FFD24A",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 15,
+             "sizes": []
+            },
+            "typography_font_weight": "500"
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      },
+      {
+       "id": "02d80ac",
+       "elType": "widget",
+       "widgetType": "divider",
+       "settings": {
+        "color": "rgba(255,255,255,.12)",
+        "weight": {
+         "unit": "px",
+         "size": 3,
+         "sizes": []
+        },
+        "gap": {
+         "unit": "px",
+         "size": 18,
+         "sizes": []
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d80b1",
+       "elType": "section",
+       "settings": {
+        "gap": "no"
+       },
+       "elements": [
+        {
+         "id": "02d80ae",
+         "elType": "column",
+         "settings": {
+          "_column_size": 65,
+          "_inline_size": null
+         },
+         "elements": [
+          {
+           "id": "02d80ad",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>&copy; 2026 Brooklyn Seventh-day Adventist School. Operated by the Greater New York Conference of Seventh-day Adventists.</p>",
+            "text_color": "#5F678C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 13.5,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.68,
+             "sizes": []
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d80b0",
+         "elType": "column",
+         "settings": {
+          "_column_size": 35,
+          "_inline_size": null
+         },
+         "elements": [
+          {
+           "id": "02d80af",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p>1260 Ocean Ave &middot; Brooklyn, NY 11230-7401</p>",
+            "text_color": "#5F678C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 13.5,
+             "sizes": []
+            },
+            "typography_font_weight": "500",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.68,
+             "sizes": []
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  }
+ ],
+ "page_settings": []
+}

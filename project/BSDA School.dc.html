@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFFFF; color: #131A2E; font-family: "Instrument Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4, h5 { font-family: "Archivo", system-ui, sans-serif; margin: 0; letter-spacing: -0.01em; }
+  p { margin: 0; text-wrap: pretty; }
+  a { color: #2E4CA8; text-decoration: none; }
+  a:hover { color: #131A2E; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  img { display: block; }
+  ::selection { background: #8CC63F; color: #131A2E; }
+  @keyframes bsda-sheen { 0% { transform: translateX(-120%); } 60%,100% { transform: translateX(320%); } }
+  @keyframes bsda-fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  [data-rail]::-webkit-scrollbar { height: 8px; }
+  [data-rail]::-webkit-scrollbar-thumb { background: #131A2E; border-radius: 99px; }
+  [data-rail]::-webkit-scrollbar-track { background: rgba(19,26,46,.1); border-radius: 99px; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#FFFFFF">
+
+  <!-- ============ MEGA MENU OVERLAY ============ -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:200;background:#0C1120;overflow-y:auto;animation:bsda-fade .25s ease-out">
+      <div style="max-width:1400px;margin:0 auto;padding:34px 48px 64px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:24px">
+          <a href="#home" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:16px">
+            <img src="assets/logo-white.svg" alt="Brooklyn Seventh-day Adventist School" style="width:52px;height:52px" />
+            <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;letter-spacing:.02em;color:#fff">BROOKLYN SDA</span>
+          </a>
+          <button type="button" onClick="{{ closeMenu }}" style="width:56px;height:56px;border-radius:6px;border:none;background:#4A6FD0;color:#fff;font-family:'Archivo',sans-serif;font-size:26px;font-weight:700;cursor:pointer;line-height:1">×</button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:44px;margin-top:56px">
+          <sc-for list="{{ menuGroups }}" as="g" hint-placeholder-count="8">
+            <div>
+              <a href="{{ g.href }}" onClick="{{ g.onClick }}" style="display:block;font-family:'Archivo',sans-serif;font-weight:900;font-size:22px;letter-spacing:.02em;text-transform:uppercase;color:#fff;padding-bottom:12px;border-bottom:3px solid #4A6FD0" style-hover="color:#8CC63F">{{ g.label }}</a>
+              <ul style="list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+                <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3">
+                  <li><a href="{{ i.href }}" onClick="{{ i.onClick }}" style="font-size:15.5px;font-weight:500;color:#9AA3C4" style-hover="color:#8CC63F">{{ i.label }}</a></li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:56px;padding-top:32px;border-top:1px solid rgba(255,255,255,.14);display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <a href="#apply" onClick="{{ goApply }}" style="padding:16px 32px;background:#8CC63F;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:14.5px;letter-spacing:.1em;text-transform:uppercase" style-hover="background:#fff">Apply now</a>
+            <a href="#give" onClick="{{ goGive }}" style="padding:16px 32px;background:#FFD24A;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:14.5px;letter-spacing:.1em;text-transform:uppercase" style-hover="background:#fff">Donate</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <a href="tel:+17188591313" style="font-family:'Archivo',sans-serif;font-weight:900;font-size:22px;color:#FFD24A" style-hover="color:#fff">(718) 859-1313</a>
+            <span style="font-size:14px;color:#6E779B">1260 Ocean Ave · Brooklyn, NY 11230</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ HOME ============ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div data-screen-label="Home">
+
+      <!-- HERO PANEL -->
+      <section style="padding:36px 44px 0;background:#fff">
+        <div style="position:relative;background:#131A2E;overflow:hidden">
+          <!-- panel header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:32px 44px 0">
+            <div style="display:flex;align-items:center;gap:18px">
+              <button type="button" onClick="{{ openMenu }}" style="width:60px;height:60px;border:none;background:#4A6FD0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0" style-hover="background:#8CC63F">
+                <span style="display:block;width:24px;height:3px;background:#fff"></span>
+                <span style="display:block;width:24px;height:3px;background:#fff"></span>
+                <span style="display:block;width:24px;height:3px;background:#fff"></span>
+              </button>
+              <a href="#home" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:14px">
+                <img src="assets/logo-white.svg" alt="Brooklyn Seventh-day Adventist School" style="width:48px;height:48px" />
+                <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,44px);letter-spacing:.01em;color:#fff;line-height:1">BROOKLYN SDA</span>
+              </a>
+            </div>
+            <nav style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+              <a href="#about" onClick="{{ goAbout }}" style="padding:14px 24px;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:.11em;text-transform:uppercase;color:#fff;border:2px solid rgba(255,255,255,.28)" style-hover="background:#fff;color:#131A2E;border-color:#fff">About</a>
+              <a href="#apply" onClick="{{ goApply }}" style="padding:14px 24px;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.11em;text-transform:uppercase;color:#0C1120;background:#8CC63F;border:2px solid #8CC63F" style-hover="background:#fff;border-color:#fff">Join</a>
+              <a href="#life" onClick="{{ goLife }}" style="padding:14px 24px;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:.11em;text-transform:uppercase;color:#fff;border:2px solid rgba(255,255,255,.28)" style-hover="background:#fff;color:#131A2E;border-color:#fff">Learn more</a>
+            </nav>
+          </div>
+
+          <!-- slider body -->
+          <div style="display:grid;grid-template-columns:88px 1fr 30%;gap:0;min-height:620px;align-items:stretch">
+            <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;padding:40px 0">
+              <sc-for list="{{ slideDots }}" as="d" hint-placeholder-count="4">
+                <button type="button" onClick="{{ d.onClick }}" style="width:46px;height:46px;border:{{ d.border }};background:transparent;color:{{ d.color }};font-family:'Archivo',sans-serif;font-weight:900;font-size:19px;cursor:pointer;line-height:1">{{ d.n }}</button>
+              </sc-for>
+            </div>
+
+            <div style="position:relative;display:flex;align-items:flex-end;justify-content:center;min-height:620px;overflow:hidden">
+              <img src="{{ slide.img }}" alt="{{ slide.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ slide.pos }};filter:saturate(1.05)" />
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,26,46,.15) 0%,rgba(19,26,46,.1) 45%,rgba(19,26,46,.82) 100%)"></div>
+              <h1 style="position:relative;margin:0 0 44px;padding:0 34px;font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;line-height:.86;color:#fff;text-shadow:0 6px 26px rgba(0,0,0,.55);width:100%">
+                <span style="display:block;font-size:clamp(24px,2.6vw,40px);font-weight:700;letter-spacing:.01em;opacity:.95">{{ slide.kicker }}</span>
+                <span style="display:block;font-size:clamp(52px,7.4vw,112px);letter-spacing:-0.02em;margin-top:2px">{{ slide.word }}</span>
+              </h1>
+            </div>
+
+            <div style="padding:56px 44px 56px 40px;display:flex;flex-direction:column;justify-content:center">
+              <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(19px,1.55vw,26px);line-height:1.24;text-transform:uppercase;color:#fff;letter-spacing:.005em">{{ slide.lede }} <span style="color:#8CC63F">{{ slide.ledeAccent }}</span></h2>
+              <p style="margin-top:20px;font-size:16px;line-height:1.66;color:#A9B1CE">{{ slide.body }}</p>
+              <a href="{{ slide.ctaHref }}" onClick="{{ slide.ctaClick }}" style="margin-top:28px;align-self:flex-start;padding:17px 30px;background:#4A6FD0;color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase" style-hover="background:#8CC63F;color:#0C1120">{{ slide.cta }}</a>
+            </div>
+          </div>
+
+          <!-- DONATION METER docked in hero -->
+          <div style="border-top:1px solid rgba(255,255,255,.14);background:#0C1120;padding:20px 44px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+            <span style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+              <img src="assets/12stones-logo.png" alt="12 Stones Fund" style="width:52px;height:52px;object-fit:contain" />
+              <span style="display:flex;flex-direction:column;line-height:1.1">
+                <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:15px;letter-spacing:.09em;text-transform:uppercase;color:#fff">12 Stones Fund</span>
+                <span style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#8CC63F;margin-top:5px">Building human monuments for eternity</span>
+              </span>
+            </span>
+            <div style="flex:1 1 260px;min-width:200px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+                <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;color:#fff;line-height:1">{{ hudRaised }}</span>
+                <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6E779B">of {{ hudGoal }} goal</span>
+              </div>
+              <div style="height:12px;background:#1B2340;overflow:hidden">
+                <div style="height:100%;width:{{ hudPct }};background:linear-gradient(90deg,#5FA01E,#8CC63F);transition:width 1.5s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden"><span style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);width:40%;animation:bsda-sheen 3.4s ease-in-out infinite"></span></div>
+              </div>
+            </div>
+            <span style="display:flex;align-items:center;gap:24px;flex-shrink:0">
+              <span style="display:flex;flex-direction:column;line-height:1">
+                <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:#FFD24A">{{ hudDonors }}</span>
+                <span style="font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#6E779B;margin-top:5px">Donors</span>
+              </span>
+              <span style="display:flex;flex-direction:column;line-height:1">
+                <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;color:#fff">{{ hudPctLabel }}</span>
+                <span style="font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#6E779B;margin-top:5px">Funded</span>
+              </span>
+              <a href="#give" onClick="{{ goGive }}" style="padding:15px 28px;background:#FFD24A;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap" style-hover="background:#fff">Donate</a>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATEMENT BOXES -->
+      <section style="padding:44px 44px 0;display:flex;flex-direction:column;gap:20px">
+        <sc-for list="{{ statements }}" as="s" hint-placeholder-count="3">
+          <article style="display:grid;grid-template-columns:1fr 1fr;min-height:420px;background:{{ s.bg }}">
+            <div style="order:{{ s.imgOrder }};position:relative;min-height:420px;overflow:hidden">
+              <img src="{{ s.img }}" alt="{{ s.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+            </div>
+            <div style="order:{{ s.txtOrder }};padding:clamp(32px,4vw,66px);display:flex;flex-direction:column;justify-content:center">
+              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:{{ s.kickerColor }}">{{ s.kicker }}</span>
+              <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(30px,3.4vw,48px);line-height:1.02;text-transform:uppercase;margin-top:16px;color:{{ s.titleColor }}">{{ s.title }}</h2>
+              <p style="margin-top:18px;font-size:17px;line-height:1.68;color:{{ s.bodyColor }};max-width:480px">{{ s.body }}</p>
+              <a href="{{ s.href }}" onClick="{{ s.onClick }}" style="margin-top:28px;align-self:flex-start;padding:16px 30px;background:{{ s.btnBg }};color:{{ s.btnColor }};font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase" style-hover="opacity:.85">{{ s.cta }}</a>
+            </div>
+          </article>
+        </sc-for>
+      </section>
+
+      <!-- VALUES MOSAIC -->
+      <section style="padding:44px 44px 0">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:236px;gap:20px">
+          <sc-for list="{{ mosaic }}" as="m" hint-placeholder-count="7">
+            <div style="grid-column:span {{ m.cols }};grid-row:span {{ m.rows }};background:{{ m.bg }};position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:26px">
+              <sc-if value="{{ m.hasImg }}" hint-placeholder-val="{{ true }}">
+                <span><img src="{{ m.img }}" alt="{{ m.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /><span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,26,46,0) 35%,rgba(19,26,46,.8) 100%)"></span></sc-if>
+              <span style="position:relative;font-family:'Archivo',sans-serif;font-weight:900;font-size:{{ m.size }};line-height:1;text-transform:uppercase;color:{{ m.color }}">{{ m.label }}</span>
+              <span style="position:relative;font-size:14px;line-height:1.5;color:{{ m.subColor }};margin-top:10px;max-width:260px">{{ m.sub }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <!-- NEWS + EVENTS -->
+      <section style="padding:64px 44px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;border-bottom:3px solid #131A2E;padding-bottom:22px">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(30px,3.4vw,46px);text-transform:uppercase;line-height:1">News &amp; events</h2>
+          <div style="display:flex;gap:12px">
+            <a href="#news" onClick="{{ goNews }}" style="padding:14px 26px;border:2px solid #131A2E;font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#131A2E" style-hover="background:#131A2E;color:#fff">All news</a>
+            <a href="#events" onClick="{{ goEvents }}" style="padding:14px 26px;border:2px solid #131A2E;font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#131A2E" style-hover="background:#131A2E;color:#fff">Calendar</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-top:28px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+            <sc-for list="{{ homeNews }}" as="n" hint-placeholder-count="2">
+              <article style="background:#F4F2ED;display:flex;flex-direction:column">
+                <div style="height:196px;overflow:hidden"><img src="{{ n.img }}" alt="" style="width:100%;height:100%;object-fit:cover" /></div>
+                <div style="padding:26px;display:flex;flex-direction:column;flex:1">
+                  <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12px;letter-spacing:.12em;color:#4A6FD0">{{ n.date }}</span>
+                  <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:21px;margin-top:12px;line-height:1.22">{{ n.title }}</h3>
+                  <p style="margin-top:11px;font-size:15px;line-height:1.6;color:#5A6180">{{ n.excerpt }}</p>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+          <aside style="background:#131A2E;padding:32px">
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#8CC63F">Coming up</h3>
+            <ul style="list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:18px">
+              <sc-for list="{{ homeEvents }}" as="e" hint-placeholder-count="3">
+                <li style="display:flex;gap:16px;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.14)">
+                  <span style="flex:0 0 58px;text-align:center;background:#4A6FD0;padding:10px 4px">
+                    <span style="display:block;font-family:'Archivo',sans-serif;font-size:17px;font-weight:900;line-height:1;color:#fff">{{ e.day }}</span>
+                    <span style="display:block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-top:5px;color:#D4DEF7">{{ e.month }}</span>
+                  </span>
+                  <span>
+                    <span style="display:block;font-family:'Archivo',sans-serif;font-size:16.5px;font-weight:800;line-height:1.25;color:#fff">{{ e.title }}</span>
+                    <span style="display:block;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#8CC63F;margin-top:6px">{{ e.meta }}</span>
+                  </span>
+                </li>
+              </sc-for>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ============ INNER PAGE HEADER (all non-home) ============ -->
+  <sc-if value="{{ isInner }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <header style="padding:36px 44px 0">
+        <div style="background:#131A2E;padding:26px 34px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:16px">
+            <button type="button" onClick="{{ openMenu }}" style="width:52px;height:52px;border:none;background:#4A6FD0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0" style-hover="background:#8CC63F">
+              <span style="display:block;width:22px;height:3px;background:#fff"></span>
+              <span style="display:block;width:22px;height:3px;background:#fff"></span>
+              <span style="display:block;width:22px;height:3px;background:#fff"></span>
+            </button>
+            <a href="#home" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:13px">
+              <img src="assets/logo-white.svg" alt="Brooklyn Seventh-day Adventist School" style="width:44px;height:44px" />
+              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(22px,2.2vw,30px);color:#fff;line-height:1">BROOKLYN SDA</span>
+            </a>
+          </div>
+          <nav style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <a href="#about" onClick="{{ goAbout }}" style="padding:13px 22px;font-family:'Archivo',sans-serif;font-weight:800;font-size:13.5px;letter-spacing:.11em;text-transform:uppercase;color:#fff;border:2px solid rgba(255,255,255,.28)" style-hover="background:#fff;color:#131A2E;border-color:#fff">About</a>
+            <a href="#apply" onClick="{{ goApply }}" style="padding:13px 22px;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.11em;text-transform:uppercase;color:#0C1120;background:#8CC63F;border:2px solid #8CC63F" style-hover="background:#fff;border-color:#fff">Join</a>
+            <a href="#life" onClick="{{ goLife }}" style="padding:13px 22px;font-family:'Archivo',sans-serif;font-weight:800;font-size:13.5px;letter-spacing:.11em;text-transform:uppercase;color:#fff;border:2px solid rgba(255,255,255,.28)" style-hover="background:#fff;color:#131A2E;border-color:#fff">Learn more</a>
+            <a href="#give" onClick="{{ goGive }}" style="padding:13px 22px;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.11em;text-transform:uppercase;color:#0C1120;background:#FFD24A" style-hover="background:#fff">Donate</a>
+          </nav>
+        </div>
+      </header>
+
+      <section style="padding:20px 44px 0">
+        <div style="position:relative;min-height:300px;display:flex;align-items:flex-end;overflow:hidden;background:#131A2E">
+          <img src="{{ page.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5" />
+          <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(19,26,46,.94) 0%,rgba(19,26,46,.6) 60%,rgba(19,26,46,.35) 100%)"></div>
+          <div style="position:relative;padding:clamp(32px,4vw,56px)">
+            <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#8CC63F">{{ page.kicker }}</span>
+            <h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(38px,5.4vw,76px);line-height:.94;text-transform:uppercase;color:#fff;margin-top:14px">{{ page.title }}</h1>
+            <p style="margin-top:18px;font-size:18px;line-height:1.6;color:#B5BDD8;max-width:660px">{{ page.blurb }}</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ============ ABOUT ============ -->
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="About">
+      <section style="padding:20px 44px 0;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div style="background:#131A2E;padding:clamp(30px,3.4vw,52px)">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:34px;text-transform:uppercase;color:#fff">Our mission</h2>
+          <p style="margin-top:14px;font-size:16px;color:#8CC63F;font-weight:600">The mission of the Brooklyn Seventh-day Adventist School is to:</p>
+          <ul style="margin:20px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px">
+            <sc-for list="{{ missionPoints }}" as="m" hint-placeholder-count="4">
+              <li style="display:flex;gap:14px;align-items:flex-start;font-size:17px;line-height:1.5;color:#D6DBEC"><span style="flex:0 0 10px;height:10px;background:#8CC63F;margin-top:8px"></span>{{ m.label }}</li>
+            </sc-for>
+          </ul>
+        </div>
+        <div style="background:#F4F2ED;padding:clamp(30px,3.4vw,52px)">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:34px;text-transform:uppercase">Our philosophy</h2>
+          <p style="margin-top:16px;font-size:16px;line-height:1.68;color:#5A6180">A belief in the existence of the Creator God is fundamental in the philosophy of Seventh-day Adventist schools. We believe that true education develops the spiritual, mental and physical powers of each student, preparing them for the joy of service in this life and for the higher joy of service in the life to come. To achieve this goal, we encourage each student to:</p>
+          <ul style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px">
+            <sc-for list="{{ philosophyPoints }}" as="p" hint-placeholder-count="4">
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.55;color:#5A6180"><span style="flex:0 0 8px;height:8px;background:#4A6FD0;margin-top:8px"></span>{{ p.label }}</li>
+            </sc-for>
+          </ul>
+          <p style="margin-top:20px;font-size:14px;color:#8A90A8;line-height:1.6">The school operates in harmony with the guidance and direction of the Office of Education, North American Division of the Seventh-day Adventist Church.</p>
+        </div>
+      </section>
+
+      <section style="padding:20px 44px 0">
+        <div style="display:grid;grid-template-columns:42% 1fr;background:#F4F2ED;min-height:520px">
+          <div style="position:relative;overflow:hidden;min-height:400px"><img src="assets/students-worship.jpg" alt="Students leading worship" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
+          <div style="padding:clamp(32px,3.6vw,58px);display:flex;flex-direction:column;justify-content:center">
+            <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#4A6FD0">Welcome from the principal</span>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,2.9vw,40px);line-height:1.1;text-transform:uppercase;margin-top:14px">“Our warm and inclusive community is ready to embrace you.”</h2>
+            <div style="margin-top:22px;display:flex;flex-direction:column;gap:15px">
+              <sc-for list="{{ principalLetter }}" as="para" hint-placeholder-count="4">
+                <p style="font-size:16px;line-height:1.7;color:#5A6180">{{ para.text }}</p>
+              </sc-for>
+            </div>
+            <div style="margin-top:26px;padding-top:22px;border-top:2px solid rgba(19,26,46,.14)">
+              <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:22px">Loris LaBorde</div>
+              <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#4A6FD0;margin-top:6px">Principal</div>
+              <a href="mailto:principal@bsda.school" style="display:inline-block;margin-top:10px;font-size:15px;font-weight:600">principal@bsda.school</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:64px 44px 0">
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(30px,3.4vw,46px);text-transform:uppercase;border-bottom:3px solid #131A2E;padding-bottom:20px">History</h2>
+        <div data-rail="1" style="display:flex;gap:20px;overflow-x:auto;padding:28px 2px 24px;scroll-snap-type:x mandatory">
+          <sc-for list="{{ history }}" as="h" hint-placeholder-count="4">
+            <article style="flex:0 0 330px;scroll-snap-align:start;background:#F4F2ED;display:flex;flex-direction:column">
+              <div style="background:#131A2E;padding:16px 26px;font-family:'Archivo',sans-serif;font-size:28px;font-weight:900;color:#8CC63F;line-height:1">{{ h.year }}</div>
+              <div style="padding:26px">
+                <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:21px;line-height:1.22;text-transform:uppercase">{{ h.title }}</h3>
+                <p style="margin-top:12px;font-size:15px;line-height:1.62;color:#5A6180">{{ h.body }}</p>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="padding:24px 44px 0">
+        <div style="background:#4A6FD0;padding:clamp(36px,4vw,64px);text-align:center">
+          <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#D9E2FA">Our aim</span>
+          <p style="font-family:'Archivo',sans-serif;font-size:clamp(22px,2.7vw,34px);line-height:1.34;font-weight:700;margin:18px auto 0;color:#fff;max-width:900px">“To restore in man the image of his maker… to promote the development of body, mind and soul, that the divine purpose in His creation might be realized.”</p>
+          <p style="margin-top:20px;font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#FFD24A">Ellen G. White · Education, page 15</p>
+        </div>
+      </section>
+
+      <section style="padding:24px 44px 0">
+        <div style="background:#131A2E;padding:clamp(32px,3.6vw,54px);display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,2.9vw,40px);text-transform:uppercase;color:#fff;max-width:540px;line-height:1.06">Meet the people who teach here</h2>
+          <a href="#faculty" onClick="{{ goFaculty }}" style="padding:18px 34px;background:#8CC63F;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase" style-hover="background:#fff">Faculty directory</a>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ============ FACULTY ============ -->
+  <sc-if value="{{ isFaculty }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Faculty">
+      <section style="padding:20px 44px 0">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+          <sc-for list="{{ facultyStats }}" as="s" hint-placeholder-count="3">
+            <div style="background:#F4F2ED;padding:32px">
+              <div style="font-family:'Archivo',sans-serif;font-size:46px;font-weight:900;line-height:1;color:#4A6FD0">{{ s.value }}</div>
+              <div style="font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5A6180;margin-top:10px">{{ s.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+      <section style="padding:20px 44px 0">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:20px">
+          <sc-for list="{{ faculty }}" as="f" hint-placeholder-count="11">
+            <article style="background:#F4F2ED">
+              <div style="height:230px;background:#DDD9CF;display:flex;align-items:center;justify-content:center;position:relative">
+                <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:52px;color:#B9B3A4">{{ f.initials }}</span>
+                <span style="position:absolute;top:0;left:0;padding:8px 14px;background:{{ f.tagBg }};font-family:'Archivo',sans-serif;font-size:10.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:{{ f.tagColor }}">{{ f.dept }}</span>
+              </div>
+              <div style="padding:22px">
+                <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;line-height:1.2">{{ f.name }}</h3>
+                <p style="font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#4A6FD0;margin-top:9px">{{ f.role }}</p>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+        <p style="margin-top:24px;font:600 13px/1.6 ui-monospace,monospace;color:#8A90A8;background:#F4F2ED;padding:20px 22px">Names and roles are live from the current staff directory. Portraits still to be supplied by the school office — initials are placeholders.</p>
+      </section>
+      <section style="padding:24px 44px 0">
+        <div style="background:#131A2E;padding:clamp(32px,3.6vw,54px);display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(24px,2.7vw,36px);text-transform:uppercase;color:#fff;max-width:560px;line-height:1.08">Don't wait — begin the application process now</h2>
+          <a href="#admissions" onClick="{{ goAdmissions }}" style="padding:18px 34px;background:#8CC63F;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase" style-hover="background:#fff">Admissions</a>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ============ ADMISSIONS ============ -->
+  <sc-if value="{{ isAdmissions }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Admissions">
+      <section style="padding:20px 44px 0">
+        <div style="background:#F4F2ED;padding:clamp(30px,3.4vw,50px)">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase">The process, step by step</h2>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px">
+            <sc-for list="{{ admitSteps }}" as="s" hint-placeholder-count="4">
+              <article style="background:#fff;display:flex;flex-direction:column">
+                <div style="background:{{ s.bar }};padding:14px 22px;display:flex;align-items:center;justify-content:space-between">
+                  <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:{{ s.barText }}">{{ s.step }}</span>
+                  <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:17px;color:{{ s.barText }}">{{ s.n }}</span>
+                </div>
+                <div style="padding:24px">
+                  <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;text-transform:uppercase;line-height:1.1">{{ s.title }}</h3>
+                  <ul style="margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px">
+                    <sc-for list="{{ s.items }}" as="i" hint-placeholder-count="3">
+                      <li style="display:flex;gap:11px;align-items:flex-start;font-size:14.5px;line-height:1.52;color:#5A6180"><span style="flex:0 0 7px;height:7px;background:#4A6FD0;margin-top:7px"></span>{{ i.label }}</li>
+                    </sc-for>
+                  </ul>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:20px 44px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:20px">
+        <div style="background:#fff;border:3px solid #131A2E;padding:clamp(28px,3.2vw,44px)">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:32px;text-transform:uppercase">Documents to submit</h2>
+          <p style="margin-top:10px;font-size:15px;color:#8A90A8">Registration is complete once the office has received all of the following.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px">
+            <sc-for list="{{ documents }}" as="d" hint-placeholder-count="12">
+              <span style="display:flex;gap:11px;align-items:flex-start;font-size:14.5px;line-height:1.5;padding:13px 15px;background:#F4F2ED"><span style="flex:0 0 8px;height:8px;background:#8CC63F;margin-top:6px"></span>{{ d.label }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="background:#8CC63F;padding:34px">
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;color:#16240A">Tuition</h3>
+            <ul style="list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:13px">
+              <li style="font-size:15.5px;line-height:1.6;color:#1E2E0D"><strong style="font-weight:800">Pay online.</strong> Use Adventist School Pay to settle tuition and fees anytime, anywhere.</li>
+              <li style="font-size:15.5px;line-height:1.6;color:#1E2E0D"><strong style="font-weight:800">Pay in person.</strong> Visit the office and pay by check, cash or card.</li>
+            </ul>
+            <a href="https://www.adventistschoolpay.org/?OrgID=AN4820" target="_blank" rel="noopener" style="display:inline-block;margin-top:22px;padding:15px 28px;background:#131A2E;color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase" style-hover="background:#fff;color:#131A2E">Pay tuition &amp; fees</a>
+          </div>
+          <div style="background:#131A2E;padding:34px">
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:26px;text-transform:uppercase;color:#fff">Do it quickly</h3>
+            <p style="margin-top:14px;font-size:15.5px;line-height:1.65;color:#A9B1CE">Applications submitted before the September deadline are considered in the first round of decisions. Later applications are reviewed on a space-available basis. Call the Office of Admission at (718) 859-1313 to ask about availability.</p>
+            <p style="margin-top:18px;font-family:'Archivo',sans-serif;font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#0C1120;background:#FFD24A;padding:12px 18px;display:inline-block">Application fee $60 · non-refundable</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:20px 44px 0">
+        <div style="background:#F4F2ED;padding:clamp(30px,3.4vw,50px)">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(24px,2.8vw,38px);text-transform:uppercase">Placement test &amp; registration dates</h2>
+          <p style="margin-top:12px;font-size:16px;color:#5A6180">Select a date and reserve a time slot to register your child. Dates are set each year by the school office.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:28px">
+            <sc-for list="{{ testDates }}" as="t" hint-placeholder-count="6">
+              <div style="background:#fff;padding:22px;border-left:5px solid #4A6FD0">
+                <div style="font-family:'Archivo',sans-serif;font-size:22px;font-weight:900">{{ t.date }}</div>
+                <div style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#8A90A8;margin-top:9px">{{ t.kind }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:20px 44px 0">
+        <div style="background:#FFD24A;padding:clamp(32px,3.6vw,54px);display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:center">
+          <div>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,2.9vw,38px);text-transform:uppercase;color:#2E2306">Contact the admissions office</h2>
+            <p style="margin-top:12px;font-size:17px;color:#453712">Questions about grades, uniforms, fees or the placement test — we're happy to help.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a href="tel:+17188591313" style="font-family:'Archivo',sans-serif;font-size:30px;font-weight:900;color:#131A2E" style-hover="color:#2E4CA8">(718) 859-1313</a>
+            <a href="mailto:admissions@bsda.school" style="font-size:17px;font-weight:700;color:#2E4CA8">admissions@bsda.school</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ============ APPLY ============ -->
+  <sc-if value="{{ isApply }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Apply" style="padding:20px 44px 0;max-width:1080px;margin:0 auto">
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <sc-for list="{{ stepTabs }}" as="s" hint-placeholder-count="4">
+              <div style="flex:1 1 180px;padding:18px 20px;background:{{ s.bg }};border-bottom:4px solid {{ s.rule }}">
+                <div style="font-family:'Archivo',sans-serif;font-size:10.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:{{ s.muted }}">Step {{ s.n }}</div>
+                <div style="font-family:'Archivo',sans-serif;font-size:16.5px;font-weight:900;margin-top:8px;text-transform:uppercase;color:{{ s.color }}">{{ s.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <form onSubmit="{{ onSubmit }}" style="margin-top:20px;background:#F4F2ED;padding:clamp(28px,3.4vw,48px)">
+            <sc-if value="{{ step0 }}" hint-placeholder-val="{{ true }}">
+              <div>
+                <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">About the student</h2>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px">
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Student first name *</span>
+                    <input type="text" value="{{ f.firstName.value }}" onChange="{{ f.firstName.onChange }}" placeholder="Amara" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                    <sc-if value="{{ f.firstName.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.firstName.error }}</span></sc-if>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Student last name *</span>
+                    <input type="text" value="{{ f.lastName.value }}" onChange="{{ f.lastName.onChange }}" placeholder="Charles" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                    <sc-if value="{{ f.lastName.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.lastName.error }}</span></sc-if>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Date of birth *</span>
+                    <input type="date" value="{{ f.dob.value }}" onChange="{{ f.dob.onChange }}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                    <sc-if value="{{ f.dob.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.dob.error }}</span></sc-if>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Grade applying for *</span>
+                    <select value="{{ f.gradeApplying.value }}" onChange="{{ f.gradeApplying.onChange }}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px">
+                      <option value="">Select a grade</option>
+                      <sc-for list="{{ gradeOptions }}" as="g" hint-placeholder-count="10"><option value="{{ g.label }}">{{ g.label }}</option></sc-for>
+                    </select>
+                    <sc-if value="{{ f.gradeApplying.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.gradeApplying.error }}</span></sc-if>
+                  </label>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ step1 }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">Parent or guardian</h2>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px">
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Full name *</span>
+                    <input type="text" value="{{ f.guardian.value }}" onChange="{{ f.guardian.onChange }}" placeholder="Jean Charles" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                    <sc-if value="{{ f.guardian.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.guardian.error }}</span></sc-if>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Relationship to student *</span>
+                    <select value="{{ f.relationship.value }}" onChange="{{ f.relationship.onChange }}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px">
+                      <option value="">Select one</option>
+                      <option value="Mother">Mother</option>
+                      <option value="Father">Father</option>
+                      <option value="Grandparent">Grandparent</option>
+                      <option value="Legal guardian">Legal guardian</option>
+                    </select>
+                    <sc-if value="{{ f.relationship.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.relationship.error }}</span></sc-if>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Email *</span>
+                    <input type="email" value="{{ f.email.value }}" onChange="{{ f.email.onChange }}" placeholder="you@email.com" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                    <sc-if value="{{ f.email.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.email.error }}</span></sc-if>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Phone *</span>
+                    <input type="tel" value="{{ f.phone.value }}" onChange="{{ f.phone.onChange }}" placeholder="(718) 555-0123" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                    <sc-if value="{{ f.phone.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.phone.error }}</span></sc-if>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px;grid-column:1 / -1">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Home address *</span>
+                    <input type="text" value="{{ f.address.value }}" onChange="{{ f.address.onChange }}" placeholder="Street, Brooklyn, NY, ZIP" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                    <sc-if value="{{ f.address.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.address.error }}</span></sc-if>
+                  </label>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ step2 }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">School &amp; church</h2>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px">
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Current or previous school *</span>
+                    <input type="text" value="{{ f.currentSchool.value }}" onChange="{{ f.currentSchool.onChange }}" placeholder="School name, or “none”" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                    <sc-if value="{{ f.currentSchool.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#C0392B">{{ f.currentSchool.error }}</span></sc-if>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Last grade completed</span>
+                    <input type="text" value="{{ f.lastGrade.value }}" onChange="{{ f.lastGrade.onChange }}" placeholder="e.g. Grade 3" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Home church (if any)</span>
+                    <input type="text" value="{{ f.church.value }}" onChange="{{ f.church.onChange }}" placeholder="Church name" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">How did you hear about us?</span>
+                    <select value="{{ f.heard.value }}" onChange="{{ f.heard.onChange }}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px">
+                      <option value="">Select one</option>
+                      <option value="Family or friend">Family or friend</option>
+                      <option value="Our church">Our church</option>
+                      <option value="Search or social media">Search or social media</option>
+                      <option value="School event">School event</option>
+                    </select>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:8px;grid-column:1 / -1">
+                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Anything we should know about your child?</span>
+                    <textarea rows="4" value="{{ f.notes.value }}" onChange="{{ f.notes.onChange }}" placeholder="Learning support, allergies, interests…" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px;resize:vertical"></textarea>
+                  </label>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ step3 }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">Review &amp; submit</h2>
+                <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                  <sc-for list="{{ summary }}" as="s" hint-placeholder-count="8">
+                    <div style="padding:16px 18px;background:#fff">
+                      <div style="font:800 10.5px/1 ui-monospace,monospace;letter-spacing:.13em;text-transform:uppercase;color:#8A90A8">{{ s.label }}</div>
+                      <div style="font-size:16px;font-weight:600;margin-top:8px">{{ s.value }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+                <label style="display:flex;gap:14px;align-items:flex-start;margin-top:26px;padding:20px;background:#FFF6DC;border-left:5px solid #FFD24A">
+                  <input type="checkbox" checked="{{ f.agree.value }}" onChange="{{ f.agree.onChange }}" style="width:22px;height:22px;margin-top:2px;flex-shrink:0;accent-color:#4A6FD0" />
+                  <span style="font-size:15px;line-height:1.6">I understand the $60 application fee is non-refundable, and that admission also requires a meeting with administration and a placement test.</span>
+                </label>
+                <sc-if value="{{ f.agree.error }}" hint-placeholder-val="{{ false }}"><p style="font-size:13px;font-weight:700;color:#C0392B;margin-top:10px">{{ f.agree.error }}</p></sc-if>
+              </div>
+            </sc-if>
+
+            <div style="display:flex;justify-content:space-between;gap:14px;margin-top:34px;padding-top:26px;border-top:2px solid #DCD8CE;flex-wrap:wrap">
+              <button type="button" onClick="{{ onBack }}" disabled="{{ atFirstStep }}" style="padding:16px 30px;border:2px solid #131A2E;background:transparent;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;opacity:{{ backOpacity }}">Back</button>
+              <sc-if value="{{ notLastStep }}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{ onNext }}" style="padding:16px 34px;border:none;background:#4A6FD0;color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Continue</button>
+              </sc-if>
+              <sc-if value="{{ step3 }}" hint-placeholder-val="{{ false }}">
+                <button type="submit" style="padding:16px 34px;border:none;background:#8CC63F;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Submit application</button>
+              </sc-if>
+            </div>
+          </form>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#8CC63F;padding:clamp(36px,4vw,64px);text-align:center">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(30px,3.6vw,46px);text-transform:uppercase;color:#16240A">Application received</h2>
+          <p style="margin:16px auto 0;font-size:17px;line-height:1.65;max-width:560px;color:#1E2E0D">Thanks, {{ submittedName }}. The admissions office will be in touch to schedule your meeting with administration and confirm a placement test date.</p>
+          <div style="display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+            <a href="https://www.adventistschoolpay.org/?OrgID=AN4820" target="_blank" rel="noopener" style="padding:16px 30px;background:#131A2E;color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase" style-hover="background:#fff;color:#131A2E">Pay the $60 fee</a>
+            <button type="button" onClick="{{ onReset }}" style="padding:16px 30px;border:2px solid #16240A;background:transparent;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:#16240A">Start another</button>
+          </div>
+        </div>
+      </sc-if>
+    </section>
+  </sc-if>
+
+  <!-- ============ STUDENT LIFE ============ -->
+  <sc-if value="{{ isLife }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Student Life">
+      <section style="padding:20px 44px 0">
+        <div style="background:#F4F2ED;padding:clamp(30px,3.4vw,50px)">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase">A day in the life</h2>
+          <p style="margin-top:12px;font-size:17px;color:#5A6180">Scroll through the school day, 7:45am to 3:15pm.</p>
+          <div data-rail="1" style="display:flex;gap:18px;overflow-x:auto;padding:28px 2px 22px;scroll-snap-type:x mandatory">
+            <sc-for list="{{ dayFull }}" as="d" hint-placeholder-count="6">
+              <article style="flex:0 0 272px;scroll-snap-align:start;background:#fff;display:flex;flex-direction:column;min-height:224px">
+                <div style="background:{{ d.bar }};padding:13px 20px;font-family:'Archivo',sans-serif;font-weight:900;font-size:15px;letter-spacing:.1em;color:{{ d.barText }}">{{ d.time }}</div>
+                <div style="padding:22px">
+                  <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;line-height:1.15">{{ d.title }}</h3>
+                  <p style="margin-top:10px;font-size:15px;line-height:1.58;color:#5A6180">{{ d.body }}</p>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:20px 44px 0">
+        <div style="background:#131A2E;padding:clamp(30px,3.4vw,50px)">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase;color:#fff">Grade explorer</h2>
+          <p style="margin-top:12px;font-size:16px;color:#8A93B6">Pick a grade to see what a year looks like.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:26px">
+            <sc-for list="{{ gradeTabs }}" as="g" hint-placeholder-count="10">
+              <button type="button" onClick="{{ g.onClick }}" style="padding:13px 20px;border:2px solid {{ g.border }};background:{{ g.bg }};color:{{ g.color }};font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer">{{ g.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-top:26px;background:#fff;padding:clamp(28px,3.2vw,46px);display:grid;grid-template-columns:1fr 1fr;gap:36px">
+            <div>
+              <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#4A6FD0">{{ activeGrade.kicker }}</span>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,40px);text-transform:uppercase;margin-top:12px;line-height:1.04">{{ activeGrade.title }}</h3>
+              <p style="margin-top:16px;font-size:17px;line-height:1.66;color:#5A6180">{{ activeGrade.body }}</p>
+              <div style="margin-top:24px;padding:20px 24px;background:#FFD24A">
+                <div style="font-family:'Archivo',sans-serif;font-size:10.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#453712">Signature moment</div>
+                <div style="font-family:'Archivo',sans-serif;font-size:19px;font-weight:900;margin-top:9px;color:#2E2306">{{ activeGrade.moment }}</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#8A90A8">What you'll learn</div>
+              <ul style="list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:12px">
+                <sc-for list="{{ activeGrade.learn }}" as="l" hint-placeholder-count="4">
+                  <li style="display:flex;gap:13px;align-items:flex-start;font-size:16.5px;line-height:1.5;padding:15px 18px;background:#F4F2ED"><span style="flex:0 0 9px;height:9px;background:#8CC63F;margin-top:7px"></span>{{ l.label }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:20px 44px 0">
+        <div style="background:#F4F2ED;padding:clamp(30px,3.4vw,50px)">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+            <div>
+              <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase">Clubs &amp; activities</h2>
+              <p style="margin-top:12px;font-size:17px;color:#5A6180">Extracurricular clubs, performing arts groups and athletic teams.</p>
+            </div>
+            <div style="display:flex;gap:9px;flex-wrap:wrap">
+              <sc-for list="{{ clubCats }}" as="c" hint-placeholder-count="5">
+                <button type="button" onClick="{{ c.onClick }}" style="padding:12px 20px;border:2px solid #131A2E;background:{{ c.bg }};color:{{ c.color }};font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">{{ c.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(266px,1fr));gap:18px;margin-top:30px">
+            <sc-for list="{{ visibleClubs }}" as="c" hint-placeholder-count="6">
+              <article style="background:#fff;display:flex;flex-direction:column;min-height:206px">
+                <div style="background:{{ c.bar }};padding:12px 20px;font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:{{ c.barText }}">{{ c.cat }}</div>
+                <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+                  <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;line-height:1.15">{{ c.name }}</h3>
+                  <p style="margin-top:10px;font-size:15px;line-height:1.58;color:#5A6180">{{ c.body }}</p>
+                  <span style="margin-top:auto;padding-top:16px;font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#8A90A8">{{ c.when }}</span>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:20px 44px 0">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:16px">
+          <sc-for list="{{ wall }}" as="w" hint-placeholder-count="6">
+            <figure style="margin:0;grid-column:span {{ w.cols }};grid-row:span {{ w.rows }};position:relative;overflow:hidden;background:#131A2E">
+              <img src="{{ w.img }}" alt="{{ w.caption }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+              <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,26,46,0) 45%,rgba(19,26,46,.85) 100%)"></span>
+              <figcaption style="position:absolute;bottom:0;left:0;right:0;padding:20px;font-size:14.5px;line-height:1.5;font-weight:600;color:#fff">{{ w.caption }}</figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="padding:20px 44px 0">
+        <div style="background:#131A2E;padding:clamp(30px,3.4vw,50px)">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase;color:#fff">Find your way around</h2>
+          <p style="margin-top:12px;font-size:16px;color:#8A93B6">Tap a room at 1260 Ocean Avenue.</p>
+          <div style="display:grid;grid-template-columns:1.45fr .55fr;gap:20px;margin-top:26px;align-items:start">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+              <sc-for list="{{ rooms }}" as="r" hint-placeholder-count="12">
+                <button type="button" onClick="{{ r.onClick }}" style="text-align:left;padding:18px 16px;border:2px solid {{ r.border }};background:{{ r.bg }};color:{{ r.color }};cursor:pointer;min-height:98px;display:flex;flex-direction:column;justify-content:space-between;grid-column:span {{ r.span }}">
+                  <span style="font:800 10px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;opacity:.7">{{ r.floor }}</span>
+                  <span style="font-family:'Archivo',sans-serif;font-size:16px;font-weight:900;line-height:1.15;text-transform:uppercase">{{ r.name }}</span>
+                </button>
+              </sc-for>
+            </div>
+            <aside style="background:#4A6FD0;padding:30px;position:sticky;top:24px">
+              <span style="font:800 11px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#D9E2FA">{{ activeRoom.floor }}</span>
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:26px;text-transform:uppercase;color:#fff;margin-top:12px;line-height:1.1">{{ activeRoom.name }}</h3>
+              <p style="margin-top:14px;font-size:15.5px;line-height:1.65;color:#E3EAFB">{{ activeRoom.body }}</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ============ EVENTS ============ -->
+  <sc-if value="{{ isEvents }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Events">
+      <section style="padding:20px 44px 0">
+        <div style="display:grid;grid-template-columns:38% 1fr;background:#F4F2ED;min-height:340px">
+          <div style="position:relative;overflow:hidden;min-height:300px"><img src="assets/bible.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
+          <div style="padding:clamp(30px,3.4vw,50px);display:flex;flex-direction:column;justify-content:center">
+            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;background:#8CC63F;color:#16240A;padding:8px 14px">Featured · repeats yearly</span>
+              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:#5A6180">01 – 31 October</span>
+            </div>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,38px);text-transform:uppercase;margin-top:18px;line-height:1.08">Pastor Appreciation Month</h2>
+            <p style="margin-top:16px;font-size:16px;line-height:1.7;color:#5A6180">Pastor Appreciation Month is a cherished occasion when congregations come together each year to show gratitude and honor their pastors and pastoral families. It's a time to recognize the tireless dedication, sacrificial efforts, and countless blessings brought forth by these exceptional individuals. Appreciating, affirming and offering prayer support to our spiritual leaders is equally important throughout the entire year.</p>
+          </div>
+        </div>
+      </section>
+      <section style="padding:20px 44px 0">
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <sc-for list="{{ eventCats }}" as="c" hint-placeholder-count="4">
+            <button type="button" onClick="{{ c.onClick }}" style="padding:14px 24px;border:2px solid #131A2E;background:{{ c.bg }};color:{{ c.color }};font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">{{ c.label }}</button>
+          </sc-for>
+        </div>
+        <ul style="list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ visibleEvents }}" as="e" hint-placeholder-count="6">
+            <li style="display:grid;grid-template-columns:112px 1fr auto;gap:26px;align-items:center;background:#F4F2ED;padding:24px 28px">
+              <div style="text-align:center;background:{{ e.bar }};padding:14px 8px">
+                <div style="font-family:'Archivo',sans-serif;font-size:22px;font-weight:900;line-height:1;color:{{ e.barText }}">{{ e.day }}</div>
+                <div style="font-family:'Archivo',sans-serif;font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;margin-top:6px;color:{{ e.barText }}">{{ e.month }}</div>
+              </div>
+              <div>
+                <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;line-height:1.18">{{ e.title }}</h3>
+                <p style="margin-top:8px;font-size:15px;color:#5A6180;line-height:1.58">{{ e.body }}</p>
+              </div>
+              <span style="padding:10px 16px;background:#131A2E;font-family:'Archivo',sans-serif;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:#8CC63F">{{ e.cat }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ============ NEWS ============ -->
+  <sc-if value="{{ isNews }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="News" style="padding:20px 44px 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(326px,1fr));gap:20px">
+        <sc-for list="{{ news }}" as="n" hint-placeholder-count="3">
+          <article style="background:#F4F2ED;display:flex;flex-direction:column">
+            <div style="height:220px;overflow:hidden"><img src="{{ n.img }}" alt="" style="width:100%;height:100%;object-fit:cover" /></div>
+            <div style="padding:28px;display:flex;flex-direction:column;flex:1">
+              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12px;letter-spacing:.13em;color:#4A6FD0">{{ n.date }}</span>
+              <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;margin-top:12px;line-height:1.22">{{ n.title }}</h2>
+              <p style="margin-top:12px;font-size:15.5px;line-height:1.62;color:#5A6180">{{ n.excerpt }}</p>
+              <span style="margin-top:auto;padding-top:20px;font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#4A6FD0">Read more →</span>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ FUNDRAISERS ============ -->
+  <sc-if value="{{ isFundraisers }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Fundraisers" style="padding:20px 44px 0">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        <sc-for list="{{ campaigns }}" as="c" hint-placeholder-count="3">
+          <article style="background:#F4F2ED;display:flex;flex-direction:column">
+            <div style="height:200px;position:relative;overflow:hidden;background:#131A2E">
+              <img src="{{ c.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ c.fit }};object-position:center" />
+              <span style="position:absolute;top:0;left:0;padding:9px 15px;background:{{ c.tagBg }};font-family:'Archivo',sans-serif;font-size:10.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:{{ c.tagColor }}">{{ c.tag }}</span>
+            </div>
+            <div style="padding:28px;display:flex;flex-direction:column;flex:1">
+              <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;text-transform:uppercase;line-height:1.12">{{ c.title }}</h2>
+              <p style="margin-top:12px;font-size:15.5px;line-height:1.62;color:#5A6180">{{ c.body }}</p>
+              <div style="margin-top:auto;padding-top:22px">
+                <div style="height:12px;background:#DDD9CF;overflow:hidden"><div style="height:100%;width:{{ c.pct }};background:#4A6FD0"></div></div>
+                <div style="display:flex;justify-content:space-between;margin-top:10px;font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#5A6180">
+                  <span>{{ c.raised }} raised</span><span>{{ c.pct }}</span>
+                </div>
+                <a href="#give" onClick="{{ goGive }}" style="display:block;margin-top:20px;padding:15px 24px;background:#FFD24A;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-align:center" style-hover="background:#131A2E;color:#fff">Support this</a>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <p style="margin-top:24px;font:600 13px/1.6 ui-monospace,monospace;color:#8A90A8;background:#F4F2ED;padding:20px 22px">Campaign copy, goals and raised totals are placeholders. The live sub-pages (/fruit-fundraiser/, /12-stones-fund/, /55-in-25/) still need their real content pulled in.</p>
+    </section>
+  </sc-if>
+
+  <!-- ============ GIVE ============ -->
+  <sc-if value="{{ isGive }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Give">
+      <section style="padding:20px 44px 0">
+        <div style="display:grid;grid-template-columns:1fr 1fr;background:#131A2E;min-height:440px">
+          <div style="padding:clamp(32px,3.6vw,56px);display:flex;flex-direction:column;justify-content:center">
+            <img src="assets/12stones-logo.png" alt="12 Stones Fund" style="width:110px;height:110px;object-fit:contain" />
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,44px);text-transform:uppercase;color:#fff;margin-top:22px;line-height:1.02">Building human monuments for eternity</h2>
+            <p style="margin-top:18px;font-size:17px;line-height:1.68;color:#A9B1CE;max-width:520px">A contributor-funded initiative dedicated to empowering Seventh-day Adventist education at Brooklyn SDA School — tuition assistance, classroom resources and the building itself.</p>
+            <div style="display:flex;gap:14px;margin-top:28px;flex-wrap:wrap">
+              <a href="#contact" onClick="{{ goContact }}" style="padding:17px 32px;background:#FFD24A;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase" style-hover="background:#fff">Donate now</a>
+              <a href="#fundraisers" onClick="{{ goFundraisers }}" style="padding:17px 32px;border:2px solid rgba(255,255,255,.35);color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase" style-hover="background:#fff;color:#131A2E;border-color:#fff">All fundraisers</a>
+            </div>
+          </div>
+          <div style="position:relative;overflow:hidden;min-height:380px;display:flex;align-items:flex-end">
+            <img src="assets/stones.jpg" alt="Stacked stones" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,17,32,.15),rgba(12,17,32,.9))"></div>
+            <div style="position:relative;padding:clamp(28px,3.2vw,44px);width:100%">
+              <div style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#8CC63F">Live campaign total</div>
+              <div style="font-family:'Archivo',sans-serif;font-size:clamp(42px,5vw,64px);font-weight:900;color:#fff;line-height:1;margin-top:12px">{{ hudRaised }}</div>
+              <div style="font-size:13px;font-weight:700;color:#A9B1CE;margin-top:8px">of {{ hudGoal }} goal · {{ hudDonors }} donors · {{ hudPctLabel }} funded</div>
+              <div style="margin-top:20px;height:18px;background:rgba(255,255,255,.16);overflow:hidden">
+                <div style="height:100%;width:{{ hudPct }};background:linear-gradient(90deg,#5FA01E,#8CC63F);transition:width 1.5s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden"><span style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);width:40%;animation:bsda-sheen 3.4s ease-in-out infinite"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section style="padding:20px 44px 0">
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase;border-bottom:3px solid #131A2E;padding-bottom:18px">Where a gift goes</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px">
+          <sc-for list="{{ giving }}" as="g" hint-placeholder-count="3">
+            <article style="background:#F4F2ED;display:flex;flex-direction:column;min-height:250px">
+              <div style="background:{{ g.bar }};padding:20px 26px;font-family:'Archivo',sans-serif;font-size:38px;font-weight:900;line-height:1;color:{{ g.barText }}">{{ g.amount }}</div>
+              <div style="padding:26px">
+                <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;line-height:1.15">{{ g.title }}</h3>
+                <p style="margin-top:12px;font-size:15.5px;line-height:1.62;color:#5A6180">{{ g.body }}</p>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+        <p style="margin-top:22px;font:600 13px/1.6 ui-monospace,monospace;color:#8A90A8;background:#F4F2ED;padding:20px 22px">Giving levels, campaign goal, raised total and donor count are placeholders. Wire the counter to the school's donation processor before launch.</p>
+      </section>
+    </div>
+  </sc-if>
+
+  <!-- ============ YEARBOOKS ============ -->
+  <sc-if value="{{ isYearbooks }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Yearbooks" style="padding:20px 44px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+      <sc-for list="{{ yearbooks }}" as="y" hint-placeholder-count="2">
+        <article style="background:#F4F2ED">
+          <div style="height:280px;position:relative;overflow:hidden;background:#131A2E"><img src="{{ y.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
+          <div style="padding:28px">
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;text-transform:uppercase">{{ y.title }}</h2>
+            <p style="margin-top:10px;font-size:15px;color:#5A6180;line-height:1.6">{{ y.note }}</p>
+            <span style="display:inline-block;margin-top:20px;padding:14px 26px;background:#131A2E;color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">View yearbook</span>
+          </div>
+        </article>
+      </sc-for>
+    </section>
+  </sc-if>
+
+  <!-- ============ STORE ============ -->
+  <sc-if value="{{ isStore }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Store" style="padding:20px 44px 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:20px">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+          <article style="background:#F4F2ED">
+            <div style="height:214px;background:#DDD9CF;display:flex;align-items:center;justify-content:center;position:relative">
+              <span style="font:700 11px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#8C8878">Product shot</span>
+              <span style="position:absolute;top:0;left:0;padding:8px 14px;background:{{ p.tagBg }};font-family:'Archivo',sans-serif;font-size:10.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:{{ p.tagColor }}">{{ p.cat }}</span>
+            </div>
+            <div style="padding:22px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+              <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;line-height:1.2">{{ p.name }}</h3>
+              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;white-space:nowrap">{{ p.price }}</span>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <p style="margin-top:24px;font:600 13px/1.6 ui-monospace,monospace;color:#8A90A8;background:#F4F2ED;padding:20px 22px">Product photography and confirmed pricing to be supplied by the school office.</p>
+    </section>
+  </sc-if>
+
+  <!-- ============ PORTALS ============ -->
+  <sc-if value="{{ isPortals }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Portals" style="padding:20px 44px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <sc-for list="{{ portals }}" as="p" hint-placeholder-count="3">
+        <article style="background:#F4F2ED;display:flex;flex-direction:column;min-height:260px">
+          <div style="background:{{ p.bar }};padding:14px 26px;font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:{{ p.barText }}">Coming soon</div>
+          <div style="padding:28px;display:flex;flex-direction:column;flex:1">
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;line-height:1.08">{{ p.title }}</h2>
+            <p style="margin-top:12px;font-size:15.5px;line-height:1.62;color:#5A6180">{{ p.body }}</p>
+            <span style="margin-top:auto;padding:13px 22px;border:2px solid #CFCBC1;color:#8A90A8;font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;align-self:flex-start">Unavailable</span>
+          </div>
+        </article>
+      </sc-for>
+    </section>
+  </sc-if>
+
+  <!-- ============ CONTACT ============ -->
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Contact" style="padding:20px 44px 0;display:grid;grid-template-columns:.85fr 1.15fr;gap:20px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="background:#FFD24A;padding:30px">
+          <div style="font-family:'Archivo',sans-serif;font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#453712">Visit</div>
+          <div style="font-family:'Archivo',sans-serif;font-size:22px;font-weight:900;margin-top:10px;line-height:1.3;color:#2E2306">1260 Ocean Ave<br />Brooklyn, NY 11230-7401</div>
+        </div>
+        <div style="background:#131A2E;padding:30px">
+          <div style="font-family:'Archivo',sans-serif;font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#8CC63F">Call &amp; email</div>
+          <a href="tel:+17188591313" style="display:block;font-family:'Archivo',sans-serif;font-size:27px;font-weight:900;margin-top:10px;color:#fff" style-hover="color:#8CC63F">(718) 859-1313</a>
+          <a href="mailto:admissions@bsda.school" style="display:block;margin-top:10px;font-weight:600;color:#A9B1CE" style-hover="color:#fff">admissions@bsda.school</a>
+          <a href="mailto:principal@bsda.school" style="display:block;margin-top:4px;font-weight:600;color:#A9B1CE" style-hover="color:#fff">principal@bsda.school</a>
+        </div>
+        <div style="height:220px;position:relative;overflow:hidden"><img src="assets/building-front.jpg" alt="Brooklyn SDA School building" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
+      </div>
+      <form onSubmit="{{ onContact }}" style="background:#F4F2ED;padding:clamp(28px,3.4vw,46px)">
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">Send us a message</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px">
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Your name *</span><input type="text" required="{{ true }}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" /></label>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Your email *</span><input type="email" required="{{ true }}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" /></label>
+          <label style="display:flex;flex-direction:column;gap:8px;grid-column:1 / -1"><span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Subject</span><input type="text" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" /></label>
+          <label style="display:flex;flex-direction:column;gap:8px;grid-column:1 / -1"><span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Your message</span><textarea rows="7" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px;resize:vertical"></textarea></label>
+        </div>
+        <button type="submit" style="margin-top:26px;padding:17px 36px;border:none;background:#4A6FD0;color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Send</button>
+        <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}"><p style="margin-top:16px;font-weight:800;color:#3E8E20">Thanks — we'll be in touch soon.</p></sc-if>
+      </form>
+    </section>
+  </sc-if>
+
+  <!-- ============ ACCREDITATION + FOOTER ============ -->
+  <div style="padding:44px 44px 0">
+    <div style="background:#F4F2ED;padding:28px 34px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center">
+      <span style="font-family:'Archivo',sans-serif;font-size:14px;font-weight:900;letter-spacing:.14em;text-transform:uppercase">An accredited institution</span>
+      <img src="assets/accred-aaa.jpg" alt="Adventist Accrediting Association" style="height:52px;width:auto;object-fit:contain" />
+      <img src="assets/accred-ncpsa.jpg" alt="NCPSA Accredited" style="height:52px;width:auto;object-fit:contain" />
+    </div>
+  </div>
+
+  <footer style="padding:20px 44px 44px">
+    <div style="background:#0C1120;padding:clamp(36px,4vw,60px) clamp(30px,3.4vw,52px)">
+      <div style="display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:40px">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <img src="assets/logo-white.svg" alt="" style="width:52px;height:52px" />
+            <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:19px;line-height:1.25;color:#fff">Brooklyn Seventh-day<br />Adventist School</span>
+          </div>
+          <p style="margin-top:20px;font-size:15px;line-height:1.68;color:#8A93B6;max-width:310px">Discover the joy of learning. Pre-K thru 8th Grade in Brooklyn, NY — building character and equipping minds for a brighter future.</p>
+          <div style="display:flex;flex-direction:column;gap:7px;margin-top:20px">
+            <a href="tel:+17188591313" style="color:#FFD24A;font-family:'Archivo',sans-serif;font-weight:900;font-size:18px" style-hover="color:#fff">(718) 859-1313</a>
+            <a href="mailto:admissions@bsda.school" style="color:#8A93B6;font-size:15px" style-hover="color:#fff">admissions@bsda.school</a>
+            <a href="https://www.facebook.com/BrooklynSDAElementary" target="_blank" rel="noopener" style="color:#8A93B6;font-size:15px" style-hover="color:#fff">Facebook</a>
+          </div>
+        </div>
+        <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+          <div>
+            <h3 style="font-family:'Archivo',sans-serif;font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#8CC63F">{{ col.title }}</h3>
+            <ul style="list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+              <sc-for list="{{ col.items }}" as="l" hint-placeholder-count="6">
+                <li style="padding-left:{{ l.indent }}"><a href="{{ l.href }}" onClick="{{ l.onClick }}" style="color:{{ l.color }};font-size:{{ l.size }};font-weight:500" style-hover="color:#FFD24A">{{ l.label }}</a></li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13.5px;color:#5F678C">
+        <span>© 2026 Brooklyn Seventh-day Adventist School. Operated by the Greater New York Conference of Seventh-day Adventists.</span>
+        <span>1260 Ocean Ave · Brooklyn, NY 11230-7401</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;raised&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:18400,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:200000,&quot;step&quot;:100,&quot;section&quot;:&quot;Donation counter&quot;},&quot;goal&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:55000,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:1000,&quot;max&quot;:500000,&quot;step&quot;:1000,&quot;section&quot;:&quot;Donation counter&quot;},&quot;donors&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:214,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:10000,&quot;step&quot;:1,&quot;section&quot;:&quot;Donation counter&quot;}}">
+class Component extends DCLogic {
+  state = {
+    route: 'home', menuOpen: false, slide: 0,
+    grade: '3', clubCat: 'All', room: 'stem', evFilter: 'All',
+    step: 0, submitted: false, submittedName: '', contactSent: false,
+    errors: {}, barReady: false, countUp: 0,
+    form: { firstName:'', lastName:'', dob:'', gradeApplying:'', guardian:'', relationship:'', email:'', phone:'', address:'', currentSchool:'', lastGrade:'', church:'', heard:'', notes:'', agree:false }
+  };
+
+  routes = ['home','about','faculty','admissions','apply','life','events','news','fundraisers','give','yearbooks','store','portals','contact'];
+
+  componentDidMount() {
+    this.onHash();
+    window.addEventListener('hashchange', this.onHash);
+    this._bar = setTimeout(() => this.setState({ barReady: true }), 260);
+    this.startCount();
+    this._auto = setInterval(() => {
+      if (this.state.route === 'home' && !this.state.menuOpen) this.setState({ slide: (this.state.slide + 1) % this.slides.length });
+    }, 7000);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash);
+    clearTimeout(this._bar); clearInterval(this._count); clearInterval(this._auto);
+  }
+
+  startCount() {
+    const target = Number(this.props.raised != null ? this.props.raised : 18400);
+    const t0 = Date.now();
+    clearInterval(this._count);
+    this._count = setInterval(() => {
+      const p = Math.min(1, (Date.now() - t0) / 1700);
+      this.setState({ countUp: Math.round(target * (1 - Math.pow(1 - p, 3))) });
+      if (p >= 1) clearInterval(this._count);
+    }, 40);
+  }
+
+  onHash = () => {
+    const h = (window.location.hash || '').replace('#','');
+    if (this.routes.indexOf(h) !== -1) this.setState({ route: h, menuOpen: false });
+  };
+
+  go = (r) => (e) => {
+    if (e) e.preventDefault();
+    window.location.hash = r;
+    this.setState({ route: r, menuOpen: false });
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  money = (n) => '$' + Number(n || 0).toLocaleString('en-US');
+
+  // ---------- hero slides ----------
+  slides = [
+    { kicker:'To inspire', word:'Faith', img:'assets/hero-faith.jpg', pos:'50% 30%', alt:'Student in prayer',
+      lede:'As a Christian school, we care about our students\u2019 education from an', ledeAccent:'eternal perspective.',
+      body:'A belief in the Creator God is fundamental to everything we do. Morning worship, Bible class and service are woven through the day \u2014 our aim is to educate the heart as fully as the mind.',
+      cta:'Our philosophy', ctaKey:'about' },
+    { kicker:'To dream', word:'Bigger', img:'assets/students-worship.jpg', pos:'50% 35%', alt:'Students leading worship with microphones',
+      lede:'Our students lead worship, sing in the choir and speak to the', ledeAccent:'whole school.',
+      body:'Performing arts groups, choir and Music Enrichment give every child a stage. Confidence here is practiced, not assumed \u2014 students take real responsibility from the earliest grades.',
+      cta:'Student life', ctaKey:'life' },
+    { kicker:'To build', word:'Futures', img:'assets/hero-stem.jpg', pos:'50% 40%', alt:'Student building a circuit board in the STEM lab',
+      lede:'Hands-on STEM, inquiry-based learning and critical thinking for', ledeAccent:'high school and beyond.',
+      body:'A balanced curriculum of academics, creative arts and physical activity. Build days in the STEM lab, lab science upstairs, and preparation that carries into academy and college.',
+      cta:'Grade explorer', ctaKey:'life' },
+    { kicker:'To serve', word:'Others', img:'assets/students-service.jpg', pos:'50% 40%', alt:'Students handing out gifts in the neighborhood',
+      lede:'We teach our students the importance of', ledeAccent:'giving back.',
+      body:'Compassion, respect and responsibility \u2014 practiced through neighborhood service projects, church partnership and care for the people around us in Brooklyn.',
+      cta:'Our mission', ctaKey:'about' }
+  ];
+
+  // ---------- statement boxes ----------
+  statementData = [
+    { kicker:'Academics', title:'Equipped to learn', img:'assets/classroom.jpg', alt:'Kindergarten class',
+      body:'A balanced curriculum of academics, creative arts and physical activity, built on inquiry and critical thinking. We teach Pre-K through 8th grade, and the first years of school are the most intensive learning years of a child\u2019s life.',
+      cta:'Explore grades', key:'life', bg:'#F4F2ED', titleColor:'#131A2E', bodyColor:'#5A6180', kickerColor:'#4A6FD0', btnBg:'#4A6FD0', btnColor:'#fff', flip:false },
+    { kicker:'Character', title:'Building character for Christ', img:'assets/hero-faith.jpg', alt:'Student in prayer',
+      body:'We help students grow socially, mentally, physically and spiritually. We create an environment where students feel safe and secure, and learn to appreciate the wisdom and love of Jesus.',
+      cta:'About us', key:'about', bg:'#131A2E', titleColor:'#ffffff', bodyColor:'#A9B1CE', kickerColor:'#8CC63F', btnBg:'#8CC63F', btnColor:'#0C1120', flip:true },
+    { kicker:'Community', title:'A culture of service', img:'assets/students-service.jpg', alt:'Students on a service day',
+      body:'We equip students with the skills and knowledge to become active members of the community, and teach them the importance of giving back \u2014 compassion, respect and responsibility, practiced in the neighborhood.',
+      cta:'Our fundraisers', key:'fundraisers', bg:'#4A6FD0', titleColor:'#ffffff', bodyColor:'#DCE4FA', kickerColor:'#FFD24A', btnBg:'#FFD24A', btnColor:'#0C1120', flip:false }
+  ];
+
+  mosaicData = [
+    { label:'1938', sub:'Founded in Bay Ridge, Brooklyn \u2014 one classroom in a church basement.', cols:1, rows:1, bg:'#131A2E', color:'#ffffff', subColor:'#8A93B6', size:'44px' },
+    { label:'Pre-K \u2013 8', sub:'Every grade, one building on Ocean Avenue.', cols:1, rows:1, bg:'#8CC63F', color:'#16240A', subColor:'#2C4212', size:'38px' },
+    { label:'', sub:'', cols:2, rows:2, img:'assets/building-front.jpg', alt:'The school building at 1260 Ocean Avenue', bg:'#131A2E', color:'#ffffff', subColor:'#D6DBEC', size:'28px', labelOverride:'1260 Ocean Ave', subOverride:'Our home in Flatbush since the 1980s.' },
+    { label:'', sub:'', cols:1, rows:1, img:'assets/hero-stem.jpg', alt:'STEM lab', bg:'#131A2E', color:'#ffffff', subColor:'#D6DBEC', size:'26px', labelOverride:'STEM', subOverride:'Build days, circuits and motorized planes.' },
+    { label:'11', sub:'Faculty and staff who know every student by name.', cols:1, rows:1, bg:'#FFD24A', color:'#2E2306', subColor:'#453712', size:'44px' },
+    { label:'', sub:'', cols:2, rows:1, img:'assets/students-worship.jpg', alt:'Students leading worship', bg:'#131A2E', color:'#ffffff', subColor:'#D6DBEC', size:'26px', labelOverride:'Worship &amp; choir', subOverride:'Students lead the whole school in song and prayer.' },
+    { label:'2', sub:'Accreditations \u2014 Adventist Accrediting Association and NCPSA.', cols:2, rows:1, bg:'#F4F2ED', color:'#131A2E', subColor:'#5A6180', size:'44px' }
+  ];
+
+  missionPoints = ['Build characters for Christ','Foster social, mental, physical and spiritual development','Develop a culture of service','Equip students with the skills necessary for high school and beyond'];
+  philosophyPoints = ['develop a personal relationship with God and his fellow men','master the basic academic skills','value labor, physical and mental, as the blessing God intended','cultivate physical fitness, mental ability and moral purity'];
+  principalLetter = [
+    'Welcome to Brooklyn Seventh-day Adventist School. Whether you are a new student or a returning one, our community is ready to embrace you. The love of God permeates every faculty member, staff and student, creating an environment that feels like home.',
+    'Our moral foundation is rooted in the belief that God\u2019s ideal for His children surpasses human comprehension. Our aim is to guide each student toward godliness, nurturing them for excellence and equipping them for a life of service and mastery.',
+    'We provide a quality Christian education that emphasizes critical thinking, enabling our students to thrive in today\u2019s ever-changing world. Our teachers and staff form a professional learning community with a high standard for excellence.',
+    'Inside our classrooms, rigorous academic pursuits take place, complemented by extracurricular clubs, performing arts groups, athletic teams and events. We look forward to partnering with you on this journey.'
+  ];
+  history = [
+    { year:'1938', title:'The foundation', body:'Pastor Gerhart Herwick and parents of the Danish-Norwegian Church opened a school in Bay Ridge \u2014 one classroom in a church basement on 50th Street, with Betty Thogunsen as the first teacher.' },
+    { year:'1962', title:'Closed, then reopened', body:'After years closed, the school reopened under Pastor William Goransson. His wife Dolphy became the first teacher, joined by Jack Mentges, in two basement classrooms.' },
+    { year:'1964', title:'New church, new school', body:'The Italian-American Church merged with the Danish-Norwegian Bay Ridge Church to become the Brooklyn Seventh-day Adventist Church \u2014 the origin of the Brooklyn S.D.A. School.' },
+    { year:'1970', title:'Classroom expansions', body:'Under Pastor Halvard J. Thomsen and principal Joseph Miller the school grew to three classrooms, plus one in Staten Island, then moved to Viking Hall with Nursery/K and grades 1\u20139.' },
+    { year:'1980s', title:'1260 Ocean Avenue', body:'Under Pastor Glen Hixon the current building was purchased, with Yaqub Khan as principal. A grades 1\u20138 program was established at the new site.' },
+    { year:'1998', title:'Pre-K expansion', body:'The Pre-K and Kindergarten program was re-established under the leadership of Dr. Iola Brown.' },
+    { year:'2023', title:'A new principal', body:'Loris LaBorde became principal, bringing years of experience in Adventist schools and plans for growth through fundraising, rebranding and reorganization.' }
+  ];
+  faculty = [
+    { name:'Loris LaBorde', role:'Principal', dept:'Administration' },
+    { name:'Teisha Richards', role:'Asst. Principal · Grades 1&2 Teacher', dept:'Administration' },
+    { name:'Christine Honore', role:'Administrative Assistant', dept:'Administration' },
+    { name:'Jacques Docteur', role:'Treasurer', dept:'Administration' },
+    { name:'Cheryl Walcott', role:'Pre-K / K Teacher', dept:'Early years' },
+    { name:'Nardlie Denard', role:'Pre-K / K Assistant', dept:'Early years' },
+    { name:'Gercine Straker', role:'Grades 3&4 Teacher', dept:'Classroom' },
+    { name:'Thea Fleuriot', role:'Grades 5&6 Teacher', dept:'Classroom' },
+    { name:'Heather Anderson', role:'Grades 7&8 Teacher', dept:'Classroom' },
+    { name:'Mark Gordon', role:'Computer / Gym Teacher', dept:'Specials' },
+    { name:'Paul Engram', role:'Music Teacher', dept:'Specials' }
+  ];
+  deptColors = { 'Administration':['#4A6FD0','#ffffff'], 'Early years':['#FFD24A','#2E2306'], 'Classroom':['#8CC63F','#16240A'], 'Specials':['#131A2E','#8CC63F'] };
+  admitSteps = [
+    { n:'1', step:'Step one', title:'Apply', bar:'#4A6FD0', barText:'#ffffff', items:['Complete the application form','Pay the $60 application fee (non-refundable)','Meet with administration or the principal, virtually or in person'] },
+    { n:'2', step:'Step two', title:'Test', bar:'#FFD24A', barText:'#2E2306', items:['Sit the placement test on one of the scheduled dates','Receive the status of your application','If accepted, move on to registration'] },
+    { n:'3', step:'Step three', title:'Register', bar:'#8CC63F', barText:'#16240A', items:['Submit all required documents to the office','Late registration in September carries a $50 non-refundable fee','Reserve your grade-level registration day in August'] },
+    { n:'4', step:'Step four', title:'Enroll', bar:'#131A2E', barText:'#8CC63F', items:['Sign the contract and pay fees','Pay first and last month\u2019s tuition','Receive your acceptance letter, uniform info, supply list and handbook'] }
+  ];
+  documents = ['Transcript release form','Recommendation letters from previous school','Letter verifying church membership','Previous report card','Original birth certificate','Medical records & immunization','NYC support school funding form','Recent photograph','Internet user policy agreement','Media release form','Technology agreement form','Home & school agreement form','Music enrichment application'];
+  testDates = [
+    { date:'Sep 8 & 15', kind:'Placement test' }, { date:'Nov 12', kind:'Placement test' },
+    { date:'Jan 21', kind:'Placement test' }, { date:'Mar 17', kind:'Placement test' },
+    { date:'May 19', kind:'Placement test' }, { date:'Jul 21', kind:'Placement test' },
+    { date:'Aug 19\u201323', kind:'Registration week' }
+  ];
+  events = [
+    { day:'19\u201323', month:'Aug', title:'Registration week', body:'Pre-K & K on the 19th, grades 1\u20132 on the 20th, 3\u20134 on the 21st, 5\u20136 on the 22nd, 7\u20138 on the 23rd.', cat:'Registration', bar:'#4A6FD0', barText:'#ffffff' },
+    { day:'08', month:'Sep', title:'Placement test', body:'Second session on September 15. Reserve a slot with the admissions office.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
+    { day:'01\u201331', month:'Oct', title:'Pastor Appreciation Month', body:'A month-long celebration with the Brooklyn Seventh-day Adventist Church. Repeats yearly.', cat:'Community', bar:'#8CC63F', barText:'#16240A' },
+    { day:'12', month:'Nov', title:'Placement test', body:'Autumn placement session for new applicants.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
+    { day:'21', month:'Jan', title:'Placement test', body:'Winter placement session for new applicants.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
+    { day:'17', month:'Mar', title:'Placement test', body:'Spring placement session for new applicants.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
+    { day:'19', month:'May', title:'Placement test', body:'End-of-year placement session for new applicants.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
+    { day:'21', month:'Jul', title:'Placement test', body:'Summer session ahead of registration week.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' }
+  ];
+  news = [
+    { date:'07.29.24', title:'2024/2025 School Year Calendar Now Available', excerpt:'Check out the new school calendar for Brooklyn Seventh-day Adventist School. We have a lot of amazing things planned for this coming year.', img:'assets/calendar.jpg' },
+    { date:'06.24.24', title:'Join the Summer Blast Program for an Unforgettable Summer', excerpt:'Our Summer Blast program offers engaging activities for Pre-K to 8th grade students through the summer months.', img:'assets/summer-blast.jpg' },
+    { date:'09.18.23', title:'Support our Students\u2019 Futures with the New 12 Stones Fund', excerpt:'With the support of our friends and families, this contributor-funded initiative is dedicated to empowering Seventh-day Adventist education.', img:'assets/stones.jpg' }
+  ];
+  dayFull = [
+    { time:'7:45', title:'Arrival', body:'Doors open on Ocean Avenue. Bags down, uniforms checked, friends found.', bar:'#4A6FD0', barText:'#ffffff' },
+    { time:'8:15', title:'Morning worship', body:'The whole school gathers to sing and pray. Students lead in rotation.', bar:'#FFD24A', barText:'#2E2306' },
+    { time:'8:45', title:'Math block', body:'Number sense in the lower grades, pre-algebra and algebra upstairs.', bar:'#F4F2ED', barText:'#131A2E' },
+    { time:'10:15', title:'Recess', body:'Outside on the yard, or the gym when Brooklyn weather says otherwise.', bar:'#8CC63F', barText:'#16240A' },
+    { time:'10:45', title:'Reading & writing', body:'Guided reading groups, then writing workshop with peer feedback.', bar:'#F4F2ED', barText:'#131A2E' },
+    { time:'12:00', title:'Lunch', body:'Cafeteria, then a stretch outdoors before the afternoon.', bar:'#131A2E', barText:'#8CC63F' },
+    { time:'12:45', title:'Science & STEM', body:'Lab work and build days \u2014 including motorized planes in the STEM program.', bar:'#4A6FD0', barText:'#ffffff' },
+    { time:'1:45', title:'Specials', body:'Music, art or PE, rotating through the week. Choir rehearses here.', bar:'#FFD24A', barText:'#2E2306' },
+    { time:'2:45', title:'Dismissal', body:'Classroom reset, homework logged, dismissal at 3:15. After-school runs later.', bar:'#8CC63F', barText:'#16240A' }
+  ];
+  grades = {
+    'Pre-K': { kicker:'Ages 4\u20135', title:'Play with a purpose', body:'The first year of school is about routine, curiosity and confidence. Days are short, structured and full of hands-on discovery.', moment:'The Pre-K nativity play at the church', learn:['Letters, sounds and name writing','Counting, sorting and patterns','Fine motor skills and early art','Bible stories and songs'] },
+    'K': { kicker:'Ages 5\u20136', title:'Getting ready to read', body:'Kindergarten builds the habits that carry through the rest of school \u2014 listening, sharing, and sounding out the first real words.', moment:'Reading your first book out loud to the class', learn:['Phonics and sight words','Numbers to 100','Classroom routines and responsibility','Morning worship participation'] },
+    '1': { kicker:'Grade 1', title:'Reading takes off', body:'Students move from decoding to reading for meaning, and from counting to real arithmetic.', moment:'The first chapter book finished alone', learn:['Fluent reading and short writing','Addition and subtraction facts','Observing and recording in science','Memory verses'] },
+    '2': { kicker:'Grade 2', title:'Writing with a voice', body:'Sentences become paragraphs. Students start explaining their thinking, not just giving answers.', moment:'Publishing a class storybook', learn:['Paragraph writing','Place value and time','Community and neighborhoods','Service project participation'] },
+    '3': { kicker:'Grade 3', title:'Thinking it through', body:'Third grade is the pivot from learning to read to reading to learn, with multiplication and real research.', moment:'The first STEM build day', learn:['Multiplication and division','Research and note-taking','Cursive handwriting','Introduction to STEM projects'] },
+    '4': { kicker:'Grade 4', title:'Making an argument', body:'Students learn to back up what they say \u2014 in writing, in science, and in class discussion.', moment:'Presenting a project to the whole class', learn:['Fractions and measurement','Persuasive and expository writing','New York State history','Choir and instrumental music'] },
+    '5': { kicker:'Grade 5', title:'Owning the work', body:'Longer assignments, real deadlines, and the first taste of managing your own schedule.', moment:'Leading morning worship', learn:['Decimals, ratios and data','Multi-source research writing','Lab science and experiments','Leadership in worship and clubs'] },
+    '6': { kicker:'Grade 6', title:'Stepping up', body:'Middle school habits arrive: notebooks, study skills and accountability for your own learning.', moment:'Joining a competitive team or club', learn:['Pre-algebra','Literary analysis','Earth and life science','Community service hours'] },
+    '7': { kicker:'Grade 7', title:'Building the record', body:'Grades start to matter for what comes next. Students learn to study, revise and ask for help.', moment:'A service project with the class', learn:['Algebra foundations','Essay structure and revision','Physical and life science','Peer mentoring of younger grades'] },
+    '8': { kicker:'Grade 8', title:'Ready for high school', body:'The final year focuses on independence, faith and preparation for academy or high school.', moment:'Graduation at the church', learn:['Algebra I','Research papers and presentations','High school placement preparation','Leading school-wide service initiatives'] }
+  };
+  gradeOrder = ['Pre-K','K','1','2','3','4','5','6','7','8'];
+  clubs = [
+    { name:'Choir', cat:'Arts', bar:'#FFD24A', barText:'#2E2306', body:'The school choir sings at worship, church services and community events.', when:'Weekly \u00b7 choir dues apply' },
+    { name:'Music Enrichment', cat:'Arts', bar:'#FFD24A', barText:'#2E2306', body:'Instrumental instruction with a separate application form and class fee.', when:'Application required' },
+    { name:'Art Club', cat:'Arts', bar:'#FFD24A', barText:'#2E2306', body:'Drawing, painting and mixed media, with work shown on the student wall.', when:'After school' },
+    { name:'STEM Club', cat:'STEM', bar:'#4A6FD0', barText:'#ffffff', body:'Hands-on builds and experiments \u2014 including motorized planes.', when:'Weekly \u00b7 STEM class fee applies' },
+    { name:'Computer Class', cat:'STEM', bar:'#4A6FD0', barText:'#ffffff', body:'Keyboarding, digital literacy and computer education with Mr. Gordon.', when:'In the weekly rotation' },
+    { name:'Yearbook Club', cat:'STEM', bar:'#4A6FD0', barText:'#ffffff', body:'Photography, layout and interviews for the annual yearbook.', when:'Fall through spring' },
+    { name:'Basketball', cat:'Sports', bar:'#8CC63F', barText:'#16240A', body:'Practices and games in the gym for upper-grade students.', when:'Season play \u00b7 sports dues apply' },
+    { name:'Intramurals', cat:'Sports', bar:'#8CC63F', barText:'#16240A', body:'Open games and fitness for all grades during and after school.', when:'Year-round' },
+    { name:'Community Service Corps', cat:'Service', bar:'#131A2E', barText:'#8CC63F', body:'Neighborhood service projects that put compassion and responsibility into practice.', when:'Monthly projects' },
+    { name:'Pathfinders & Adventurers', cat:'Service', bar:'#131A2E', barText:'#8CC63F', body:'Church-affiliated clubs for outdoor skills, service and leadership.', when:'With the Brooklyn SDA Church' }
+  ];
+  wall = [
+    { img:'assets/classroom.jpg', caption:'Kindergarten pajama day \u2014 continents and oceans on the board.', cols:2, rows:1 },
+    { img:'assets/hero-stem.jpg', caption:'Building circuits as part of an interactive STEM program.', cols:1, rows:2 },
+    { img:'assets/students-worship.jpg', caption:'Our students are an important part of the Brooklyn Seventh-day Adventist Church.', cols:1, rows:1 },
+    { img:'assets/students-service.jpg', caption:'Community service day in the neighborhood.', cols:2, rows:1 },
+    { img:'assets/building-front.jpg', caption:'1260 Ocean Avenue, Flatbush.', cols:1, rows:1 }
+  ];
+  roomList = [
+    { id:'office', name:'Main Office', floor:'Ground floor', span:2, body:'Admissions, tuition and records. Stop here first \u2014 the registrar can answer most questions about paperwork and fees.' },
+    { id:'prek', name:'Pre-K Room', floor:'Ground floor', span:1, body:'A dedicated early-childhood classroom with its own quiet corner, reading rug and art table.' },
+    { id:'k12', name:'Grades 1\u20132', floor:'Ground floor', span:1, body:'Foundational reading, writing and math for our youngest full-day students.' },
+    { id:'g34', name:'Grades 3\u20134', floor:'Second floor', span:1, body:'Where reading to learn begins \u2014 research corners, multiplication walls and project tables.' },
+    { id:'g56', name:'Grades 5\u20136', floor:'Second floor', span:1, body:'Pre-algebra, lab science and the first long-form research writing.' },
+    { id:'g78', name:'Grades 7\u20138', floor:'Second floor', span:1, body:'Algebra, essay writing and high school preparation for our graduating classes.' },
+    { id:'stem', name:'STEM Lab', floor:'Second floor', span:1, body:'Build days happen here. Circuits, motorized planes and experiments across grades 3 through 8.' },
+    { id:'library', name:'Library', floor:'Second floor', span:1, body:'Guided reading groups, independent reading and research time.' },
+    { id:'music', name:'Music Room', floor:'Ground floor', span:1, body:'Choir rehearsal and the Music Enrichment program \u2014 instruments, theory and performance prep.' },
+    { id:'gym', name:'Gym & Hall', floor:'Lower level', span:2, body:'PE, basketball, indoor recess, assemblies and school-wide worship when the whole school gathers.' },
+    { id:'cafeteria', name:'Cafeteria', floor:'Lower level', span:1, body:'Lunch service and after-school program home base.' },
+    { id:'yard', name:'Play Yard', floor:'Outdoors', span:1, body:'Morning recess and field day. Fenced and supervised.' }
+  ];
+  campaignData = [
+    { title:'12 Stones Fund', tag:'Flagship', tagBg:'#8CC63F', tagColor:'#16240A', img:'assets/12stones-logo.png', fit:'contain', body:'A contributor-funded initiative empowering Adventist education at Brooklyn SDA School \u2014 tuition assistance, classroom resources and the building itself.', raised:18400, goal:55000 },
+    { title:'55 in 25 for the 12 Stones Fund', tag:'Campaign', tagBg:'#FFD24A', tagColor:'#2E2306', img:'assets/stones.jpg', fit:'cover', body:'A focused push toward the 12 Stones goal. Campaign copy and targets to be confirmed by the school office.', raised:9200, goal:25000 },
+    { title:'Fruit Fundraiser', tag:'Seasonal', tagBg:'#4A6FD0', tagColor:'#ffffff', img:'assets/summer-blast.jpg', fit:'cover', body:'The annual fruit sale run by students and families. Ordering details and dates to be confirmed each season.', raised:4600, goal:12000 }
+  ];
+  giving = [
+    { amount:'$25', title:'Classroom supplies', bar:'#FFD24A', barText:'#2E2306', body:'Books, materials and the small things that make a classroom work all year.' },
+    { amount:'$100', title:'STEM program', bar:'#4A6FD0', barText:'#ffffff', body:'Kits, components and build materials for hands-on science across the grades.' },
+    { amount:'$500', title:'Tuition assistance', bar:'#8CC63F', barText:'#16240A', body:'Direct support so a Brooklyn family can choose Adventist education for their child.' }
+  ];
+  yearbooks = [
+    { title:'Yearbook 2022\u20132023', note:'Principal transition year, STEM program expansion and spring graduation.', img:'assets/students-worship.jpg' },
+    { title:'Yearbook 2021\u20132022', note:'A full year back together \u2014 choir, sports and service projects.', img:'assets/classroom.jpg' }
+  ];
+  products = [
+    { name:'Uniform Polo', cat:'Uniform', price:'$\u2014', tagBg:'#4A6FD0', tagColor:'#ffffff' },
+    { name:'School Cardigan', cat:'Uniform', price:'$\u2014', tagBg:'#4A6FD0', tagColor:'#ffffff' },
+    { name:'Gym T-Shirt', cat:'PE', price:'$\u2014', tagBg:'#8CC63F', tagColor:'#16240A' },
+    { name:'Gym Shorts', cat:'PE', price:'$\u2014', tagBg:'#8CC63F', tagColor:'#16240A' },
+    { name:'Spirit Hoodie', cat:'Spirit wear', price:'$\u2014', tagBg:'#FFD24A', tagColor:'#2E2306' },
+    { name:'Water Bottle', cat:'Spirit wear', price:'$\u2014', tagBg:'#FFD24A', tagColor:'#2E2306' },
+    { name:'Tote Bag', cat:'Spirit wear', price:'$\u2014', tagBg:'#FFD24A', tagColor:'#2E2306' },
+    { name:'Yearbook Pre-Order', cat:'Archive', price:'$\u2014', tagBg:'#131A2E', tagColor:'#8CC63F' }
+  ];
+  portals = [
+    { title:'Students', bar:'#4A6FD0', barText:'#ffffff', body:'Assignments, grades and class resources in one place.' },
+    { title:'Parents', bar:'#FFD24A', barText:'#2E2306', body:'Attendance, report cards, tuition balance and school communication.' },
+    { title:'School Board', bar:'#8CC63F', barText:'#16240A', body:'Board documents, meeting minutes and governance resources.' }
+  ];
+
+  pageMeta = {
+    about:      { kicker:'About us', title:'A Brooklyn school since 1938', img:'assets/building-front.jpg', blurb:'A private, co-educational day school owned and operated by the Greater New York Conference of Seventh-day Adventists, offering grades Pre-K through 8.' },
+    faculty:    { kicker:'About', title:'Faculty & staff', img:'assets/classroom.jpg', blurb:'Our teachers form a professional learning community, committed to serving and inspiring students, with regular training in current teaching methods.' },
+    admissions: { kicker:'Admissions', title:'Come learn with us', img:'assets/students-worship.jpg', blurb:'We welcome applications from girls and boys of all races, ethnicities and economic backgrounds. Decisions are made on a candidate\u2019s individual strengths and talents, potential to thrive, and ability to contribute positively to our community.' },
+    apply:      { kicker:'Enrollment form', title:'Apply to BSDA', img:'assets/classroom.jpg', blurb:'Four short steps. You can save the $60 application fee for the end \u2014 nothing is submitted until you review it.' },
+    life:       { kicker:'Student life', title:'What it\u2019s like to go here', img:'assets/hero-stem.jpg', blurb:'Rigorous classrooms, plus clubs, performing arts, athletics and events. Here\u2019s the whole day, grade by grade, room by room.' },
+    events:     { kicker:'Calendar', title:'School events', img:'assets/calendar.jpg', blurb:'Registration windows, placement tests and community dates for the school year.' },
+    news:       { kicker:'News', title:'From the school', img:'assets/calendar.jpg', blurb:'Announcements, programs and stories from 1260 Ocean Avenue.' },
+    fundraisers:{ kicker:'Fundraisers', title:'Every gift builds a student', img:'assets/stones.jpg', blurb:'Three active campaigns keep tuition affordable, classrooms stocked and the building on Ocean Avenue ready for the next generation.' },
+    give:       { kicker:'12 Stones Fund', title:'Give to BSDA', img:'assets/stones.jpg', blurb:'Building human monuments for eternity \u2014 a contributor-funded initiative empowering Seventh-day Adventist education in Brooklyn.' },
+    yearbooks:  { kicker:'Archive', title:'Yearbooks', img:'assets/students-worship.jpg', blurb:'Every class, every year. Flip through past editions.' },
+    store:      { kicker:'Store', title:'Uniforms & spirit wear', img:'assets/classroom.jpg', blurb:'Everything on the supply list, plus gear for game day.' },
+    portals:    { kicker:'Portals', title:'Sign in', img:'assets/building-front.jpg', blurb:'Secure portals for students, parents and the school board. Coming soon.' },
+    contact:    { kicker:'Contact', title:'Say hello', img:'assets/building-front.jpg', blurb:'Connect with Brooklyn Seventh-day Adventist School in a number of different ways.' }
+  };
+
+  navTree = [
+    { label:'About', key:'about', items:[['Faculty & Staff','faculty'],['Our mission','about'],['History','about'],['Privacy policy','about']] },
+    { label:'Admissions', key:'admissions', items:[['Enrollment form','apply'],['Tuition & fees','admissions'],['Placement dates','events']] },
+    { label:'Student Life', key:'life', items:[['A day in the life','life'],['Grade explorer','life'],['Clubs & activities','life'],['Campus map','life']] },
+    { label:'Events', key:'events', items:[['Full calendar','events'],['Event management','events'],['Add new event','events']] },
+    { label:'Fundraisers', key:'fundraisers', items:[['12 Stones Fund','give'],['55 in 25','fundraisers'],['Fruit Fundraiser','fundraisers'],['Donate now','give'],['Donor dashboard','portals']] },
+    { label:'News', key:'news', items:[['All posts','news']] },
+    { label:'Store', key:'store', items:[['Uniforms','store'],['Spirit wear','store'],['Yearbooks','yearbooks']] },
+    { label:'Portals', key:'portals', items:[['Students (coming soon)','portals'],['Parents (coming soon)','portals'],['School Board (coming soon)','portals'],['Contact us','contact']] }
+  ];
+
+  // ---------- form ----------
+  required = {
+    0: { firstName:'Student first name is required.', lastName:'Student last name is required.', dob:'Please enter a date of birth.', gradeApplying:'Choose the grade you are applying for.' },
+    1: { guardian:'Please enter a parent or guardian name.', relationship:'Select a relationship.', email:'Please enter a valid email address.', phone:'Please enter a phone number.', address:'Please enter a home address.' },
+    2: { currentSchool:'Enter a school name, or write “none”.' },
+    3: { agree:'Please confirm before submitting.' }
+  };
+  setField = (k) => (e) => {
+    const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const errors = Object.assign({}, this.state.errors); delete errors[k];
+    this.setState({ form: Object.assign({}, this.state.form, { [k]: v }), errors: errors });
+  };
+  validate = (step) => {
+    const rules = this.required[step] || {}; const errors = {};
+    Object.keys(rules).forEach((k) => {
+      const v = this.state.form[k];
+      if (k === 'agree') { if (!v) errors[k] = rules[k]; return; }
+      if (!String(v || '').trim()) { errors[k] = rules[k]; return; }
+      if (k === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) errors[k] = rules[k];
+      if (k === 'phone' && String(v).replace(/\D/g,'').length < 10) errors[k] = 'Please enter a 10-digit phone number.';
+    });
+    this.setState({ errors: errors });
+    return Object.keys(errors).length === 0;
+  };
+  onNext = () => { if (this.validate(this.state.step)) this.setState({ step: Math.min(3, this.state.step + 1) }); };
+  onBack = () => this.setState({ step: Math.max(0, this.state.step - 1), errors: {} });
+  onSubmit = (e) => { e.preventDefault(); if (!this.validate(3)) return; this.setState({ submitted:true, submittedName: this.state.form.guardian || this.state.form.firstName }); };
+  onReset = () => this.setState({ submitted:false, step:0, errors:{}, form: { firstName:'', lastName:'', dob:'', gradeApplying:'', guardian:'', relationship:'', email:'', phone:'', address:'', currentSchool:'', lastGrade:'', church:'', heard:'', notes:'', agree:false } });
+  onContact = (e) => { e.preventDefault(); this.setState({ contactSent: true }); };
+
+  renderVals() {
+    const r = this.state.route;
+    const goal = Number(this.props.goal != null ? this.props.goal : 55000);
+    const raised = Number(this.props.raised != null ? this.props.raised : 18400);
+    const pct = Math.max(0, Math.min(100, Math.round((raised / (goal || 1)) * 100)));
+    const grade = this.grades[this.state.grade] || this.grades['3'];
+    const clubCat = this.state.clubCat, evFilter = this.state.evFilter;
+    const room = this.roomList.filter((x) => x.id === this.state.room)[0] || this.roomList[0];
+    const s = this.slides[this.state.slide] || this.slides[0];
+
+    const f = {};
+    ['firstName','lastName','dob','gradeApplying','guardian','relationship','email','phone','address','currentSchool','lastGrade','church','heard','notes','agree']
+      .forEach((k) => { f[k] = { value: this.state.form[k], onChange: this.setField(k), error: this.state.errors[k] || '' }; });
+    const sum = (label, v) => ({ label: label, value: v || '—' });
+
+    return {
+      isHome: r === 'home', isInner: r !== 'home',
+      isAbout: r === 'about', isFaculty: r === 'faculty', isAdmissions: r === 'admissions', isApply: r === 'apply',
+      isLife: r === 'life', isEvents: r === 'events', isNews: r === 'news', isFundraisers: r === 'fundraisers',
+      isGive: r === 'give', isYearbooks: r === 'yearbooks', isStore: r === 'store', isPortals: r === 'portals', isContact: r === 'contact',
+      page: this.pageMeta[r] || this.pageMeta.about,
+
+      goHome: this.go('home'), goAbout: this.go('about'), goFaculty: this.go('faculty'), goAdmissions: this.go('admissions'),
+      goApply: this.go('apply'), goLife: this.go('life'), goEvents: this.go('events'), goNews: this.go('news'),
+      goGive: this.go('give'), goFundraisers: this.go('fundraisers'), goPortals: this.go('portals'), goContact: this.go('contact'),
+
+      menuOpen: this.state.menuOpen,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuGroups: this.navTree.map((g) => ({
+        label: g.label, href: '#' + g.key, onClick: this.go(g.key),
+        items: g.items.map(([label, key]) => ({ label: label, href: '#' + key, onClick: this.go(key) }))
+      })),
+
+      // hero
+      slide: Object.assign({}, s, { ctaHref: '#' + s.ctaKey, ctaClick: this.go(s.ctaKey) }),
+      slideDots: this.slides.map((x, i) => ({
+        n: i + 1, onClick: () => this.setState({ slide: i }),
+        border: this.state.slide === i ? '2px solid #ffffff' : '2px solid transparent',
+        color: this.state.slide === i ? '#ffffff' : '#8CC63F'
+      })),
+
+      // donation
+      hudRaised: this.money(this.state.countUp),
+      hudGoal: this.money(goal),
+      hudDonors: String(this.props.donors != null ? this.props.donors : 214),
+      hudPct: (this.state.barReady ? pct : 0) + '%',
+      hudPctLabel: pct + '%',
+
+      statements: this.statementData.map((x) => ({
+        kicker: x.kicker, title: x.title, body: x.body, cta: x.cta, img: x.img, alt: x.alt,
+        href: '#' + x.key, onClick: this.go(x.key),
+        bg: x.bg, titleColor: x.titleColor, bodyColor: x.bodyColor, kickerColor: x.kickerColor,
+        btnBg: x.btnBg, btnColor: x.btnColor,
+        imgOrder: x.flip ? 2 : 1, txtOrder: x.flip ? 1 : 2
+      })),
+      mosaic: this.mosaicData.map((m) => ({
+        label: m.labelOverride || m.label, sub: m.subOverride || m.sub,
+        cols: m.cols, rows: m.rows, bg: m.bg, color: m.color, subColor: m.subColor, size: m.size,
+        hasImg: !!m.img, img: m.img || '', alt: m.alt || ''
+      })),
+
+      missionPoints: this.missionPoints.map((m) => ({ label: m })),
+      philosophyPoints: this.philosophyPoints.map((p) => ({ label: p })),
+      principalLetter: this.principalLetter.map((t) => ({ text: t })),
+      history: this.history,
+      faculty: this.faculty.map((x) => {
+        const c = this.deptColors[x.dept] || ['#131A2E','#ffffff'];
+        return Object.assign({}, x, {
+          initials: x.name.split(' ').map((p) => p[0]).join(''),
+          tagBg: c[0], tagColor: c[1]
+        });
+      }),
+      facultyStats: [
+        { value: '11', label: 'Faculty & staff' },
+        { value: 'Pre-K–8', label: 'Grades taught' },
+        { value: '1', label: 'Shared mission' }
+      ],
+      admitSteps: this.admitSteps.map((x) => Object.assign({}, x, { items: x.items.map((i) => ({ label: i })) })),
+      documents: this.documents.map((d) => ({ label: d })),
+      testDates: this.testDates,
+      dayFull: this.dayFull,
+      news: this.news,
+      homeNews: this.news.slice(0, 2),
+      homeEvents: this.events.slice(0, 3).map((e) => ({ day: e.day, month: e.month, title: e.title, meta: e.cat })),
+      yearbooks: this.yearbooks,
+      products: this.products,
+      giving: this.giving,
+      portals: this.portals,
+      wall: this.wall,
+      campaigns: this.campaignData.map((c) => ({
+        title: c.title, tag: c.tag, tagBg: c.tagBg, tagColor: c.tagColor, img: c.img, fit: c.fit, body: c.body,
+        raised: this.money(c.raised), pct: Math.round((c.raised / c.goal) * 100) + '%'
+      })),
+
+      gradeTabs: this.gradeOrder.map((g) => ({
+        label: (g === 'Pre-K' || g === 'K') ? g : 'Grade ' + g,
+        onClick: () => this.setState({ grade: g }),
+        bg: this.state.grade === g ? '#8CC63F' : 'transparent',
+        border: this.state.grade === g ? '#8CC63F' : 'rgba(255,255,255,.3)',
+        color: this.state.grade === g ? '#16240A' : '#ffffff'
+      })),
+      activeGrade: Object.assign({}, grade, { learn: grade.learn.map((l) => ({ label: l })) }),
+
+      clubCats: ['All','Arts','STEM','Sports','Service'].map((c) => ({
+        label: c, onClick: () => this.setState({ clubCat: c }),
+        bg: clubCat === c ? '#131A2E' : 'transparent',
+        color: clubCat === c ? '#ffffff' : '#131A2E'
+      })),
+      visibleClubs: this.clubs.filter((c) => clubCat === 'All' || c.cat === clubCat),
+
+      eventCats: ['All','Registration','Placement','Community'].map((c) => ({
+        label: c, onClick: () => this.setState({ evFilter: c }),
+        bg: evFilter === c ? '#131A2E' : 'transparent',
+        color: evFilter === c ? '#ffffff' : '#131A2E'
+      })),
+      visibleEvents: this.events.filter((e) => evFilter === 'All' || e.cat === evFilter),
+
+      rooms: this.roomList.map((x) => Object.assign({}, x, {
+        onClick: () => this.setState({ room: x.id }),
+        bg: this.state.room === x.id ? '#4A6FD0' : 'transparent',
+        border: this.state.room === x.id ? '#4A6FD0' : 'rgba(255,255,255,.22)',
+        color: '#ffffff'
+      })),
+      activeRoom: room,
+
+      footerCols: [
+        { title: 'Quick links', items: [['About','about'],['Faculty & Staff','faculty'],['Admissions','admissions'],['Enrollment form','apply'],['Student life','life'],['Events','events'],['News','news']] },
+        { title: 'Giving & shop', items: [['Fundraisers','fundraisers'],['12 Stones Fund','give'],['55 in 25','fundraisers'],['Fruit Fundraiser','fundraisers'],['Donor dashboard','portals'],['Store','store'],['Yearbooks','yearbooks']] },
+        { title: 'Portals & legal', items: [['Students (soon)','portals'],['Parents (soon)','portals'],['School Board (soon)','portals'],['Contact','contact'],['Privacy policy','about'],['Legal notice','about'],['Cookies','about']] }
+      ].map((col) => ({
+        title: col.title,
+        items: col.items.map(([label, key]) => ({ label: label, href: '#' + key, onClick: this.go(key), color: '#B9C0DA', size: '15px', indent: '0px' }))
+      })),
+
+      f: f,
+      gradeOptions: this.gradeOrder.map((g) => ({ label: (g === 'Pre-K' || g === 'K') ? g : 'Grade ' + g })),
+      stepTabs: ['Student','Guardian','School','Review'].map((label, i) => ({
+        n: i + 1, label: label,
+        bg: this.state.step === i ? '#131A2E' : '#F4F2ED',
+        rule: this.state.step === i ? '#8CC63F' : (this.state.step > i ? '#8CC63F' : '#DCD8CE'),
+        color: this.state.step === i ? '#ffffff' : '#131A2E',
+        muted: this.state.step === i ? '#8A93B6' : '#8A90A8'
+      })),
+      step0: this.state.step === 0, step1: this.state.step === 1, step2: this.state.step === 2, step3: this.state.step === 3,
+      atFirstStep: this.state.step === 0,
+      backOpacity: this.state.step === 0 ? 0.35 : 1,
+      notLastStep: this.state.step < 3,
+      submitted: this.state.submitted, notSubmitted: !this.state.submitted, submittedName: this.state.submittedName,
+      summary: [
+        sum('Student', (this.state.form.firstName + ' ' + this.state.form.lastName).trim()),
+        sum('Date of birth', this.state.form.dob),
+        sum('Grade applying for', this.state.form.gradeApplying),
+        sum('Guardian', this.state.form.guardian),
+        sum('Relationship', this.state.form.relationship),
+        sum('Email', this.state.form.email),
+        sum('Phone', this.state.form.phone),
+        sum('Address', this.state.form.address),
+        sum('Current school', this.state.form.currentSchool),
+        sum('Home church', this.state.form.church)
+      ],
+      onNext: this.onNext, onBack: this.onBack, onSubmit: this.onSubmit, onReset: this.onReset,
+      onContact: this.onContact, contactSent: this.state.contactSent
+    };
+  }
+}
+</script>
+</body>
+</html>

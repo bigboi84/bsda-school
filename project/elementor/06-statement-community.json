@@ -1,0 +1,219 @@
+{
+ "version": "0.4",
+ "title": "BSDA — Statement: Community",
+ "type": "section",
+ "content": [
+  {
+   "id": "02d7035",
+   "elType": "section",
+   "settings": {
+    "layout": "full_width",
+    "gap": "no",
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "44",
+     "right": "44",
+     "bottom": "0",
+     "left": "44",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "02d7034",
+     "elType": "column",
+     "settings": {
+      "_column_size": 50,
+      "_inline_size": null,
+      "background_background": "classic",
+      "background_image": {
+       "url": "/wp-content/uploads/bsda/students-service.jpg",
+       "id": ""
+      },
+      "background_position": "center center",
+      "background_size": "cover",
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      },
+      "min_height": {
+       "unit": "px",
+       "size": 420,
+       "sizes": []
+      }
+     },
+     "elements": [],
+     "isInner": false
+    },
+    {
+     "id": "02d7033",
+     "elType": "column",
+     "settings": {
+      "_column_size": 50,
+      "_inline_size": null,
+      "background_background": "classic",
+      "background_color": "#4A6FD0",
+      "padding": {
+       "unit": "px",
+       "top": "60",
+       "right": "60",
+       "bottom": "60",
+       "left": "60",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "02d702f",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "Community",
+        "header_size": "div",
+        "align": "left",
+        "title_color": "#FFD24A",
+        "typography_typography": "custom",
+        "typography_font_family": "Archivo",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 12.5,
+         "sizes": []
+        },
+        "typography_font_weight": "900",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.2,
+         "sizes": []
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d7030",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "A culture of service",
+        "header_size": "h2",
+        "align": "left",
+        "title_color": "#FFFFFF",
+        "typography_typography": "custom",
+        "typography_font_family": "Archivo",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 46,
+         "sizes": []
+        },
+        "typography_font_weight": "900",
+        "typography_text_transform": "uppercase",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.03,
+         "sizes": []
+        },
+        "_margin": {
+         "unit": "px",
+         "top": "14",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d7031",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p>We equip students with the skills and knowledge to become active members of the community, and teach them the importance of giving back &mdash; compassion, respect and responsibility, practiced in the neighborhood.</p>",
+        "text_color": "#DCE4FA",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17,
+         "sizes": []
+        },
+        "typography_font_weight": "500",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.68,
+         "sizes": []
+        },
+        "_margin": {
+         "unit": "px",
+         "top": "16",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d7032",
+       "elType": "widget",
+       "widgetType": "button",
+       "settings": {
+        "text": "Our fundraisers",
+        "link": {
+         "url": "/fundraisers",
+         "is_external": "",
+         "nofollow": "",
+         "custom_attributes": ""
+        },
+        "align": "left",
+        "size": "md",
+        "background_color": "#FFD24A",
+        "button_text_color": "#0C1120",
+        "border_radius": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": true
+        },
+        "text_padding": {
+         "unit": "px",
+         "top": "17",
+         "right": "30",
+         "bottom": "17",
+         "left": "30",
+         "isLinked": false
+        },
+        "typography_typography": "custom",
+        "typography_font_family": "Archivo",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 13.5,
+         "sizes": []
+        },
+        "typography_font_weight": "900",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 1.4,
+         "sizes": []
+        }
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  }
+ ],
+ "page_settings": []
+}

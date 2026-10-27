@@ -1,0 +1,165 @@
+{
+ "version": "0.4",
+ "title": "BSDA — Accreditation strip",
+ "type": "section",
+ "content": [
+  {
+   "id": "02d8086",
+   "elType": "section",
+   "settings": {
+    "layout": "full_width",
+    "gap": "no",
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "44",
+     "right": "44",
+     "bottom": "0",
+     "left": "44",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "02d8085",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": null,
+      "background_background": "classic",
+      "background_color": "#F4F2ED",
+      "padding": {
+       "unit": "px",
+       "top": "28",
+       "right": "34",
+       "bottom": "28",
+       "left": "34",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "02d8084",
+       "elType": "section",
+       "settings": {
+        "gap": "no"
+       },
+       "elements": [
+        {
+         "id": "02d807f",
+         "elType": "column",
+         "settings": {
+          "_column_size": 40,
+          "_inline_size": null,
+          "padding": {
+           "unit": "px",
+           "top": "14",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "02d807e",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "An accredited institution",
+            "header_size": "div",
+            "align": "center",
+            "title_color": "#131A2E",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 1.9,
+             "sizes": []
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d8081",
+         "elType": "column",
+         "settings": {
+          "_column_size": 30,
+          "_inline_size": null
+         },
+         "elements": [
+          {
+           "id": "02d8080",
+           "elType": "widget",
+           "widgetType": "image",
+           "settings": {
+            "image": {
+             "url": "/wp-content/uploads/bsda/accred-aaa.jpg",
+             "id": ""
+            },
+            "image_size": "full",
+            "align": "center",
+            "width": {
+             "unit": "px",
+             "size": 200,
+             "sizes": []
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d8083",
+         "elType": "column",
+         "settings": {
+          "_column_size": 30,
+          "_inline_size": null
+         },
+         "elements": [
+          {
+           "id": "02d8082",
+           "elType": "widget",
+           "widgetType": "image",
+           "settings": {
+            "image": {
+             "url": "/wp-content/uploads/bsda/accred-ncpsa.jpg",
+             "id": ""
+            },
+            "image_size": "full",
+            "align": "center",
+            "width": {
+             "unit": "px",
+             "size": 180,
+             "sizes": []
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  }
+ ],
+ "page_settings": []
+}

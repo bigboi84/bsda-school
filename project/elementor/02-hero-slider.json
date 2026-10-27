@@ -1,0 +1,57 @@
+{
+ "version": "0.4",
+ "title": "BSDA — Hero slider",
+ "type": "section",
+ "content": [
+  {
+   "id": "02d7012",
+   "elType": "section",
+   "settings": {
+    "layout": "full_width",
+    "gap": "no",
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "36",
+     "right": "44",
+     "bottom": "0",
+     "left": "44",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "02d7011",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": null,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "02d7010",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "<!-- ============================================================\n     BSDA HERO SLIDER\n     Edit slide copy and image filenames in the markup below.\n     Images resolve from: /wp-content/uploads/bsda/\n     ============================================================ -->\n<div class=\"bsda-hero\" data-bsda-hero>\n  <div class=\"bsda-hero__nav\">\n    <button type=\"button\" data-go=\"0\" class=\"is-on\">1</button>\n    <button type=\"button\" data-go=\"1\" class=\"\">2</button>\n    <button type=\"button\" data-go=\"2\" class=\"\">3</button>\n    <button type=\"button\" data-go=\"3\" class=\"\">4</button>\n  </div>\n  <div class=\"bsda-hero__stage\">\n    <figure class=\"bsda-slide is-on\" data-slide=\"0\">\n      <img src=\"/wp-content/uploads/bsda/hero-faith.jpg\" alt=\"Student in prayer\" style=\"object-position:50% 30%\">\n      <figcaption><span class=\"k\">To inspire</span><span class=\"w\">Faith</span></figcaption>\n    </figure>\n    <figure class=\"bsda-slide\" data-slide=\"1\">\n      <img src=\"/wp-content/uploads/bsda/students-worship.jpg\" alt=\"Students leading worship with microphones\" style=\"object-position:50% 35%\">\n      <figcaption><span class=\"k\">To dream</span><span class=\"w\">Bigger</span></figcaption>\n    </figure>\n    <figure class=\"bsda-slide\" data-slide=\"2\">\n      <img src=\"/wp-content/uploads/bsda/hero-stem.jpg\" alt=\"Student building a circuit board in the STEM lab\" style=\"object-position:50% 40%\">\n      <figcaption><span class=\"k\">To build</span><span class=\"w\">Futures</span></figcaption>\n    </figure>\n    <figure class=\"bsda-slide\" data-slide=\"3\">\n      <img src=\"/wp-content/uploads/bsda/students-service.jpg\" alt=\"Students handing out gifts in the neighborhood\" style=\"object-position:50% 40%\">\n      <figcaption><span class=\"k\">To serve</span><span class=\"w\">Others</span></figcaption>\n    </figure>\n  </div>\n  <div class=\"bsda-hero__copy\">\n    <div class=\"bsda-copy is-on\" data-copy=\"0\">\n      <h2>As a Christian school, we care about our students&rsquo; education from an <em>eternal perspective.</em></h2>\n      <p>A belief in the Creator God is fundamental to everything we do. Morning worship, Bible class and service are woven through the day &mdash; our aim is to educate the heart as fully as the mind.</p>\n      <a href=\"/about\">Our philosophy</a>\n    </div>\n    <div class=\"bsda-copy\" data-copy=\"1\">\n      <h2>Our students lead worship, sing in the choir and speak to the <em>whole school.</em></h2>\n      <p>Performing arts groups, choir and Music Enrichment give every child a stage. Confidence here is practiced, not assumed &mdash; students take real responsibility from the earliest grades.</p>\n      <a href=\"/student-life\">Student life</a>\n    </div>\n    <div class=\"bsda-copy\" data-copy=\"2\">\n      <h2>Hands-on STEM, inquiry-based learning and critical thinking for <em>high school and beyond.</em></h2>\n      <p>A balanced curriculum of academics, creative arts and physical activity. Build days in the STEM lab, lab science upstairs, and preparation that carries into academy and college.</p>\n      <a href=\"/student-life\">Grade explorer</a>\n    </div>\n    <div class=\"bsda-copy\" data-copy=\"3\">\n      <h2>We teach our students the importance of <em>giving back.</em></h2>\n      <p>Compassion, respect and responsibility &mdash; practiced through neighborhood service projects, church partnership and care for the people around us in Brooklyn.</p>\n      <a href=\"/about\">Our mission</a>\n    </div>\n  </div>\n</div>\n<style>\n.bsda-hero{display:grid;grid-template-columns:88px 1fr 30%;min-height:620px;background:#131A2E;font-family:'Archivo',sans-serif}\n.bsda-hero__nav{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;padding:40px 0}\n.bsda-hero__nav button{width:46px;height:46px;background:transparent;border:2px solid transparent;color:#4A6FD0;font:900 19px/1 'Archivo',sans-serif;cursor:pointer}\n.bsda-hero__nav button.is-on{border-color:#fff;color:#fff}\n.bsda-hero__stage{position:relative;overflow:hidden;min-height:620px}\n.bsda-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .6s ease;display:flex;align-items:flex-end}\n.bsda-slide.is-on{opacity:1}\n.bsda-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}\n.bsda-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,26,46,.15) 0%,rgba(19,26,46,.1) 45%,rgba(19,26,46,.82) 100%)}\n.bsda-slide figcaption{position:relative;z-index:2;padding:0 34px 44px;color:#fff;text-transform:uppercase;text-shadow:0 6px 26px rgba(0,0,0,.55)}\n.bsda-slide .k{display:block;font-size:clamp(24px,2.6vw,40px);font-weight:700}\n.bsda-slide .w{display:block;font-size:clamp(52px,7.4vw,112px);font-weight:900;line-height:.86;letter-spacing:-.02em}\n.bsda-hero__copy{position:relative;padding:56px 44px}\n.bsda-copy{display:none}\n.bsda-copy.is-on{display:flex;flex-direction:column;justify-content:center;height:100%}\n.bsda-copy h2{margin:0;font-size:clamp(19px,1.55vw,26px);font-weight:800;line-height:1.24;text-transform:uppercase;color:#fff}\n.bsda-copy h2 em{font-style:normal;color:#8CC63F}\n.bsda-copy p{margin:20px 0 0;font-size:16px;line-height:1.66;color:#A9B1CE;font-family:system-ui,sans-serif}\n.bsda-copy a{margin-top:28px;align-self:flex-start;padding:17px 30px;background:#4A6FD0;color:#fff;font:900 14px/1 'Archivo',sans-serif;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s}\n.bsda-copy a:hover{background:#8CC63F;color:#0C1120}\n@media(max-width:1024px){.bsda-hero{grid-template-columns:1fr}.bsda-hero__nav{flex-direction:row;padding:20px}.bsda-hero__stage{min-height:420px}}\n</style>\n<script>\n(function(){\n  var root=document.querySelector('[data-bsda-hero]'); if(!root||root.dataset.wired)return; root.dataset.wired=1;\n  var i=0,total=4,timer;\n  function show(k){\n    i=(k+total)%total;\n    root.querySelectorAll('[data-slide]').forEach(function(el){el.classList.toggle('is-on',+el.dataset.slide===i)});\n    root.querySelectorAll('[data-copy]').forEach(function(el){el.classList.toggle('is-on',+el.dataset.copy===i)});\n    root.querySelectorAll('[data-go]').forEach(function(el){el.classList.toggle('is-on',+el.dataset.go===i)});\n  }\n  root.querySelectorAll('[data-go]').forEach(function(b){\n    b.addEventListener('click',function(){show(+b.dataset.go);restart()});\n  });\n  function restart(){clearInterval(timer);timer=setInterval(function(){show(i+1)},7000)}\n  restart();\n})();\n</script>"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  }
+ ],
+ "page_settings": []
+}

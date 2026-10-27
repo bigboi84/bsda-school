@@ -1,0 +1,219 @@
+{
+ "version": "0.4",
+ "title": "BSDA — Statement: Character",
+ "type": "section",
+ "content": [
+  {
+   "id": "02d702e",
+   "elType": "section",
+   "settings": {
+    "layout": "full_width",
+    "gap": "no",
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "44",
+     "right": "44",
+     "bottom": "0",
+     "left": "44",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "02d702c",
+     "elType": "column",
+     "settings": {
+      "_column_size": 50,
+      "_inline_size": null,
+      "background_background": "classic",
+      "background_color": "#131A2E",
+      "padding": {
+       "unit": "px",
+       "top": "60",
+       "right": "60",
+       "bottom": "60",
+       "left": "60",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "02d7028",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "Character",
+        "header_size": "div",
+        "align": "left",
+        "title_color": "#8CC63F",
+        "typography_typography": "custom",
+        "typography_font_family": "Archivo",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 12.5,
+         "sizes": []
+        },
+        "typography_font_weight": "900",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 2.2,
+         "sizes": []
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d7029",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "Building character for Christ",
+        "header_size": "h2",
+        "align": "left",
+        "title_color": "#FFFFFF",
+        "typography_typography": "custom",
+        "typography_font_family": "Archivo",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 46,
+         "sizes": []
+        },
+        "typography_font_weight": "900",
+        "typography_text_transform": "uppercase",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.03,
+         "sizes": []
+        },
+        "_margin": {
+         "unit": "px",
+         "top": "14",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d702a",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p>We help students grow socially, mentally, physically and spiritually. We create an environment where students feel safe and secure, and learn to appreciate the wisdom and love of Jesus.</p>",
+        "text_color": "#A9B1CE",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17,
+         "sizes": []
+        },
+        "typography_font_weight": "500",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.68,
+         "sizes": []
+        },
+        "_margin": {
+         "unit": "px",
+         "top": "16",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d702b",
+       "elType": "widget",
+       "widgetType": "button",
+       "settings": {
+        "text": "About us",
+        "link": {
+         "url": "/about",
+         "is_external": "",
+         "nofollow": "",
+         "custom_attributes": ""
+        },
+        "align": "left",
+        "size": "md",
+        "background_color": "#8CC63F",
+        "button_text_color": "#0C1120",
+        "border_radius": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": true
+        },
+        "text_padding": {
+         "unit": "px",
+         "top": "17",
+         "right": "30",
+         "bottom": "17",
+         "left": "30",
+         "isLinked": false
+        },
+        "typography_typography": "custom",
+        "typography_font_family": "Archivo",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 13.5,
+         "sizes": []
+        },
+        "typography_font_weight": "900",
+        "typography_text_transform": "uppercase",
+        "typography_letter_spacing": {
+         "unit": "px",
+         "size": 1.4,
+         "sizes": []
+        }
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    },
+    {
+     "id": "02d702d",
+     "elType": "column",
+     "settings": {
+      "_column_size": 50,
+      "_inline_size": null,
+      "background_background": "classic",
+      "background_image": {
+       "url": "/wp-content/uploads/bsda/hero-faith.jpg",
+       "id": ""
+      },
+      "background_position": "center center",
+      "background_size": "cover",
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      },
+      "min_height": {
+       "unit": "px",
+       "size": 420,
+       "sizes": []
+      }
+     },
+     "elements": [],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  }
+ ],
+ "page_settings": []
+}

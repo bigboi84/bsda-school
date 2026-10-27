@@ -1,0 +1,1126 @@
+{
+ "version": "0.4",
+ "title": "BSDA — News & events",
+ "type": "section",
+ "content": [
+  {
+   "id": "02d807d",
+   "elType": "section",
+   "settings": {
+    "layout": "full_width",
+    "gap": "default",
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "64",
+     "right": "44",
+     "bottom": "64",
+     "left": "44",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "02d807c",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": null,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "02d8056",
+       "elType": "section",
+       "settings": {
+        "gap": "no"
+       },
+       "elements": [
+        {
+         "id": "02d8051",
+         "elType": "column",
+         "settings": {
+          "_column_size": 60,
+          "_inline_size": null
+         },
+         "elements": [
+          {
+           "id": "02d8050",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "News &amp; events",
+            "header_size": "h2",
+            "align": "left",
+            "title_color": "#131A2E",
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 46,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.03,
+             "sizes": []
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d8053",
+         "elType": "column",
+         "settings": {
+          "_column_size": 20,
+          "_inline_size": null
+         },
+         "elements": [
+          {
+           "id": "02d8052",
+           "elType": "widget",
+           "widgetType": "button",
+           "settings": {
+            "text": "All news",
+            "link": {
+             "url": "/news",
+             "is_external": "",
+             "nofollow": "",
+             "custom_attributes": ""
+            },
+            "align": "right",
+            "size": "md",
+            "background_color": "rgba(0,0,0,0)",
+            "button_text_color": "#131A2E",
+            "border_radius": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "text_padding": {
+             "unit": "px",
+             "top": "17",
+             "right": "30",
+             "bottom": "17",
+             "left": "30",
+             "isLinked": false
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 13.5,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 1.4,
+             "sizes": []
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d8055",
+         "elType": "column",
+         "settings": {
+          "_column_size": 20,
+          "_inline_size": null
+         },
+         "elements": [
+          {
+           "id": "02d8054",
+           "elType": "widget",
+           "widgetType": "button",
+           "settings": {
+            "text": "Calendar",
+            "link": {
+             "url": "/events",
+             "is_external": "",
+             "nofollow": "",
+             "custom_attributes": ""
+            },
+            "align": "right",
+            "size": "md",
+            "background_color": "rgba(0,0,0,0)",
+            "button_text_color": "#131A2E",
+            "border_radius": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "0",
+             "left": "0",
+             "isLinked": true
+            },
+            "text_padding": {
+             "unit": "px",
+             "top": "17",
+             "right": "30",
+             "bottom": "17",
+             "left": "30",
+             "isLinked": false
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 13.5,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 1.4,
+             "sizes": []
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      },
+      {
+       "id": "02d8057",
+       "elType": "widget",
+       "widgetType": "divider",
+       "settings": {
+        "color": "#131A2E",
+        "weight": {
+         "unit": "px",
+         "size": 3,
+         "sizes": []
+        },
+        "gap": {
+         "unit": "px",
+         "size": 18,
+         "sizes": []
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "02d807b",
+       "elType": "section",
+       "settings": {
+        "gap": "default"
+       },
+       "elements": [
+        {
+         "id": "02d8063",
+         "elType": "column",
+         "settings": {
+          "_column_size": 66,
+          "_inline_size": null,
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "02d8062",
+           "elType": "section",
+           "settings": {
+            "gap": "default"
+           },
+           "elements": [
+            {
+             "id": "02d805c",
+             "elType": "column",
+             "settings": {
+              "_column_size": 50,
+              "_inline_size": null,
+              "background_background": "classic",
+              "background_color": "#F4F2ED",
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": false
+              }
+             },
+             "elements": [
+              {
+               "id": "02d8058",
+               "elType": "widget",
+               "widgetType": "image",
+               "settings": {
+                "image": {
+                 "url": "/wp-content/uploads/bsda/calendar.jpg",
+                 "id": ""
+                },
+                "image_size": "full",
+                "align": "center"
+               },
+               "elements": []
+              },
+              {
+               "id": "02d8059",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "07.29.24",
+                "header_size": "div",
+                "align": "left",
+                "title_color": "#4A6FD0",
+                "_margin": {
+                 "unit": "px",
+                 "top": "26",
+                 "right": "26",
+                 "bottom": "0",
+                 "left": "26",
+                 "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 12,
+                 "sizes": []
+                },
+                "typography_font_weight": "900",
+                "typography_letter_spacing": {
+                 "unit": "px",
+                 "size": 1.5,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d805a",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "2024/2025 School Year Calendar Now Available",
+                "header_size": "h2",
+                "align": "left",
+                "title_color": "#131A2E",
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 21,
+                 "sizes": []
+                },
+                "typography_font_weight": "900",
+                "typography_text_transform": "none",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1.22,
+                 "sizes": []
+                },
+                "_margin": {
+                 "unit": "px",
+                 "top": "12",
+                 "right": "26",
+                 "bottom": "0",
+                 "left": "26",
+                 "isLinked": false
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d805b",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p>Check out the new school calendar for Brooklyn Seventh-day Adventist School. We have a lot of amazing things planned for this coming year.</p>",
+                "text_color": "#5A6180",
+                "typography_typography": "custom",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 15,
+                 "sizes": []
+                },
+                "typography_font_weight": "500",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1.6,
+                 "sizes": []
+                },
+                "_margin": {
+                 "unit": "px",
+                 "top": "11",
+                 "right": "26",
+                 "bottom": "26",
+                 "left": "26",
+                 "isLinked": false
+                }
+               },
+               "elements": []
+              }
+             ],
+             "isInner": false
+            },
+            {
+             "id": "02d8061",
+             "elType": "column",
+             "settings": {
+              "_column_size": 50,
+              "_inline_size": null,
+              "background_background": "classic",
+              "background_color": "#F4F2ED",
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "0",
+               "isLinked": false
+              }
+             },
+             "elements": [
+              {
+               "id": "02d805d",
+               "elType": "widget",
+               "widgetType": "image",
+               "settings": {
+                "image": {
+                 "url": "/wp-content/uploads/bsda/summer-blast.jpg",
+                 "id": ""
+                },
+                "image_size": "full",
+                "align": "center"
+               },
+               "elements": []
+              },
+              {
+               "id": "02d805e",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "06.24.24",
+                "header_size": "div",
+                "align": "left",
+                "title_color": "#4A6FD0",
+                "_margin": {
+                 "unit": "px",
+                 "top": "26",
+                 "right": "26",
+                 "bottom": "0",
+                 "left": "26",
+                 "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 12,
+                 "sizes": []
+                },
+                "typography_font_weight": "900",
+                "typography_letter_spacing": {
+                 "unit": "px",
+                 "size": 1.5,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d805f",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Join the Summer Blast Program for an Unforgettable Summer",
+                "header_size": "h2",
+                "align": "left",
+                "title_color": "#131A2E",
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 21,
+                 "sizes": []
+                },
+                "typography_font_weight": "900",
+                "typography_text_transform": "none",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1.22,
+                 "sizes": []
+                },
+                "_margin": {
+                 "unit": "px",
+                 "top": "12",
+                 "right": "26",
+                 "bottom": "0",
+                 "left": "26",
+                 "isLinked": false
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d8060",
+               "elType": "widget",
+               "widgetType": "text-editor",
+               "settings": {
+                "editor": "<p>Our Summer Blast program offers engaging activities for Pre-K to 8th grade students through the summer months.</p>",
+                "text_color": "#5A6180",
+                "typography_typography": "custom",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 15,
+                 "sizes": []
+                },
+                "typography_font_weight": "500",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1.6,
+                 "sizes": []
+                },
+                "_margin": {
+                 "unit": "px",
+                 "top": "11",
+                 "right": "26",
+                 "bottom": "26",
+                 "left": "26",
+                 "isLinked": false
+                }
+               },
+               "elements": []
+              }
+             ],
+             "isInner": false
+            }
+           ],
+           "isInner": true
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "02d807a",
+         "elType": "column",
+         "settings": {
+          "_column_size": 34,
+          "_inline_size": null,
+          "background_background": "classic",
+          "background_color": "#131A2E",
+          "padding": {
+           "unit": "px",
+           "top": "32",
+           "right": "32",
+           "bottom": "32",
+           "left": "32",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "02d8064",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Coming up",
+            "header_size": "h3",
+            "align": "left",
+            "title_color": "#8CC63F",
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "22",
+             "left": "0",
+             "isLinked": false
+            },
+            "typography_typography": "custom",
+            "typography_font_family": "Archivo",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 20,
+             "sizes": []
+            },
+            "typography_font_weight": "900",
+            "typography_text_transform": "uppercase",
+            "typography_letter_spacing": {
+             "unit": "px",
+             "size": 2,
+             "sizes": []
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "02d806b",
+           "elType": "section",
+           "settings": {
+            "gap": "no",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "18",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": [
+            {
+             "id": "02d8067",
+             "elType": "column",
+             "settings": {
+              "_column_size": 22,
+              "_inline_size": null,
+              "background_background": "classic",
+              "background_color": "#4A6FD0",
+              "padding": {
+               "unit": "px",
+               "top": "10",
+               "right": "4",
+               "bottom": "10",
+               "left": "4",
+               "isLinked": false
+              }
+             },
+             "elements": [
+              {
+               "id": "02d8065",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "19&ndash;23",
+                "header_size": "div",
+                "align": "center",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 17,
+                 "sizes": []
+                },
+                "typography_font_weight": "900",
+                "typography_text_transform": "uppercase",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d8066",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Aug",
+                "header_size": "div",
+                "align": "center",
+                "title_color": "#D4DEF7",
+                "_margin": {
+                 "unit": "px",
+                 "top": "5",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 10,
+                 "sizes": []
+                },
+                "typography_font_weight": "800",
+                "typography_text_transform": "uppercase",
+                "typography_letter_spacing": {
+                 "unit": "px",
+                 "size": 1.2,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              }
+             ],
+             "isInner": false
+            },
+            {
+             "id": "02d806a",
+             "elType": "column",
+             "settings": {
+              "_column_size": 78,
+              "_inline_size": null,
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "16",
+               "isLinked": false
+              }
+             },
+             "elements": [
+              {
+               "id": "02d8068",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Registration week",
+                "header_size": "div",
+                "align": "left",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 16.5,
+                 "sizes": []
+                },
+                "typography_font_weight": "800",
+                "typography_text_transform": "none",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1.25,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d8069",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Registration",
+                "header_size": "div",
+                "align": "left",
+                "title_color": "#8CC63F",
+                "_margin": {
+                 "unit": "px",
+                 "top": "6",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 11.5,
+                 "sizes": []
+                },
+                "typography_font_weight": "800",
+                "typography_text_transform": "uppercase",
+                "typography_letter_spacing": {
+                 "unit": "px",
+                 "size": 1.4,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              }
+             ],
+             "isInner": false
+            }
+           ],
+           "isInner": true
+          },
+          {
+           "id": "02d8072",
+           "elType": "section",
+           "settings": {
+            "gap": "no",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "18",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": [
+            {
+             "id": "02d806e",
+             "elType": "column",
+             "settings": {
+              "_column_size": 22,
+              "_inline_size": null,
+              "background_background": "classic",
+              "background_color": "#4A6FD0",
+              "padding": {
+               "unit": "px",
+               "top": "10",
+               "right": "4",
+               "bottom": "10",
+               "left": "4",
+               "isLinked": false
+              }
+             },
+             "elements": [
+              {
+               "id": "02d806c",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "08",
+                "header_size": "div",
+                "align": "center",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 17,
+                 "sizes": []
+                },
+                "typography_font_weight": "900",
+                "typography_text_transform": "uppercase",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d806d",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Sep",
+                "header_size": "div",
+                "align": "center",
+                "title_color": "#D4DEF7",
+                "_margin": {
+                 "unit": "px",
+                 "top": "5",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 10,
+                 "sizes": []
+                },
+                "typography_font_weight": "800",
+                "typography_text_transform": "uppercase",
+                "typography_letter_spacing": {
+                 "unit": "px",
+                 "size": 1.2,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              }
+             ],
+             "isInner": false
+            },
+            {
+             "id": "02d8071",
+             "elType": "column",
+             "settings": {
+              "_column_size": 78,
+              "_inline_size": null,
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "16",
+               "isLinked": false
+              }
+             },
+             "elements": [
+              {
+               "id": "02d806f",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Placement test",
+                "header_size": "div",
+                "align": "left",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 16.5,
+                 "sizes": []
+                },
+                "typography_font_weight": "800",
+                "typography_text_transform": "none",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1.25,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d8070",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Placement",
+                "header_size": "div",
+                "align": "left",
+                "title_color": "#8CC63F",
+                "_margin": {
+                 "unit": "px",
+                 "top": "6",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 11.5,
+                 "sizes": []
+                },
+                "typography_font_weight": "800",
+                "typography_text_transform": "uppercase",
+                "typography_letter_spacing": {
+                 "unit": "px",
+                 "size": 1.4,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              }
+             ],
+             "isInner": false
+            }
+           ],
+           "isInner": true
+          },
+          {
+           "id": "02d8079",
+           "elType": "section",
+           "settings": {
+            "gap": "no",
+            "padding": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "18",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": [
+            {
+             "id": "02d8075",
+             "elType": "column",
+             "settings": {
+              "_column_size": 22,
+              "_inline_size": null,
+              "background_background": "classic",
+              "background_color": "#4A6FD0",
+              "padding": {
+               "unit": "px",
+               "top": "10",
+               "right": "4",
+               "bottom": "10",
+               "left": "4",
+               "isLinked": false
+              }
+             },
+             "elements": [
+              {
+               "id": "02d8073",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "01&ndash;31",
+                "header_size": "div",
+                "align": "center",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 17,
+                 "sizes": []
+                },
+                "typography_font_weight": "900",
+                "typography_text_transform": "uppercase",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d8074",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Oct",
+                "header_size": "div",
+                "align": "center",
+                "title_color": "#D4DEF7",
+                "_margin": {
+                 "unit": "px",
+                 "top": "5",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 10,
+                 "sizes": []
+                },
+                "typography_font_weight": "800",
+                "typography_text_transform": "uppercase",
+                "typography_letter_spacing": {
+                 "unit": "px",
+                 "size": 1.2,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              }
+             ],
+             "isInner": false
+            },
+            {
+             "id": "02d8078",
+             "elType": "column",
+             "settings": {
+              "_column_size": 78,
+              "_inline_size": null,
+              "padding": {
+               "unit": "px",
+               "top": "0",
+               "right": "0",
+               "bottom": "0",
+               "left": "16",
+               "isLinked": false
+              }
+             },
+             "elements": [
+              {
+               "id": "02d8076",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Pastor Appreciation Month",
+                "header_size": "div",
+                "align": "left",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 16.5,
+                 "sizes": []
+                },
+                "typography_font_weight": "800",
+                "typography_text_transform": "none",
+                "typography_line_height": {
+                 "unit": "em",
+                 "size": 1.25,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              },
+              {
+               "id": "02d8077",
+               "elType": "widget",
+               "widgetType": "heading",
+               "settings": {
+                "title": "Community",
+                "header_size": "div",
+                "align": "left",
+                "title_color": "#8CC63F",
+                "_margin": {
+                 "unit": "px",
+                 "top": "6",
+                 "right": "0",
+                 "bottom": "0",
+                 "left": "0",
+                 "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Archivo",
+                "typography_font_size": {
+                 "unit": "px",
+                 "size": 11.5,
+                 "sizes": []
+                },
+                "typography_font_weight": "800",
+                "typography_text_transform": "uppercase",
+                "typography_letter_spacing": {
+                 "unit": "px",
+                 "size": 1.4,
+                 "sizes": []
+                }
+               },
+               "elements": []
+              }
+             ],
+             "isInner": false
+            }
+           ],
+           "isInner": true
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  }
+ ],
+ "page_settings": []
+}

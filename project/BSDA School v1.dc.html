@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FBF6EC; color: #14162B; font-family: "Instrument Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4, h5 { font-family: "Gabarito", system-ui, sans-serif; margin: 0; letter-spacing: -0.02em; }
+  p { margin: 0; text-wrap: pretty; }
+  a { color: #2F5FD0; text-decoration: none; }
+  a:hover { color: #14162B; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  ::selection { background: #FFC53D; color: #14162B; }
+  @keyframes bsda-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes bsda-bob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+  [data-rail]::-webkit-scrollbar { height: 8px; }
+  [data-rail]::-webkit-scrollbar-thumb { background: #14162B; border-radius: 99px; }
+  [data-rail]::-webkit-scrollbar-track { background: rgba(20,22,43,.08); border-radius: 99px; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#FBF6EC">
+
+  <header style="position:sticky;top:0;z-index:60;background:#FBF6EC;border-bottom:2px solid #14162B">
+    <div style="max-width:1320px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:20px">
+      <a href="#home" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+        <span style="width:46px;height:46px;border-radius:50%;background:#2F5FD0;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <img src="assets/logo-white.svg" alt="Brooklyn Seventh-day Adventist School" style="width:38px;height:38px;display:block" />
+        </span>
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:'Gabarito',sans-serif;font-weight:800;font-size:17px;color:#14162B;letter-spacing:-0.02em">Brooklyn SDA School</span>
+          <span style="font-size:11px;font-weight:600;color:#6B6B7B;letter-spacing:.1em;text-transform:uppercase;margin-top:3px">Pre-K – 8 · Brooklyn, NY</span>
+        </span>
+      </a>
+
+      <nav style="display:flex;align-items:center;gap:2px;margin-left:auto;flex-wrap:wrap">
+        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="7">
+          <a href="{{ item.href }}" onClick="{{ item.onClick }}" style="padding:9px 13px;border-radius:99px;font-weight:600;font-size:14.5px;color:{{ item.color }};background:{{ item.bg }};white-space:nowrap" style-hover="background:rgba(47,95,208,.12);color:#2F5FD0">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+        <a href="#portals" onClick="{{ goPortals }}" style="padding:10px 16px;border-radius:99px;border:2px solid #14162B;font-weight:700;font-size:14px;color:#14162B" style-hover="background:#14162B;color:#FBF6EC">Portals</a>
+        <a href="#apply" onClick="{{ goApply }}" style="padding:11px 20px;border-radius:99px;background:#FFC53D;border:2px solid #14162B;box-shadow:3px 3px 0 #14162B;font-weight:800;font-size:14px;color:#14162B;white-space:nowrap" style-hover="transform:translate(2px,2px);box-shadow:1px 1px 0 #14162B">Apply Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex:1">
+
+    <!-- ================= HOME ================= -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1320px;margin:0 auto;padding:56px 24px 24px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;background:#2FBF9B;border:2px solid #14162B;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#14162B">Enrolling Pre-K – Grade 8</span>
+          <h1 style="font-size:clamp(46px,5.6vw,80px);line-height:.94;font-weight:900;margin:22px 0 0;letter-spacing:-0.035em">Build up<br />future <span style="color:#2F5FD0">leaders</span><span style="color:#FF6B4A">.</span></h1>
+          <p style="margin-top:22px;font-size:19px;line-height:1.55;color:#3D3F55;max-width:520px">A Christ-centered school on Ocean Avenue since 1938. We teach Pre-K through 8th grade in Brooklyn — building character, equipping minds, and sending kids into the world ready to serve.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
+            <a href="#apply" onClick="{{ goApply }}" style="padding:15px 28px;border-radius:99px;background:#2F5FD0;border:2px solid #14162B;box-shadow:5px 5px 0 #14162B;color:#fff;font-weight:800;font-size:16px" style-hover="transform:translate(3px,3px);box-shadow:2px 2px 0 #14162B">Start an application</a>
+            <a href="#life" onClick="{{ goLife }}" style="padding:15px 28px;border-radius:99px;background:transparent;border:2px solid #14162B;color:#14162B;font-weight:800;font-size:16px" style-hover="background:#14162B;color:#FBF6EC">See a day here</a>
+          </div>
+          <div style="display:flex;gap:34px;margin-top:44px;flex-wrap:wrap">
+            <div><div style="font-family:'Gabarito',sans-serif;font-size:38px;font-weight:900;line-height:1;color:#14162B">1938</div><div style="font-size:13px;font-weight:600;color:#6B6B7B;letter-spacing:.06em;text-transform:uppercase;margin-top:6px">Founded</div></div>
+            <div style="width:2px;background:rgba(20,22,43,.14)"></div>
+            <div><div style="font-family:'Gabarito',sans-serif;font-size:38px;font-weight:900;line-height:1;color:#14162B">Pre-K–8</div><div style="font-size:13px;font-weight:600;color:#6B6B7B;letter-spacing:.06em;text-transform:uppercase;margin-top:6px">Grades taught</div></div>
+            <div style="width:2px;background:rgba(20,22,43,.14)"></div>
+            <div><div style="font-family:'Gabarito',sans-serif;font-size:38px;font-weight:900;line-height:1;color:#14162B">2</div><div style="font-size:13px;font-weight:600;color:#6B6B7B;letter-spacing:.06em;text-transform:uppercase;margin-top:6px">Accreditations</div></div>
+          </div>
+        </div>
+
+        <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 150px 150px;gap:14px">
+          <div style="grid-column:1 / -1;background:repeating-linear-gradient(135deg,#E5DCC8 0 11px,#F1E9D9 11px 22px);border:2px solid #14162B;border-radius:28px;display:flex;align-items:flex-end;padding:16px;box-shadow:6px 6px 0 #14162B"><span style="font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B;background:#FBF6EC;border:2px solid #14162B;border-radius:99px;padding:6px 11px">Students on the front steps</span></div>
+          <div style="background:repeating-linear-gradient(135deg,#CFDCF7 0 11px,#E2EAFB 11px 22px);border:2px solid #14162B;border-radius:28px;display:flex;align-items:flex-end;padding:14px;box-shadow:6px 6px 0 #14162B"><span style="font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#4A5570;background:#FBF6EC;border:2px solid #14162B;border-radius:99px;padding:5px 10px">STEM lab</span></div>
+          <div style="background:repeating-linear-gradient(135deg,#FFE3B0 0 11px,#FFF1D8 11px 22px);border:2px solid #14162B;border-radius:28px;display:flex;align-items:flex-end;padding:14px;box-shadow:6px 6px 0 #14162B"><span style="font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B;background:#FBF6EC;border:2px solid #14162B;border-radius:99px;padding:5px 10px">Choir</span></div>
+          <div style="grid-column:1 / -1;background:#101C4A;border:2px solid #14162B;border-radius:28px;box-shadow:6px 6px 0 #14162B;padding:22px 24px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#FFC53D">12 Stones Fund</div>
+            <div style="font-family:'Gabarito',sans-serif;font-size:24px;font-weight:800;color:#fff;margin-top:6px;line-height:1.15">Building human monuments for eternity</div>
+            <a href="#give" onClick="{{ goGive }}" style="margin-top:14px;align-self:flex-start;padding:9px 18px;border-radius:99px;background:#FFC53D;color:#14162B;font-weight:800;font-size:14px;border:2px solid #14162B" style-hover="background:#fff">Donate now</a>
+          </div>
+        </div>
+      </section>
+
+      <sc-if value="{{ tickerOn }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:40px;border-top:2px solid #14162B;border-bottom:2px solid #14162B;background:#2F5FD0;overflow:hidden;padding:16px 0">
+          <div style="display:flex;width:max-content;animation:bsda-marquee 34s linear infinite">
+            <sc-for list="{{ tickerRun }}" as="t" hint-placeholder-count="12">
+              <span style="font-family:'Gabarito',sans-serif;font-size:26px;font-weight:800;color:#fff;padding:0 26px;white-space:nowrap;display:flex;align-items:center;gap:26px">{{ t.text }}<span style="width:11px;height:11px;background:#FFC53D;border-radius:50%;display:inline-block"></span></span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <section style="max-width:1320px;margin:0 auto;padding:88px 24px">
+        <h2 style="font-size:clamp(34px,4vw,54px);font-weight:900;line-height:1;max-width:640px">Three promises we make to every student<span style="color:#FF6B4A">.</span></h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px">
+          <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+            <article style="background:{{ p.bg }};border:2px solid #14162B;border-radius:30px;padding:30px;box-shadow:6px 6px 0 #14162B;display:flex;flex-direction:column;min-height:330px">
+              <span style="width:52px;height:52px;border-radius:16px;background:#14162B;color:#FBF6EC;display:flex;align-items:center;justify-content:center;font-family:'Gabarito',sans-serif;font-weight:900;font-size:24px">{{ p.num }}</span>
+              <h3 style="font-size:30px;font-weight:900;margin-top:22px;line-height:1.05">{{ p.title }}</h3>
+              <p style="margin-top:12px;font-size:16px;line-height:1.6;color:#3D3F55">{{ p.body }}</p>
+              <ul style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ p.tags }}" as="tag" hint-placeholder-count="3">
+                  <li style="padding:6px 12px;border-radius:99px;background:rgba(20,22,43,.08);border:1.5px solid rgba(20,22,43,.35);font-size:13px;font-weight:600">{{ tag.label }}</li>
+                </sc-for>
+              </ul>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="background:#101C4A;border-top:2px solid #14162B;border-bottom:2px solid #14162B;padding:88px 24px">
+        <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+          <div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFC53D">Our mission</span>
+            <h2 style="font-size:clamp(34px,4vw,52px);font-weight:900;color:#fff;line-height:1.02;margin-top:14px">Building character for Christ<span style="color:#FF6B4A">.</span></h2>
+            <p style="margin-top:20px;font-size:18px;line-height:1.6;color:#C3CBE4;max-width:520px">We help students grow socially, mentally, physically and spiritually. We create an environment where students feel safe and secure, and learn to appreciate the wisdom and love of Jesus.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px">
+              <sc-for list="{{ missionTags }}" as="m" hint-placeholder-count="4">
+                <span style="padding:9px 16px;border-radius:99px;border:2px solid rgba(255,255,255,.35);color:#fff;font-weight:600;font-size:14.5px">{{ m.label }}</span>
+              </sc-for>
+            </div>
+            <a href="#about" onClick="{{ goAbout }}" style="display:inline-block;margin-top:30px;padding:14px 26px;border-radius:99px;background:#FBF6EC;border:2px solid #14162B;box-shadow:5px 5px 0 #000;color:#14162B;font-weight:800" style-hover="transform:translate(3px,3px);box-shadow:2px 2px 0 #000">Read our philosophy</a>
+          </div>
+          <blockquote style="margin:0;background:#2F5FD0;border:2px solid #14162B;border-radius:30px;padding:38px;box-shadow:8px 8px 0 #000">
+            <p style="font-family:'Gabarito',sans-serif;font-size:26px;line-height:1.3;font-weight:600;color:#fff;font-style:italic">“To restore in man the image of his maker, to bring him back to the perfection in which he was created, to promote the development of body, mind and soul, that the divine purpose in His creation might be realized.”</p>
+            <footer style="margin-top:22px;font-size:14px;font-weight:700;color:#FFC53D;letter-spacing:.04em">Ellen G. White · Education, page 15</footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:88px 24px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+          <div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2F5FD0">Student life</span>
+            <h2 style="font-size:clamp(34px,4vw,52px);font-weight:900;line-height:1.02;margin-top:12px">A day at BSDA<span style="color:#FF6B4A">.</span></h2>
+          </div>
+          <a href="#life" onClick="{{ goLife }}" style="padding:13px 24px;border-radius:99px;border:2px solid #14162B;font-weight:800;color:#14162B" style-hover="background:#14162B;color:#FBF6EC">Explore student life</a>
+        </div>
+        <div data-rail="1" style="display:flex;gap:16px;overflow-x:auto;padding:30px 4px 22px;scroll-snap-type:x mandatory">
+          <sc-for list="{{ dayRail }}" as="d" hint-placeholder-count="5">
+            <article style="flex:0 0 268px;scroll-snap-align:start;background:{{ d.bg }};border:2px solid #14162B;border-radius:26px;padding:24px;box-shadow:5px 5px 0 #14162B;min-height:210px;display:flex;flex-direction:column">
+              <span style="font-family:'Gabarito',sans-serif;font-size:15px;font-weight:800;background:#14162B;color:#FBF6EC;padding:5px 12px;border-radius:99px;align-self:flex-start">{{ d.time }}</span>
+              <h3 style="font-size:23px;font-weight:800;margin-top:16px;line-height:1.15">{{ d.title }}</h3>
+              <p style="margin-top:9px;font-size:15px;line-height:1.5;color:#3D3F55">{{ d.body }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="background:#FFC53D;border-top:2px solid #14162B;border-bottom:2px solid #14162B;padding:80px 24px">
+        <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:44px;align-items:center">
+          <div>
+            <h2 style="font-size:clamp(32px,3.6vw,48px);font-weight:900;line-height:1.03">Apply now<span style="color:#2F5FD0">.</span></h2>
+            <p style="margin-top:16px;font-size:18px;line-height:1.6;max-width:640px;color:#2C2A20">Tailored curricula for Pre-K through 8th grade, a holistic approach to personal development, and a solid foundation for high school readiness. Applications are reviewed as places are available.</p>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="#apply" onClick="{{ goApply }}" style="padding:16px 30px;border-radius:99px;background:#14162B;border:2px solid #14162B;box-shadow:5px 5px 0 rgba(0,0,0,.35);color:#FBF6EC;font-weight:800;font-size:17px" style-hover="transform:translate(3px,3px);box-shadow:2px 2px 0 rgba(0,0,0,.35)">Apply online</a>
+            <a href="#admissions" onClick="{{ goAdmissions }}" style="padding:16px 30px;border-radius:99px;border:2px solid #14162B;font-weight:800;font-size:17px;color:#14162B" style-hover="background:#14162B;color:#FFC53D">How it works</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:88px 24px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+          <h2 style="font-size:clamp(34px,4vw,52px);font-weight:900;line-height:1.02">News &amp; events<span style="color:#FF6B4A">.</span></h2>
+          <div style="display:flex;gap:10px">
+            <a href="#news" onClick="{{ goNews }}" style="padding:12px 22px;border-radius:99px;border:2px solid #14162B;font-weight:800;color:#14162B" style-hover="background:#14162B;color:#FBF6EC">All news</a>
+            <a href="#events" onClick="{{ goEvents }}" style="padding:12px 22px;border-radius:99px;border:2px solid #14162B;font-weight:800;color:#14162B" style-hover="background:#14162B;color:#FBF6EC">Calendar</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:22px;margin-top:36px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+            <sc-for list="{{ homeNews }}" as="n" hint-placeholder-count="2">
+              <article style="background:#fff;border:2px solid #14162B;border-radius:28px;overflow:hidden;box-shadow:5px 5px 0 #14162B;display:flex;flex-direction:column">
+                <div style="height:150px;background:repeating-linear-gradient(135deg,#E5DCC8 0 11px,#F1E9D9 11px 22px);border-bottom:2px solid #14162B;display:flex;align-items:center;justify-content:center"><span style="font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B">Featured image</span></div>
+                <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+                  <span style="font:700 12px/1 ui-monospace,monospace;color:#2F5FD0;letter-spacing:.08em">{{ n.date }}</span>
+                  <h3 style="font-size:21px;font-weight:800;margin-top:10px;line-height:1.2">{{ n.title }}</h3>
+                  <p style="margin-top:10px;font-size:15px;line-height:1.55;color:#3D3F55">{{ n.excerpt }}</p>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+          <aside style="background:#2FBF9B;border:2px solid #14162B;border-radius:28px;box-shadow:5px 5px 0 #14162B;padding:26px">
+            <h3 style="font-size:22px;font-weight:900">Coming up</h3>
+            <ul style="list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px">
+              <sc-for list="{{ homeEvents }}" as="e" hint-placeholder-count="3">
+                <li style="display:flex;gap:14px;align-items:flex-start;padding-bottom:14px;border-bottom:1.5px solid rgba(20,22,43,.25)">
+                  <span style="flex:0 0 54px;text-align:center;background:#14162B;color:#FBF6EC;border-radius:14px;padding:8px 4px">
+                    <span style="display:block;font-family:'Gabarito',sans-serif;font-size:18px;font-weight:900;line-height:1">{{ e.day }}</span>
+                    <span style="display:block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:3px">{{ e.month }}</span>
+                  </span>
+                  <span>
+                    <span style="display:block;font-family:'Gabarito',sans-serif;font-size:16.5px;font-weight:800;line-height:1.2">{{ e.title }}</span>
+                    <span style="display:block;font-size:13px;color:#134F42;margin-top:4px;font-weight:600">{{ e.meta }}</span>
+                  </span>
+                </li>
+              </sc-for>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= ABOUT ================= -->
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
+      <section style="border-bottom:2px solid #14162B;background:#2F5FD0;padding:64px 24px 72px">
+        <div style="max-width:1320px;margin:0 auto">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFC53D">About us</span>
+          <h1 style="font-size:clamp(42px,6vw,84px);font-weight:900;color:#fff;line-height:.95;margin-top:14px">A Brooklyn school<br />since 1938<span style="color:#FFC53D">.</span></h1>
+          <p style="margin-top:22px;font-size:19px;line-height:1.55;color:#DCE4FA;max-width:640px">The Brooklyn Seventh-day Adventist School is a private, co-educational day school owned and operated by the Greater New York Conference of Seventh-day Adventists, offering grades Pre-K through 8.</p>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div style="background:#FFC53D;border:2px solid #14162B;border-radius:30px;padding:34px;box-shadow:6px 6px 0 #14162B">
+          <h2 style="font-size:36px;font-weight:900">Our mission<span style="color:#2F5FD0">.</span></h2>
+          <p style="margin-top:14px;font-size:16px;font-weight:600;color:#2C2A20">The mission of the Brooklyn Seventh-day Adventist School is to:</p>
+          <ul style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ missionPoints }}" as="m" hint-placeholder-count="4">
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:17px;line-height:1.45;font-weight:600"><span style="flex:0 0 10px;height:10px;border-radius:50%;background:#14162B;margin-top:8px"></span>{{ m.label }}</li>
+            </sc-for>
+          </ul>
+        </div>
+        <div style="background:#fff;border:2px solid #14162B;border-radius:30px;padding:34px;box-shadow:6px 6px 0 #14162B">
+          <h2 style="font-size:36px;font-weight:900">Our philosophy<span style="color:#FF6B4A">.</span></h2>
+          <p style="margin-top:14px;font-size:16px;line-height:1.6;color:#3D3F55">A belief in the existence of the Creator God is fundamental in the philosophy of Seventh-day Adventist schools. We believe that true education develops the spiritual, mental and physical powers of each student, preparing them for the joy of service in this life and for the higher joy of service in the life to come. To achieve this goal, we encourage each student to:</p>
+          <ul style="margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ philosophyPoints }}" as="p" hint-placeholder-count="4">
+              <li style="display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:#3D3F55"><span style="flex:0 0 8px;height:8px;border-radius:50%;background:#2F5FD0;margin-top:8px"></span>{{ p.label }}</li>
+            </sc-for>
+          </ul>
+          <p style="margin-top:18px;font-size:14px;color:#6B6B7B;line-height:1.5">The school operates in harmony with the guidance and direction of the Office of Education, North American Division of the Seventh-day Adventist Church.</p>
+        </div>
+      </section>
+
+      <section style="background:#101C4A;border-top:2px solid #14162B;border-bottom:2px solid #14162B;padding:80px 24px">
+        <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:start">
+          <div>
+            <div style="background:repeating-linear-gradient(135deg,#33406B 0 11px,#3E4B78 11px 22px);border:2px solid #14162B;border-radius:28px;height:340px;display:flex;align-items:flex-end;padding:16px;box-shadow:6px 6px 0 #000"><span style="font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#101C4A;background:#FFC53D;border:2px solid #14162B;border-radius:99px;padding:6px 11px">Portrait: Loris LaBorde</span></div>
+            <h3 style="font-size:26px;font-weight:900;color:#fff;margin-top:20px">Loris LaBorde</h3>
+            <p style="font-size:14px;font-weight:700;color:#FFC53D;letter-spacing:.08em;text-transform:uppercase;margin-top:6px">Principal</p>
+            <a href="mailto:principal@bsda.school" style="display:inline-block;margin-top:14px;color:#9FB6EE;font-weight:600;font-size:15px" style-hover="color:#fff">principal@bsda.school</a>
+          </div>
+          <div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFC53D">Welcome from the principal</span>
+            <h2 style="font-size:clamp(32px,3.6vw,46px);font-weight:900;color:#fff;line-height:1.05;margin-top:12px">“Our warm and inclusive community is ready to embrace you.”</h2>
+            <div style="margin-top:24px;display:flex;flex-direction:column;gap:16px">
+              <sc-for list="{{ principalLetter }}" as="para" hint-placeholder-count="4">
+                <p style="font-size:16.5px;line-height:1.65;color:#C3CBE4">{{ para.text }}</p>
+              </sc-for>
+            </div>
+            <p style="margin-top:22px;font-family:'Gabarito',sans-serif;font-style:italic;font-size:22px;color:#fff;font-weight:600">Loris LaBorde</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:80px 24px">
+        <h2 style="font-size:clamp(34px,4vw,52px);font-weight:900;line-height:1.02">History<span style="color:#FF6B4A">.</span></h2>
+        <p style="margin-top:14px;font-size:18px;color:#3D3F55;max-width:680px;line-height:1.6">Eight decades, four buildings and one continuous idea: a school in Brooklyn where children are taught to think and to serve.</p>
+        <div data-rail="1" style="display:flex;gap:18px;overflow-x:auto;padding:36px 4px 24px;scroll-snap-type:x mandatory">
+          <sc-for list="{{ history }}" as="h" hint-placeholder-count="4">
+            <article style="flex:0 0 320px;scroll-snap-align:start;background:#fff;border:2px solid #14162B;border-radius:28px;padding:26px;box-shadow:5px 5px 0 #14162B;display:flex;flex-direction:column">
+              <span style="font-family:'Gabarito',sans-serif;font-size:34px;font-weight:900;color:#2F5FD0;line-height:1">{{ h.year }}</span>
+              <h3 style="font-size:22px;font-weight:800;margin-top:10px;line-height:1.2">{{ h.title }}</h3>
+              <p style="margin-top:10px;font-size:15px;line-height:1.55;color:#3D3F55">{{ h.body }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="background:#2FBF9B;border-top:2px solid #14162B;border-bottom:2px solid #14162B;padding:72px 24px">
+        <div style="max-width:900px;margin:0 auto;text-align:center">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#14162B">Our aim</span>
+          <p style="font-family:'Gabarito',sans-serif;font-size:clamp(24px,3vw,36px);line-height:1.3;font-weight:700;margin-top:16px">“To restore in man the image of his maker… to promote the development of body, mind and soul, that the divine purpose in His creation might be realized.”</p>
+          <p style="margin-top:18px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#134F42">Ellen G. White · Education, page 15</p>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:80px 24px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+        <h2 style="font-size:clamp(30px,3.4vw,44px);font-weight:900;max-width:520px;line-height:1.05">Meet the people who teach here<span style="color:#FF6B4A">.</span></h2>
+        <a href="#faculty" onClick="{{ goFaculty }}" style="padding:16px 30px;border-radius:99px;background:#2F5FD0;border:2px solid #14162B;box-shadow:5px 5px 0 #14162B;color:#fff;font-weight:800;font-size:17px" style-hover="transform:translate(3px,3px);box-shadow:2px 2px 0 #14162B">Faculty &amp; staff directory</a>
+      </section>
+    </sc-if>
+
+    <!-- ================= FACULTY ================= -->
+    <sc-if value="{{ isFaculty }}" hint-placeholder-val="{{ true }}">
+      <section style="border-bottom:2px solid #14162B;background:#FFC53D;padding:60px 24px 66px">
+        <div style="max-width:1320px;margin:0 auto">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2F5FD0">About</span>
+          <h1 style="font-size:clamp(40px,5.6vw,76px);font-weight:900;line-height:.96;margin-top:12px">Faculty &amp; staff<span style="color:#2F5FD0">.</span></h1>
+          <p style="margin-top:18px;font-size:18px;line-height:1.55;color:#2C2A20;max-width:620px">Our teachers form a professional learning community and undergo regular training and professional development in current teaching methods.</p>
+        </div>
+      </section>
+      <section style="max-width:1320px;margin:0 auto;padding:70px 24px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px">
+          <sc-for list="{{ faculty }}" as="f" hint-placeholder-count="8">
+            <article style="background:#fff;border:2px solid #14162B;border-radius:28px;overflow:hidden;box-shadow:5px 5px 0 #14162B">
+              <div style="height:200px;background:repeating-linear-gradient(135deg,#E5DCC8 0 11px,#F1E9D9 11px 22px);border-bottom:2px solid #14162B;display:flex;align-items:center;justify-content:center"><span style="font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B">Staff portrait</span></div>
+              <div style="padding:20px">
+                <h3 style="font-size:20px;font-weight:800;line-height:1.2">{{ f.name }}</h3>
+                <p style="font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#2F5FD0;margin-top:7px">{{ f.role }}</p>
+                <p style="font-size:14.5px;color:#6B6B7B;margin-top:10px;line-height:1.5">{{ f.note }}</p>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+        <p style="margin-top:28px;font:600 13px/1.6 ui-monospace,monospace;color:#6B6B7B;background:#fff;border:2px dashed rgba(20,22,43,.35);border-radius:20px;padding:18px 20px">Names, photos and bios for teaching staff to be supplied by the school office. Layout is final.</p>
+      </section>
+    </sc-if>
+
+    <!-- ================= ADMISSIONS ================= -->
+    <sc-if value="{{ isAdmissions }}" hint-placeholder-val="{{ true }}">
+      <section style="border-bottom:2px solid #14162B;background:#2F5FD0;padding:60px 24px 66px">
+        <div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-end">
+          <div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFC53D">Admissions</span>
+            <h1 style="font-size:clamp(40px,5.6vw,76px);font-weight:900;line-height:.96;margin-top:12px;color:#fff">Come learn<br />with us<span style="color:#FFC53D">.</span></h1>
+            <p style="margin-top:18px;font-size:18px;line-height:1.55;color:#DCE4FA;max-width:620px">We welcome applications from girls and boys of all races, ethnicities and economic backgrounds. Decisions are made on the basis of a candidate's individual strengths and talents, potential to thrive, and ability to contribute positively to our community.</p>
+          </div>
+          <a href="#apply" onClick="{{ goApply }}" style="padding:16px 30px;border-radius:99px;background:#FFC53D;border:2px solid #14162B;box-shadow:5px 5px 0 #14162B;color:#14162B;font-weight:800;font-size:17px" style-hover="transform:translate(3px,3px);box-shadow:2px 2px 0 #14162B">Start the online application</a>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:70px 24px">
+        <h2 style="font-size:clamp(32px,3.8vw,48px);font-weight:900;line-height:1.02">The process, step by step<span style="color:#FF6B4A">.</span></h2>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px">
+          <sc-for list="{{ admitSteps }}" as="s" hint-placeholder-count="4">
+            <article style="background:{{ s.bg }};border:2px solid #14162B;border-radius:28px;padding:26px;box-shadow:5px 5px 0 #14162B;display:flex;flex-direction:column">
+              <span style="font:700 12px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#14162B;opacity:.6">{{ s.step }}</span>
+              <h3 style="font-size:24px;font-weight:900;margin-top:10px;line-height:1.15">{{ s.title }}</h3>
+              <ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+                <sc-for list="{{ s.items }}" as="i" hint-placeholder-count="4">
+                  <li style="display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.45;color:#2C2A20"><span style="flex:0 0 7px;height:7px;border-radius:50%;background:#14162B;margin-top:7px"></span>{{ i.label }}</li>
+                </sc-for>
+              </ul>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:0 24px 70px;display:grid;grid-template-columns:1.15fr .85fr;gap:22px">
+        <div style="background:#fff;border:2px solid #14162B;border-radius:30px;padding:34px;box-shadow:6px 6px 0 #14162B">
+          <h2 style="font-size:34px;font-weight:900">Documents to submit<span style="color:#2F5FD0">.</span></h2>
+          <p style="margin-top:10px;font-size:15px;color:#6B6B7B">Registration is complete once the office has received all of the following.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px">
+            <sc-for list="{{ documents }}" as="d" hint-placeholder-count="12">
+              <span style="display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.45;padding:11px 14px;background:#FBF6EC;border:1.5px solid rgba(20,22,43,.2);border-radius:16px"><span style="flex:0 0 7px;height:7px;border-radius:50%;background:#2FBF9B;margin-top:7px"></span>{{ d.label }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="background:#2FBF9B;border:2px solid #14162B;border-radius:30px;padding:30px;box-shadow:6px 6px 0 #14162B">
+            <h3 style="font-size:28px;font-weight:900">Tuition<span style="color:#fff">.</span></h3>
+            <ul style="list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:12px">
+              <li style="font-size:15.5px;line-height:1.5"><strong style="font-weight:800">Pay online.</strong> Use Adventist School Pay to settle tuition and fees anytime, anywhere.</li>
+              <li style="font-size:15.5px;line-height:1.5"><strong style="font-weight:800">Pay in person.</strong> Visit the office and pay by check, cash or card.</li>
+            </ul>
+            <a href="https://www.adventistschoolpay.org/?OrgID=AN4820" target="_blank" rel="noopener" style="display:inline-block;margin-top:20px;padding:13px 24px;border-radius:99px;background:#14162B;color:#FBF6EC;font-weight:800;border:2px solid #14162B" style-hover="background:#FBF6EC;color:#14162B">Pay tuition &amp; fees</a>
+          </div>
+          <div style="background:#FF6B4A;border:2px solid #14162B;border-radius:30px;padding:30px;box-shadow:6px 6px 0 #14162B">
+            <h3 style="font-size:26px;font-weight:900;color:#fff">Do it quickly<span style="color:#FFC53D">.</span></h3>
+            <p style="margin-top:12px;font-size:15.5px;line-height:1.55;color:#FFF0EB">Applications submitted before the September deadline are considered in the first round of decisions. Later applications are reviewed on a space-available basis. Call the Office of Admission at (718) 859-1313 to ask about availability.</p>
+            <p style="margin-top:14px;font-size:14px;font-weight:700;color:#14162B;background:#FFC53D;border:2px solid #14162B;border-radius:99px;padding:9px 16px;display:inline-block">Application fee $60 · non-refundable</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="background:#101C4A;border-top:2px solid #14162B;border-bottom:2px solid #14162B;padding:70px 24px">
+        <div style="max-width:1320px;margin:0 auto">
+          <h2 style="font-size:clamp(30px,3.4vw,44px);font-weight:900;color:#fff;line-height:1.05">Placement test &amp; registration dates<span style="color:#FFC53D">.</span></h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:30px">
+            <sc-for list="{{ testDates }}" as="t" hint-placeholder-count="6">
+              <div style="background:#1B2A5E;border:2px solid #FBF6EC;border-radius:22px;padding:20px">
+                <div style="font-family:'Gabarito',sans-serif;font-size:22px;font-weight:900;color:#fff">{{ t.date }}</div>
+                <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FFC53D;margin-top:7px">{{ t.kind }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <a href="#events" onClick="{{ goEvents }}" style="display:inline-block;margin-top:28px;padding:14px 26px;border-radius:99px;background:#FBF6EC;border:2px solid #14162B;color:#14162B;font-weight:800" style-hover="background:#FFC53D">See the full calendar</a>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:70px 24px">
+        <div style="background:#FFC53D;border:2px solid #14162B;border-radius:30px;padding:38px;box-shadow:6px 6px 0 #14162B;display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:center">
+          <div>
+            <h2 style="font-size:34px;font-weight:900">Contact the admissions office<span style="color:#2F5FD0">.</span></h2>
+            <p style="margin-top:10px;font-size:17px;color:#2C2A20">We're happy to answer questions about grades, uniforms, fees or the placement test.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a href="tel:+17188591313" style="font-family:'Gabarito',sans-serif;font-size:28px;font-weight:900;color:#14162B" style-hover="color:#2F5FD0">(718) 859-1313</a>
+            <a href="mailto:admissions@bsda.school" style="font-size:17px;font-weight:700;color:#2F5FD0" style-hover="color:#14162B">admissions@bsda.school</a>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= APPLY (multi-step form) ================= -->
+    <sc-if value="{{ isApply }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:960px;margin:0 auto;padding:56px 24px 90px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2F5FD0">Enrollment form</span>
+        <h1 style="font-size:clamp(38px,5vw,64px);font-weight:900;line-height:.98;margin-top:12px">Apply to BSDA<span style="color:#FF6B4A">.</span></h1>
+
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="display:flex;gap:10px;margin-top:30px;flex-wrap:wrap">
+              <sc-for list="{{ stepTabs }}" as="s" hint-placeholder-count="4">
+                <div style="flex:1 1 160px;padding:14px 16px;border-radius:20px;border:2px solid #14162B;background:{{ s.bg }};color:{{ s.color }}">
+                  <div style="font:700 11px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;opacity:.75">Step {{ s.n }}</div>
+                  <div style="font-family:'Gabarito',sans-serif;font-size:16px;font-weight:800;margin-top:6px">{{ s.label }}</div>
+                </div>
+              </sc-for>
+            </div>
+
+            <form onSubmit="{{ onSubmit }}" style="margin-top:24px;background:#fff;border:2px solid #14162B;border-radius:30px;box-shadow:6px 6px 0 #14162B;padding:36px">
+
+              <sc-if value="{{ step0 }}" hint-placeholder-val="{{ true }}">
+                <div>
+                  <h2 style="font-size:30px;font-weight:900">About the student</h2>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px">
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Student first name *</span>
+                      <input type="text" value="{{ f.firstName.value }}" onChange="{{ f.firstName.onChange }}" placeholder="Amara" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                      <sc-if value="{{ f.firstName.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.firstName.error }}</span></sc-if>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Student last name *</span>
+                      <input type="text" value="{{ f.lastName.value }}" onChange="{{ f.lastName.onChange }}" placeholder="Charles" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                      <sc-if value="{{ f.lastName.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.lastName.error }}</span></sc-if>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Date of birth *</span>
+                      <input type="date" value="{{ f.dob.value }}" onChange="{{ f.dob.onChange }}" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                      <sc-if value="{{ f.dob.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.dob.error }}</span></sc-if>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Grade applying for *</span>
+                      <select value="{{ f.gradeApplying.value }}" onChange="{{ f.gradeApplying.onChange }}" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px">
+                        <option value="">Select a grade</option>
+                        <sc-for list="{{ gradeOptions }}" as="g" hint-placeholder-count="10"><option value="{{ g.label }}">{{ g.label }}</option></sc-for>
+                      </select>
+                      <sc-if value="{{ f.gradeApplying.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.gradeApplying.error }}</span></sc-if>
+                    </label>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ step1 }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <h2 style="font-size:30px;font-weight:900">Parent or guardian</h2>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px">
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Full name *</span>
+                      <input type="text" value="{{ f.guardian.value }}" onChange="{{ f.guardian.onChange }}" placeholder="Jean Charles" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                      <sc-if value="{{ f.guardian.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.guardian.error }}</span></sc-if>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Relationship to student *</span>
+                      <select value="{{ f.relationship.value }}" onChange="{{ f.relationship.onChange }}" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px">
+                        <option value="">Select one</option>
+                        <option value="Mother">Mother</option>
+                        <option value="Father">Father</option>
+                        <option value="Grandparent">Grandparent</option>
+                        <option value="Legal guardian">Legal guardian</option>
+                      </select>
+                      <sc-if value="{{ f.relationship.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.relationship.error }}</span></sc-if>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Email *</span>
+                      <input type="email" value="{{ f.email.value }}" onChange="{{ f.email.onChange }}" placeholder="you@email.com" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                      <sc-if value="{{ f.email.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.email.error }}</span></sc-if>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Phone *</span>
+                      <input type="tel" value="{{ f.phone.value }}" onChange="{{ f.phone.onChange }}" placeholder="(718) 555-0123" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                      <sc-if value="{{ f.phone.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.phone.error }}</span></sc-if>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1">
+                      <span style="font-size:14px;font-weight:700">Home address *</span>
+                      <input type="text" value="{{ f.address.value }}" onChange="{{ f.address.onChange }}" placeholder="Street, Brooklyn, NY, ZIP" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                      <sc-if value="{{ f.address.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.address.error }}</span></sc-if>
+                    </label>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ step2 }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <h2 style="font-size:30px;font-weight:900">School &amp; church</h2>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px">
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Current or previous school *</span>
+                      <input type="text" value="{{ f.currentSchool.value }}" onChange="{{ f.currentSchool.onChange }}" placeholder="School name, or “none”" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                      <sc-if value="{{ f.currentSchool.error }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#D8341B">{{ f.currentSchool.error }}</span></sc-if>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Last grade completed</span>
+                      <input type="text" value="{{ f.lastGrade.value }}" onChange="{{ f.lastGrade.onChange }}" placeholder="e.g. Grade 3" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">Home church (if any)</span>
+                      <input type="text" value="{{ f.church.value }}" onChange="{{ f.church.onChange }}" placeholder="Church name" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" />
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px">
+                      <span style="font-size:14px;font-weight:700">How did you hear about us?</span>
+                      <select value="{{ f.heard.value }}" onChange="{{ f.heard.onChange }}" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px">
+                        <option value="">Select one</option>
+                        <option value="Family or friend">Family or friend</option>
+                        <option value="Our church">Our church</option>
+                        <option value="Search or social media">Search or social media</option>
+                        <option value="School event">School event</option>
+                      </select>
+                    </label>
+                    <label style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1">
+                      <span style="font-size:14px;font-weight:700">Anything we should know about your child?</span>
+                      <textarea rows="4" value="{{ f.notes.value }}" onChange="{{ f.notes.onChange }}" placeholder="Learning support, allergies, interests…" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px;resize:vertical"></textarea>
+                    </label>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ step3 }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <h2 style="font-size:30px;font-weight:900">Review &amp; submit</h2>
+                  <div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                    <sc-for list="{{ summary }}" as="s" hint-placeholder-count="8">
+                      <div style="padding:14px 16px;background:#FBF6EC;border:1.5px solid rgba(20,22,43,.2);border-radius:16px">
+                        <div style="font:700 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B">{{ s.label }}</div>
+                        <div style="font-size:16px;font-weight:600;margin-top:6px">{{ s.value }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <label style="display:flex;gap:12px;align-items:flex-start;margin-top:24px;padding:18px;background:#FFF6DE;border:2px solid #14162B;border-radius:20px">
+                    <input type="checkbox" checked="{{ f.agree.value }}" onChange="{{ f.agree.onChange }}" style="width:22px;height:22px;margin-top:2px;flex-shrink:0;accent-color:#2F5FD0" />
+                    <span style="font-size:15px;line-height:1.5">I understand the $60 application fee is non-refundable, and that admission also requires a meeting with administration and a placement test.</span>
+                  </label>
+                  <sc-if value="{{ f.agree.error }}" hint-placeholder-val="{{ false }}"><p style="font-size:13px;font-weight:700;color:#D8341B;margin-top:10px">{{ f.agree.error }}</p></sc-if>
+                </div>
+              </sc-if>
+
+              <div style="display:flex;justify-content:space-between;gap:14px;margin-top:34px;padding-top:26px;border-top:2px solid rgba(20,22,43,.14);flex-wrap:wrap">
+                <button type="button" onClick="{{ onBack }}" disabled="{{ atFirstStep }}" style="padding:14px 26px;border-radius:99px;border:2px solid #14162B;background:transparent;font-weight:800;cursor:pointer;opacity:{{ backOpacity }}">Back</button>
+                <sc-if value="{{ notLastStep }}" hint-placeholder-val="{{ true }}">
+                  <button type="button" onClick="{{ onNext }}" style="padding:14px 30px;border-radius:99px;border:2px solid #14162B;background:#2F5FD0;color:#fff;font-weight:800;box-shadow:4px 4px 0 #14162B;cursor:pointer">Continue</button>
+                </sc-if>
+                <sc-if value="{{ step3 }}" hint-placeholder-val="{{ false }}">
+                  <button type="submit" style="padding:14px 30px;border-radius:99px;border:2px solid #14162B;background:#2FBF9B;color:#14162B;font-weight:800;box-shadow:4px 4px 0 #14162B;cursor:pointer">Submit application</button>
+                </sc-if>
+              </div>
+            </form>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:32px;background:#2FBF9B;border:2px solid #14162B;border-radius:30px;box-shadow:6px 6px 0 #14162B;padding:48px;text-align:center">
+            <div style="width:96px;height:96px;border-radius:50%;background:#14162B;margin:0 auto;position:relative;animation:bsda-bob 3s ease-in-out infinite">
+              <span style="position:absolute;left:26px;top:34px;width:12px;height:12px;border-radius:50%;background:#FBF6EC"></span>
+              <span style="position:absolute;right:26px;top:34px;width:12px;height:12px;border-radius:50%;background:#FBF6EC"></span>
+              <span style="position:absolute;left:32px;bottom:24px;width:32px;height:16px;border-bottom:4px solid #FFC53D;border-radius:0 0 32px 32px"></span>
+            </div>
+            <h2 style="font-size:38px;font-weight:900;margin-top:24px">Application received<span style="color:#fff">.</span></h2>
+            <p style="margin-top:14px;font-size:17px;line-height:1.6;max-width:520px;margin-left:auto;margin-right:auto;color:#0F4A3E">Thanks, {{ submittedName }}. The admissions office will be in touch to schedule your meeting with administration and confirm a placement test date.</p>
+            <div style="display:flex;gap:12px;justify-content:center;margin-top:26px;flex-wrap:wrap">
+              <a href="https://www.adventistschoolpay.org/?OrgID=AN4820" target="_blank" rel="noopener" style="padding:14px 26px;border-radius:99px;background:#14162B;color:#FBF6EC;font-weight:800;border:2px solid #14162B" style-hover="background:#FBF6EC;color:#14162B">Pay the $60 application fee</a>
+              <button type="button" onClick="{{ onReset }}" style="padding:14px 26px;border-radius:99px;border:2px solid #14162B;background:transparent;font-weight:800;cursor:pointer">Start another application</button>
+            </div>
+          </div>
+        </sc-if>
+      </section>
+    </sc-if>
+
+    <!-- ================= STUDENT LIFE ================= -->
+    <sc-if value="{{ isLife }}" hint-placeholder-val="{{ true }}">
+      <section style="border-bottom:2px solid #14162B;background:#FF6B4A;padding:60px 24px 66px">
+        <div style="max-width:1320px;margin:0 auto">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFC53D">Student life</span>
+          <h1 style="font-size:clamp(40px,5.6vw,76px);font-weight:900;line-height:.96;margin-top:12px;color:#fff">What it's like<br />to go here<span style="color:#FFC53D">.</span></h1>
+          <p style="margin-top:18px;font-size:19px;line-height:1.55;color:#FFEDE7;max-width:620px">Rigorous classrooms, plus clubs, performing arts, athletics and events. Here's the whole day, grade by grade, room by room.</p>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:70px 24px">
+        <h2 style="font-size:clamp(30px,3.6vw,46px);font-weight:900;line-height:1.02">A day in the life<span style="color:#2F5FD0">.</span></h2>
+        <p style="margin-top:12px;font-size:17px;color:#3D3F55">Scroll through the school day, 7:45am to 3:15pm.</p>
+        <div data-rail="1" style="display:flex;gap:16px;overflow-x:auto;padding:30px 4px 24px;scroll-snap-type:x mandatory">
+          <sc-for list="{{ dayFull }}" as="d" hint-placeholder-count="6">
+            <article style="flex:0 0 272px;scroll-snap-align:start;background:{{ d.bg }};border:2px solid #14162B;border-radius:26px;padding:24px;box-shadow:5px 5px 0 #14162B;min-height:230px;display:flex;flex-direction:column">
+              <span style="font-family:'Gabarito',sans-serif;font-size:15px;font-weight:800;background:#14162B;color:#FBF6EC;padding:5px 12px;border-radius:99px;align-self:flex-start">{{ d.time }}</span>
+              <h3 style="font-size:23px;font-weight:800;margin-top:16px;line-height:1.15">{{ d.title }}</h3>
+              <p style="margin-top:9px;font-size:15px;line-height:1.5;color:#3D3F55">{{ d.body }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="background:#101C4A;border-top:2px solid #14162B;border-bottom:2px solid #14162B;padding:70px 24px">
+        <div style="max-width:1320px;margin:0 auto">
+          <h2 style="font-size:clamp(30px,3.6vw,46px);font-weight:900;color:#fff;line-height:1.02">Grade explorer<span style="color:#FFC53D">.</span></h2>
+          <p style="margin-top:12px;font-size:17px;color:#C3CBE4">Pick a grade to see what a year looks like.</p>
+          <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:26px">
+            <sc-for list="{{ gradeTabs }}" as="g" hint-placeholder-count="10">
+              <button type="button" onClick="{{ g.onClick }}" style="padding:11px 19px;border-radius:99px;border:2px solid #FBF6EC;background:{{ g.bg }};color:{{ g.color }};font-family:'Gabarito',sans-serif;font-weight:800;font-size:15px;cursor:pointer">{{ g.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-top:28px;background:#FBF6EC;border:2px solid #14162B;border-radius:30px;box-shadow:8px 8px 0 #000;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:36px">
+            <div>
+              <span style="font:700 12px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#2F5FD0">{{ activeGrade.kicker }}</span>
+              <h3 style="font-size:40px;font-weight:900;margin-top:10px;line-height:1.02">{{ activeGrade.title }}</h3>
+              <p style="margin-top:14px;font-size:17px;line-height:1.6;color:#3D3F55">{{ activeGrade.body }}</p>
+              <div style="margin-top:20px;padding:16px 20px;background:#FFC53D;border:2px solid #14162B;border-radius:20px">
+                <div style="font:700 11px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">Signature moment</div>
+                <div style="font-family:'Gabarito',sans-serif;font-size:19px;font-weight:800;margin-top:7px">{{ activeGrade.moment }}</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6B6B7B">What you'll learn</div>
+              <ul style="list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+                <sc-for list="{{ activeGrade.learn }}" as="l" hint-placeholder-count="4">
+                  <li style="display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.45;padding:13px 16px;background:#fff;border:1.5px solid rgba(20,22,43,.2);border-radius:16px"><span style="flex:0 0 9px;height:9px;border-radius:50%;background:#2FBF9B;margin-top:8px"></span>{{ l.label }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:70px 24px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+          <div>
+            <h2 style="font-size:clamp(30px,3.6vw,46px);font-weight:900;line-height:1.02">Clubs &amp; activities<span style="color:#FF6B4A">.</span></h2>
+            <p style="margin-top:12px;font-size:17px;color:#3D3F55">Extracurricular clubs, performing arts groups and athletic teams.</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ clubCats }}" as="c" hint-placeholder-count="5">
+              <button type="button" onClick="{{ c.onClick }}" style="padding:10px 18px;border-radius:99px;border:2px solid #14162B;background:{{ c.bg }};color:{{ c.color }};font-weight:800;font-size:14px;cursor:pointer">{{ c.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:32px">
+          <sc-for list="{{ visibleClubs }}" as="c" hint-placeholder-count="6">
+            <article style="background:{{ c.bg }};border:2px solid #14162B;border-radius:26px;padding:26px;box-shadow:5px 5px 0 #14162B;display:flex;flex-direction:column;min-height:190px">
+              <span style="align-self:flex-start;padding:5px 12px;border-radius:99px;background:#14162B;color:#FBF6EC;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">{{ c.cat }}</span>
+              <h3 style="font-size:24px;font-weight:900;margin-top:14px;line-height:1.15">{{ c.name }}</h3>
+              <p style="margin-top:9px;font-size:15px;line-height:1.5;color:#2C2A20">{{ c.body }}</p>
+              <span style="margin-top:auto;padding-top:14px;font-size:13.5px;font-weight:700;color:#3D3F55">{{ c.when }}</span>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="background:#FFC53D;border-top:2px solid #14162B;border-bottom:2px solid #14162B;padding:70px 24px">
+        <div style="max-width:1320px;margin:0 auto">
+          <h2 style="font-size:clamp(30px,3.6vw,46px);font-weight:900;line-height:1.02">The wall<span style="color:#2F5FD0">.</span></h2>
+          <p style="margin-top:12px;font-size:17px;color:#2C2A20;max-width:600px">Student work and moments from the year — STEM builds, performances, service days.</p>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px">
+            <sc-for list="{{ wall }}" as="w" hint-placeholder-count="8">
+              <figure style="margin:0;background:#FBF6EC;border:2px solid #14162B;border-radius:24px;overflow:hidden;box-shadow:5px 5px 0 #14162B;transform:rotate({{ w.tilt }});grid-row:span {{ w.span }}">
+                <div style="height:{{ w.h }};background:repeating-linear-gradient(135deg,#E5DCC8 0 11px,#F1E9D9 11px 22px);border-bottom:2px solid #14162B;display:flex;align-items:center;justify-content:center"><span style="font:600 10.5px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B">Photo</span></div>
+                <figcaption style="padding:14px 16px;font-size:14px;line-height:1.45;font-weight:600">{{ w.caption }}</figcaption>
+              </figure>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1320px;margin:0 auto;padding:70px 24px">
+        <h2 style="font-size:clamp(30px,3.6vw,46px);font-weight:900;line-height:1.02">Find your way around<span style="color:#2F5FD0">.</span></h2>
+        <p style="margin-top:12px;font-size:17px;color:#3D3F55">Tap a room at 1260 Ocean Avenue.</p>
+        <div style="display:grid;grid-template-columns:1.4fr .6fr;gap:24px;margin-top:30px;align-items:start">
+          <div style="background:#DCE4FA;border:2px solid #14162B;border-radius:30px;padding:22px;box-shadow:6px 6px 0 #14162B">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+              <sc-for list="{{ rooms }}" as="r" hint-placeholder-count="12">
+                <button type="button" onClick="{{ r.onClick }}" style="text-align:left;padding:18px 16px;border-radius:20px;border:2px solid #14162B;background:{{ r.bg }};color:{{ r.color }};cursor:pointer;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;grid-column:span {{ r.span }}">
+                  <span style="font:700 10.5px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.7">{{ r.floor }}</span>
+                  <span style="font-family:'Gabarito',sans-serif;font-size:17px;font-weight:800;line-height:1.15">{{ r.name }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          <aside style="background:#101C4A;border:2px solid #14162B;border-radius:30px;padding:30px;box-shadow:6px 6px 0 #14162B;position:sticky;top:100px">
+            <span style="font:700 11px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#FFC53D">{{ activeRoom.floor }}</span>
+            <h3 style="font-size:28px;font-weight:900;color:#fff;margin-top:10px;line-height:1.1">{{ activeRoom.name }}</h3>
+            <p style="margin-top:12px;font-size:15.5px;line-height:1.6;color:#C3CBE4">{{ activeRoom.body }}</p>
+          </aside>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= EVENTS ================= -->
+    <sc-if value="{{ isEvents }}" hint-placeholder-val="{{ true }}">
+      <section style="border-bottom:2px solid #14162B;background:#2FBF9B;padding:60px 24px 66px">
+        <div style="max-width:1320px;margin:0 auto">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0F4A3E">Calendar</span>
+          <h1 style="font-size:clamp(40px,5.6vw,76px);font-weight:900;line-height:.96;margin-top:12px">School events<span style="color:#fff">.</span></h1>
+          <p style="margin-top:18px;font-size:18px;line-height:1.55;color:#0F4A3E;max-width:620px">Registration windows, placement tests and community dates for the school year.</p>
+        </div>
+      </section>
+      <section style="max-width:1320px;margin:0 auto;padding:56px 24px 80px">
+        <div style="display:flex;gap:9px;flex-wrap:wrap">
+          <sc-for list="{{ eventCats }}" as="c" hint-placeholder-count="4">
+            <button type="button" onClick="{{ c.onClick }}" style="padding:11px 20px;border-radius:99px;border:2px solid #14162B;background:{{ c.bg }};color:{{ c.color }};font-weight:800;font-size:14.5px;cursor:pointer">{{ c.label }}</button>
+          </sc-for>
+        </div>
+        <ul style="list-style:none;margin:32px 0 0;padding:0;display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ visibleEvents }}" as="e" hint-placeholder-count="6">
+            <li style="display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:center;background:#fff;border:2px solid #14162B;border-radius:26px;padding:22px 26px;box-shadow:5px 5px 0 #14162B">
+              <div style="text-align:center;background:{{ e.bg }};border:2px solid #14162B;border-radius:18px;padding:12px 8px">
+                <div style="font-family:'Gabarito',sans-serif;font-size:24px;font-weight:900;line-height:1">{{ e.day }}</div>
+                <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-top:5px">{{ e.month }}</div>
+              </div>
+              <div>
+                <h3 style="font-size:23px;font-weight:800;line-height:1.2">{{ e.title }}</h3>
+                <p style="margin-top:7px;font-size:15px;color:#3D3F55;line-height:1.5">{{ e.body }}</p>
+              </div>
+              <span style="padding:8px 16px;border-radius:99px;background:#FBF6EC;border:2px solid #14162B;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">{{ e.cat }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+    </sc-if>
+
+    <!-- ================= NEWS ================= -->
+    <sc-if value="{{ isNews }}" hint-placeholder-val="{{ true }}">
+      <section style="border-bottom:2px solid #14162B;background:#101C4A;padding:60px 24px 66px">
+        <div style="max-width:1320px;margin:0 auto">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFC53D">News</span>
+          <h1 style="font-size:clamp(40px,5.6vw,76px);font-weight:900;line-height:.96;margin-top:12px;color:#fff">From the school<span style="color:#FFC53D">.</span></h1>
+        </div>
+      </section>
+      <section style="max-width:1320px;margin:0 auto;padding:56px 24px 80px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px">
+          <sc-for list="{{ news }}" as="n" hint-placeholder-count="3">
+            <article style="background:#fff;border:2px solid #14162B;border-radius:28px;overflow:hidden;box-shadow:6px 6px 0 #14162B;display:flex;flex-direction:column">
+              <div style="height:190px;background:repeating-linear-gradient(135deg,#E5DCC8 0 11px,#F1E9D9 11px 22px);border-bottom:2px solid #14162B;display:flex;align-items:center;justify-content:center"><span style="font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B">Featured image</span></div>
+              <div style="padding:26px;display:flex;flex-direction:column;flex:1">
+                <span style="font:700 12px/1 ui-monospace,monospace;color:#2F5FD0;letter-spacing:.08em">{{ n.date }}</span>
+                <h2 style="font-size:23px;font-weight:800;margin-top:10px;line-height:1.2">{{ n.title }}</h2>
+                <p style="margin-top:11px;font-size:15.5px;line-height:1.55;color:#3D3F55">{{ n.excerpt }}</p>
+                <span style="margin-top:auto;padding-top:18px;font-weight:800;color:#2F5FD0;font-size:15px">Read more →</span>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= YEARBOOKS ================= -->
+    <sc-if value="{{ isYearbooks }}" hint-placeholder-val="{{ true }}">
+      <section style="border-bottom:2px solid #14162B;background:#FF6B4A;padding:60px 24px 66px">
+        <div style="max-width:1320px;margin:0 auto">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFC53D">Archive</span>
+          <h1 style="font-size:clamp(40px,5.6vw,76px);font-weight:900;line-height:.96;margin-top:12px;color:#fff">Yearbooks<span style="color:#FFC53D">.</span></h1>
+          <p style="margin-top:18px;font-size:18px;color:#FFEDE7;max-width:560px">Every class, every year. Flip through past editions.</p>
+        </div>
+      </section>
+      <section style="max-width:1320px;margin:0 auto;padding:56px 24px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px">
+        <sc-for list="{{ yearbooks }}" as="y" hint-placeholder-count="2">
+          <article style="background:{{ y.bg }};border:2px solid #14162B;border-radius:28px;padding:28px;box-shadow:6px 6px 0 #14162B">
+            <div style="height:250px;background:repeating-linear-gradient(135deg,rgba(20,22,43,.12) 0 11px,rgba(20,22,43,.04) 11px 22px);border:2px solid #14162B;border-radius:18px;display:flex;align-items:center;justify-content:center"><span style="font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#14162B">Cover</span></div>
+            <h2 style="font-size:26px;font-weight:900;margin-top:20px">{{ y.title }}</h2>
+            <p style="margin-top:8px;font-size:15px;color:#2C2A20">{{ y.note }}</p>
+            <span style="display:inline-block;margin-top:16px;padding:10px 20px;border-radius:99px;background:#14162B;color:#FBF6EC;font-weight:800;font-size:14px">View yearbook</span>
+          </article>
+        </sc-for>
+      </section>
+    </sc-if>
+
+    <!-- ================= STORE ================= -->
+    <sc-if value="{{ isStore }}" hint-placeholder-val="{{ true }}">
+      <section style="border-bottom:2px solid #14162B;background:#FFC53D;padding:60px 24px 66px">
+        <div style="max-width:1320px;margin:0 auto">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2F5FD0">Store</span>
+          <h1 style="font-size:clamp(40px,5.6vw,76px);font-weight:900;line-height:.96;margin-top:12px">Uniforms &amp;<br />spirit wear<span style="color:#2F5FD0">.</span></h1>
+          <p style="margin-top:18px;font-size:18px;color:#2C2A20;max-width:560px">Everything on the supply list, plus gear for game day.</p>
+        </div>
+      </section>
+      <section style="max-width:1320px;margin:0 auto;padding:56px 24px 80px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px">
+          <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+            <article style="background:#fff;border:2px solid #14162B;border-radius:26px;overflow:hidden;box-shadow:5px 5px 0 #14162B">
+              <div style="height:210px;background:repeating-linear-gradient(135deg,#E5DCC8 0 11px,#F1E9D9 11px 22px);border-bottom:2px solid #14162B;display:flex;align-items:center;justify-content:center"><span style="font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B">Product shot</span></div>
+              <div style="padding:20px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+                <div>
+                  <h3 style="font-size:18px;font-weight:800;line-height:1.2">{{ p.name }}</h3>
+                  <p style="font-size:13px;color:#6B6B7B;margin-top:5px">{{ p.cat }}</p>
+                </div>
+                <span style="font-family:'Gabarito',sans-serif;font-weight:900;font-size:18px;white-space:nowrap">{{ p.price }}</span>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+        <p style="margin-top:28px;font:600 13px/1.6 ui-monospace,monospace;color:#6B6B7B;background:#fff;border:2px dashed rgba(20,22,43,.35);border-radius:20px;padding:18px 20px">Product photography and confirmed pricing to be supplied by the school office.</p>
+      </section>
+    </sc-if>
+
+    <!-- ================= GIVE ================= -->
+    <sc-if value="{{ isGive }}" hint-placeholder-val="{{ true }}">
+      <section style="border-bottom:2px solid #14162B;background:#101C4A;padding:64px 24px 72px">
+        <div style="max-width:1320px;margin:0 auto">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFC53D">12 Stones Fund</span>
+          <h1 style="font-size:clamp(40px,5.8vw,80px);font-weight:900;line-height:.95;margin-top:14px;color:#fff">Building human<br />monuments for<br />eternity<span style="color:#FFC53D">.</span></h1>
+          <p style="margin-top:22px;font-size:19px;line-height:1.55;color:#C3CBE4;max-width:640px">The 12 Stones Fund is a contributor-funded initiative dedicated to empowering Seventh-day Adventist education at Brooklyn SDA School — tuition assistance, classroom resources and the building itself.</p>
+          <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
+            <a href="#contact" onClick="{{ goContact }}" style="padding:15px 28px;border-radius:99px;background:#FFC53D;border:2px solid #14162B;box-shadow:5px 5px 0 #000;color:#14162B;font-weight:800;font-size:16px" style-hover="transform:translate(3px,3px);box-shadow:2px 2px 0 #000">Donate now</a>
+            <a href="#contact" onClick="{{ goContact }}" style="padding:15px 28px;border-radius:99px;border:2px solid #FBF6EC;color:#FBF6EC;font-weight:800;font-size:16px" style-hover="background:#FBF6EC;color:#101C4A">Talk to the school</a>
+          </div>
+        </div>
+      </section>
+      <section style="max-width:1320px;margin:0 auto;padding:70px 24px">
+        <h2 style="font-size:clamp(30px,3.6vw,46px);font-weight:900;line-height:1.02">Where a gift goes<span style="color:#FF6B4A">.</span></h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px">
+          <sc-for list="{{ giving }}" as="g" hint-placeholder-count="3">
+            <article style="background:{{ g.bg }};border:2px solid #14162B;border-radius:28px;padding:30px;box-shadow:6px 6px 0 #14162B;min-height:250px;display:flex;flex-direction:column">
+              <span style="font-family:'Gabarito',sans-serif;font-size:38px;font-weight:900;line-height:1">{{ g.amount }}</span>
+              <h3 style="font-size:24px;font-weight:900;margin-top:12px;line-height:1.15">{{ g.title }}</h3>
+              <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:#2C2A20">{{ g.body }}</p>
+            </article>
+          </sc-for>
+        </div>
+        <p style="margin-top:24px;font:600 13px/1.6 ui-monospace,monospace;color:#6B6B7B;background:#fff;border:2px dashed rgba(20,22,43,.35);border-radius:20px;padding:18px 20px">Giving levels shown are illustrative. The school office should confirm real tiers and the donation processor before launch.</p>
+      </section>
+    </sc-if>
+
+    <!-- ================= PORTALS ================= -->
+    <sc-if value="{{ isPortals }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1320px;margin:0 auto;padding:70px 24px 90px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2F5FD0">Portals</span>
+        <h1 style="font-size:clamp(40px,5.4vw,72px);font-weight:900;line-height:.98;margin-top:12px">Sign in<span style="color:#FF6B4A">.</span></h1>
+        <p style="margin-top:16px;font-size:18px;color:#3D3F55;max-width:600px">Secure portals for students, parents and the school board. Coming soon.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:38px">
+          <sc-for list="{{ portals }}" as="p" hint-placeholder-count="3">
+            <article style="background:{{ p.bg }};border:2px solid #14162B;border-radius:28px;padding:32px;box-shadow:6px 6px 0 #14162B;min-height:260px;display:flex;flex-direction:column">
+              <span style="align-self:flex-start;padding:6px 13px;border-radius:99px;background:#14162B;color:#FBF6EC;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase">Coming soon</span>
+              <h2 style="font-size:30px;font-weight:900;margin-top:18px;line-height:1.1">{{ p.title }}</h2>
+              <p style="margin-top:11px;font-size:15.5px;line-height:1.55;color:#2C2A20">{{ p.body }}</p>
+              <span style="margin-top:auto;padding:12px 22px;border-radius:99px;border:2px solid rgba(20,22,43,.35);color:#6B6B7B;font-weight:800;font-size:14px;align-self:flex-start">Sign in unavailable</span>
+            </article>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= CONTACT ================= -->
+    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1320px;margin:0 auto;padding:70px 24px 90px;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start">
+        <div>
+          <span style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2F5FD0">Contact</span>
+          <h1 style="font-size:clamp(40px,5.4vw,72px);font-weight:900;line-height:.98;margin-top:12px">Say hello<span style="color:#FF6B4A">.</span></h1>
+          <p style="margin-top:16px;font-size:18px;color:#3D3F55;line-height:1.6">Connect with Brooklyn Seventh-day Adventist School in a number of different ways.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:30px">
+            <div style="background:#FFC53D;border:2px solid #14162B;border-radius:24px;padding:24px;box-shadow:5px 5px 0 #14162B">
+              <div style="font:700 11px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">Visit</div>
+              <div style="font-family:'Gabarito',sans-serif;font-size:22px;font-weight:800;margin-top:8px;line-height:1.3">1260 Ocean Ave<br />Brooklyn, NY 11230-7401</div>
+            </div>
+            <div style="background:#2FBF9B;border:2px solid #14162B;border-radius:24px;padding:24px;box-shadow:5px 5px 0 #14162B">
+              <div style="font:700 11px/1 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase">Call &amp; email</div>
+              <a href="tel:+17188591313" style="display:block;font-family:'Gabarito',sans-serif;font-size:26px;font-weight:900;margin-top:8px;color:#14162B" style-hover="color:#fff">(718) 859-1313</a>
+              <a href="mailto:admissions@bsda.school" style="display:block;margin-top:6px;font-weight:700;color:#0F4A3E" style-hover="color:#14162B">admissions@bsda.school</a>
+              <a href="mailto:principal@bsda.school" style="display:block;margin-top:3px;font-weight:700;color:#0F4A3E" style-hover="color:#14162B">principal@bsda.school</a>
+            </div>
+          </div>
+        </div>
+        <form onSubmit="{{ onContact }}" style="background:#fff;border:2px solid #14162B;border-radius:30px;box-shadow:6px 6px 0 #14162B;padding:36px">
+          <h2 style="font-size:30px;font-weight:900">Send us a message</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px">
+            <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:14px;font-weight:700">Your name *</span><input type="text" required="{{ true }}" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" /></label>
+            <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:14px;font-weight:700">Your email *</span><input type="email" required="{{ true }}" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" /></label>
+            <label style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1"><span style="font-size:14px;font-weight:700">Subject</span><input type="text" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px" /></label>
+            <label style="display:flex;flex-direction:column;gap:7px;grid-column:1 / -1"><span style="font-size:14px;font-weight:700">Your message</span><textarea rows="6" style="padding:13px 16px;border-radius:14px;border:2px solid rgba(20,22,43,.35);background:#FBF6EC;font-size:16px;resize:vertical"></textarea></label>
+          </div>
+          <button type="submit" style="margin-top:24px;padding:15px 32px;border-radius:99px;border:2px solid #14162B;background:#2F5FD0;color:#fff;font-weight:800;font-size:16px;box-shadow:4px 4px 0 #14162B;cursor:pointer">Send</button>
+          <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}"><p style="margin-top:16px;font-weight:800;color:#0F7A5F">Thanks — we'll be in touch soon.</p></sc-if>
+        </form>
+      </section>
+    </sc-if>
+
+  </main>
+
+  <div style="background:#FBF6EC;border-top:2px solid #14162B;padding:34px 24px">
+    <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center">
+      <span style="font-family:'Gabarito',sans-serif;font-size:19px;font-weight:800">An accredited institution.</span>
+      <span style="padding:14px 24px;border:2px dashed rgba(20,22,43,.35);border-radius:16px;font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B">Adventist Accreditation Association</span>
+      <span style="padding:14px 24px;border:2px dashed rgba(20,22,43,.35);border-radius:16px;font:600 11px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6B6B7B">MSA CESS</span>
+    </div>
+  </div>
+
+  <footer style="background:#14162B;color:#FBF6EC;padding:64px 24px 34px">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:44px">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="width:52px;height:52px;border-radius:50%;background:#2F5FD0;display:flex;align-items:center;justify-content:center"><img src="assets/logo-white.svg" alt="" style="width:42px;height:42px;display:block" /></span>
+          <span style="font-family:'Gabarito',sans-serif;font-weight:800;font-size:19px;line-height:1.2">Brooklyn Seventh-day<br />Adventist School</span>
+        </div>
+        <p style="margin-top:18px;font-size:15px;line-height:1.6;color:#9A9CB4;max-width:300px">Discover the joy of learning. Pre-K thru 8th Grade in Brooklyn, NY — building character and equipping minds for a brighter future.</p>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-top:18px">
+          <a href="tel:+17188591313" style="color:#FFC53D;font-weight:700;font-size:16px" style-hover="color:#fff">(718) 859-1313</a>
+          <a href="mailto:admissions@bsda.school" style="color:#9A9CB4;font-size:15px" style-hover="color:#fff">admissions@bsda.school</a>
+          <a href="https://www.facebook.com/BrooklynSDAElementary" target="_blank" rel="noopener" style="color:#9A9CB4;font-size:15px" style-hover="color:#fff">Facebook</a>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6C6F8C">Quick links</h3>
+        <ul style="list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ footerLinks }}" as="l" hint-placeholder-count="8">
+            <li><a href="{{ l.href }}" onClick="{{ l.onClick }}" style="color:#DDDEE8;font-size:15.5px;font-weight:500" style-hover="color:#FFC53D">{{ l.label }}</a></li>
+          </sc-for>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6C6F8C">Location</h3>
+        <p style="margin-top:18px;font-size:15.5px;line-height:1.65;color:#DDDEE8">1260 Ocean Ave<br />Brooklyn, NY 11230-7401</p>
+        <div style="margin-top:16px;height:120px;border:2px dashed rgba(255,255,255,.25);border-radius:18px;display:flex;align-items:center;justify-content:center;font:600 10.5px/1 ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#6C6F8C">Map embed</div>
+      </div>
+      <div>
+        <h3 style="font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6C6F8C">Legal</h3>
+        <ul style="list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:10px">
+          <li><a href="#privacy" style="color:#DDDEE8;font-size:15.5px" style-hover="color:#FFC53D">Privacy policy</a></li>
+          <li><a href="#legal" style="color:#DDDEE8;font-size:15.5px" style-hover="color:#FFC53D">Legal notice</a></li>
+          <li><a href="#cookies" style="color:#DDDEE8;font-size:15.5px" style-hover="color:#FFC53D">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="max-width:1320px;margin:44px auto 0;padding-top:24px;border-top:1.5px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13.5px;color:#6C6F8C">
+      <span>© 2026 Brooklyn Seventh-day Adventist School. Operated by the Greater New York Conference of Seventh-day Adventists.</span>
+      <span>1260 Ocean Ave · Brooklyn, NY</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showTicker&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Home&quot;}}">
+class Component extends DCLogic {
+  state = {
+    route: 'home', grade: '3', clubCat: 'All', room: 'stem', evFilter: 'All',
+    step: 0, submitted: false, submittedName: '', contactSent: false,
+    errors: {},
+    form: { firstName:'', lastName:'', dob:'', gradeApplying:'', guardian:'', relationship:'', email:'', phone:'', address:'', currentSchool:'', lastGrade:'', church:'', heard:'', notes:'', agree:false }
+  };
+
+  routes = ['home','about','faculty','admissions','apply','life','events','news','yearbooks','store','give','portals','contact'];
+
+  componentDidMount() {
+    this.onHash();
+    window.addEventListener('hashchange', this.onHash);
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this.onHash); }
+
+  onHash = () => {
+    const h = (window.location.hash || '').replace('#','');
+    if (this.routes.indexOf(h) !== -1) this.setState({ route: h });
+  };
+
+  go = (r) => (e) => {
+    if (e) e.preventDefault();
+    window.location.hash = r;
+    this.setState({ route: r });
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  // ---------- data ----------
+  pillars = [
+    { num:'1', title:'Empowered to Lead', bg:'#DCE4FA', body:'Students take responsibility early — leading worship, mentoring younger grades, and speaking in front of the whole school.', tags:['leadership','worship','mentoring'] },
+    { num:'2', title:'Equipped to Learn', bg:'#FFE3B0', body:'A balanced curriculum of academics, creative arts and physical activity, built on inquiry and critical thinking.', tags:['inquiry','creative arts','academics'] },
+    { num:'3', title:'Encouraged to Serve', bg:'#C6EFE2', body:'Compassion, respect and responsibility, practiced through community service and care for our neighbors.', tags:['service','community','responsibility'] }
+  ];
+  missionTags = ['social development','mental growth','physical fitness','spiritual nurturing'];
+  missionPoints = ['Build characters for Christ','Foster social, mental, physical and spiritual development','Develop a culture of service','Equip students with the skills necessary for high school and beyond'];
+  philosophyPoints = ['develop a personal relationship with God and his fellow men','master the basic academic skills','value labor, physical and mental, as the blessing God intended','cultivate physical fitness, mental ability and moral purity'];
+  principalLetter = [
+    'Welcome to Brooklyn Seventh-day Adventist School. Whether you are a new student or a returning one, our community is ready to embrace you. The love of God permeates every faculty member, staff and student, creating an environment that feels like home.',
+    'Our moral foundation is rooted in the belief that God\u2019s ideal for His children surpasses human comprehension. Our aim is to guide each student toward godliness, nurturing them for excellence and equipping them for a life of service and mastery.',
+    'We provide a quality Christian education that emphasizes critical thinking, enabling our students to thrive in today\u2019s ever-changing world. Our teachers and staff form a professional learning community with a high standard for excellence.',
+    'Inside our classrooms, rigorous academic pursuits take place, complemented by extracurricular clubs, performing arts groups, athletic teams and events. We look forward to partnering with you on this journey.'
+  ];
+  history = [
+    { year:'1938', title:'The foundation', body:'Pastor Gerhart Herwick and parents of the Danish-Norwegian Church opened a school in Bay Ridge \u2014 one classroom in a church basement on 50th Street, with Betty Thogunsen as the first teacher.' },
+    { year:'1962', title:'A brief closing, then a reopening', body:'After years closed, the school reopened under Pastor William Goransson. His wife Dolphy became the first teacher, joined by Jack Mentges, in two basement classrooms.' },
+    { year:'1964', title:'New church, new school', body:'The Italian-American Church merged with the Danish-Norwegian Bay Ridge Church to become the Brooklyn Seventh-day Adventist Church \u2014 the origin of the Brooklyn S.D.A. School.' },
+    { year:'1970', title:'Classroom expansions', body:'Under Pastor Halvard J. Thomsen and principal Joseph Miller the school grew to three classrooms, plus one in Staten Island, then moved to Viking Hall with Nursery/K and grades 1\u20139.' },
+    { year:'1980s', title:'1260 Ocean Avenue', body:'Under Pastor Glen Hixon the current building was purchased, with Yaqub Khan as principal. A grades 1\u20138 program was established at the new site.' },
+    { year:'1998', title:'Pre-K expansion', body:'The Pre-K and Kindergarten program was re-established under the leadership of Dr. Iola Brown.' },
+    { year:'2023', title:'A new principal', body:'Loris LaBorde became principal, bringing years of experience in Adventist schools and plans for growth through fundraising, rebranding and reorganization.' }
+  ];
+  faculty = [
+    { name:'Loris LaBorde', role:'Principal', note:'Leads the school since 2023. Reach the office at principal@bsda.school.' },
+    { name:'Name to come', role:'Pre-K Teacher', note:'Early literacy, numeracy and motor skills.' },
+    { name:'Name to come', role:'Kindergarten Teacher', note:'Reading readiness and classroom routines.' },
+    { name:'Name to come', role:'Grades 1\u20132 Teacher', note:'Foundational reading, writing and math.' },
+    { name:'Name to come', role:'Grades 3\u20134 Teacher', note:'Independent reading and multi-step problem solving.' },
+    { name:'Name to come', role:'Grades 5\u20136 Teacher', note:'Research writing, pre-algebra and lab science.' },
+    { name:'Name to come', role:'Grades 7\u20138 Teacher', note:'Algebra, essay writing and high school preparation.' },
+    { name:'Name to come', role:'Music Enrichment', note:'Choir, instrumental instruction and performances.' },
+    { name:'Name to come', role:'STEM Instructor', note:'Interactive STEM projects, including motorized plane builds.' },
+    { name:'Name to come', role:'Physical Education', note:'Fitness, team sports and after-school athletics.' },
+    { name:'Name to come', role:'Registrar', note:'Applications, records and enrollment paperwork.' },
+    { name:'Name to come', role:'Office Administrator', note:'Tuition, fees and family communication.' }
+  ];
+  admitSteps = [
+    { step:'Step one', title:'Apply', bg:'#DCE4FA', items:['Complete the application form','Pay the $60 application fee (non-refundable)','Meet with administration or the principal, virtually or in person'] },
+    { step:'Step two', title:'Test', bg:'#FFE3B0', items:['Sit the placement test on one of the scheduled dates','Receive the status of your application','If accepted, move on to registration'] },
+    { step:'Step three', title:'Register', bg:'#C6EFE2', items:['Submit all required documents to the office','Late registration in September carries a $50 non-refundable fee','Reserve your grade-level registration day in August'] },
+    { step:'Step four', title:'Enroll & pay', bg:'#FFD3C6', items:['Sign the contract and pay fees','Pay first and last month\u2019s tuition','Receive your acceptance letter, uniform info, supply list and handbook'] }
+  ];
+  documents = ['Transcript release form','Recommendation letters from previous school','Letter verifying church membership','Previous report card','Original birth certificate','Medical records & immunization','NYC support school funding form','Recent photograph','Internet user policy agreement','Media release form','Technology agreement form','Home & school agreement form','Music enrichment application'];
+  testDates = [
+    { date:'Sep 8 & 15', kind:'Placement test' },
+    { date:'Nov 12', kind:'Placement test' },
+    { date:'Jan 21', kind:'Placement test' },
+    { date:'Mar 17', kind:'Placement test' },
+    { date:'May 19', kind:'Placement test' },
+    { date:'Jul 21', kind:'Placement test' },
+    { date:'Aug 19\u201323', kind:'Registration week' }
+  ];
+  events = [
+    { day:'19\u201323', month:'Aug', title:'Registration week', body:'Pre-K & K on the 19th, grades 1\u20132 on the 20th, 3\u20134 on the 21st, 5\u20136 on the 22nd, 7\u20138 on the 23rd.', cat:'Registration', bg:'#DCE4FA' },
+    { day:'08', month:'Sep', title:'Placement test', body:'Second session on September 15. Reserve a slot with the admissions office.', cat:'Placement', bg:'#FFE3B0' },
+    { day:'01\u201331', month:'Oct', title:'Pastor Appreciation Month', body:'A month-long celebration with the Brooklyn Seventh-day Adventist Church. Repeats yearly.', cat:'Community', bg:'#C6EFE2' },
+    { day:'12', month:'Nov', title:'Placement test', body:'Autumn placement session for new applicants.', cat:'Placement', bg:'#FFE3B0' },
+    { day:'21', month:'Jan', title:'Placement test', body:'Winter placement session for new applicants.', cat:'Placement', bg:'#FFE3B0' },
+    { day:'17', month:'Mar', title:'Placement test', body:'Spring placement session for new applicants.', cat:'Placement', bg:'#FFE3B0' },
+    { day:'19', month:'May', title:'Placement test', body:'End-of-year placement session for new applicants.', cat:'Placement', bg:'#FFE3B0' },
+    { day:'21', month:'Jul', title:'Placement test', body:'Summer placement session ahead of registration week.', cat:'Placement', bg:'#FFE3B0' }
+  ];
+  news = [
+    { date:'07.29.24', title:'2024/2025 School Year Calendar Now Available', excerpt:'Check out the new school calendar for Brooklyn Seventh-day Adventist School. We have a lot of amazing things planned for this coming year.' },
+    { date:'06.24.24', title:'Join the Summer Blast Program for an Unforgettable Summer', excerpt:'Our Summer Blast program offers engaging activities for Pre-K to 8th grade students through the summer months.' },
+    { date:'09.18.23', title:'Support our Students\u2019 Futures with the New 12 Stones Fund', excerpt:'With the support of our friends and families, this contributor-funded initiative is dedicated to empowering Seventh-day Adventist education.' }
+  ];
+  dayFull = [
+    { time:'7:45', title:'Arrival', body:'Doors open on Ocean Avenue. Bags down, uniforms checked, friends found.', bg:'#DCE4FA' },
+    { time:'8:15', title:'Morning worship', body:'The whole school gathers to sing and pray. Students lead in rotation.', bg:'#FFE3B0' },
+    { time:'8:45', title:'Math block', body:'Number sense in the lower grades, pre-algebra and algebra upstairs.', bg:'#fff' },
+    { time:'10:15', title:'Recess', body:'Outside on the yard, or the gym when Brooklyn weather says otherwise.', bg:'#C6EFE2' },
+    { time:'10:45', title:'Reading & writing', body:'Guided reading groups, then writing workshop with peer feedback.', bg:'#fff' },
+    { time:'12:00', title:'Lunch', body:'Cafeteria, then a stretch outdoors before the afternoon.', bg:'#FFD3C6' },
+    { time:'12:45', title:'Science & STEM', body:'Lab work and build days \u2014 including motorized planes in the STEM program.', bg:'#DCE4FA' },
+    { time:'1:45', title:'Specials', body:'Music, art or PE, rotating through the week. Choir rehearses here.', bg:'#FFE3B0' },
+    { time:'2:45', title:'Clean-up & dismissal', body:'Classroom reset, homework logged, dismissal at 3:15. After-school runs later.', bg:'#C6EFE2' }
+  ];
+  grades = {
+    'Pre-K': { kicker:'Ages 4\u20135', title:'Play with a purpose', body:'The first year of school is about routine, curiosity and confidence. Days are short, structured and full of hands-on discovery.', moment:'The Pre-K nativity play at the church', learn:['Letters, sounds and name writing','Counting, sorting and patterns','Fine motor skills and early art','Bible stories and songs'] },
+    'K': { kicker:'Ages 5\u20136', title:'Getting ready to read', body:'Kindergarten builds the habits that carry through the rest of school \u2014 listening, sharing, and sounding out the first real words.', moment:'Reading your first book out loud to the class', learn:['Phonics and sight words','Numbers to 100','Classroom routines and responsibility','Morning worship participation'] },
+    '1': { kicker:'Grade 1', title:'Reading takes off', body:'Students move from decoding to reading for meaning, and from counting to real arithmetic.', moment:'The first chapter book finished alone', learn:['Fluent reading and short writing','Addition and subtraction facts','Observing and recording in science','Memory verses'] },
+    '2': { kicker:'Grade 2', title:'Writing with a voice', body:'Sentences become paragraphs. Students start explaining their thinking, not just giving answers.', moment:'Publishing a class storybook', learn:['Paragraph writing','Place value and time','Community and neighborhoods','Service project participation'] },
+    '3': { kicker:'Grade 3', title:'Thinking it through', body:'Third grade is the pivot from learning to read to reading to learn, with multiplication and real research.', moment:'The first STEM build day', learn:['Multiplication and division','Research and note-taking','Cursive handwriting','Introduction to STEM projects'] },
+    '4': { kicker:'Grade 4', title:'Making an argument', body:'Students learn to back up what they say \u2014 in writing, in science, and in class discussion.', moment:'Presenting a project to the whole class', learn:['Fractions and measurement','Persuasive and expository writing','New York State history','Choir and instrumental music'] },
+    '5': { kicker:'Grade 5', title:'Owning the work', body:'Longer assignments, real deadlines, and the first taste of managing your own schedule.', moment:'Leading morning worship', learn:['Decimals, ratios and data','Multi-source research writing','Lab science and experiments','Leadership in worship and clubs'] },
+    '6': { kicker:'Grade 6', title:'Stepping up', body:'Middle school habits arrive: notebooks, study skills and accountability for your own learning.', moment:'Joining a competitive team or club', learn:['Pre-algebra','Literary analysis','Earth and life science','Community service hours'] },
+    '7': { kicker:'Grade 7', title:'Building the record', body:'Grades start to matter for what comes next. Students learn to study, revise and ask for help.', moment:'A service trip with the class', learn:['Algebra foundations','Essay structure and revision','Physical and life science','Peer mentoring of younger grades'] },
+    '8': { kicker:'Grade 8', title:'Ready for high school', body:'The final year focuses on independence, faith and preparation for academy or high school.', moment:'Graduation at the church', learn:['Algebra I','Research papers and presentations','High school placement preparation','Leading school-wide service initiatives'] }
+  };
+  gradeOrder = ['Pre-K','K','1','2','3','4','5','6','7','8'];
+  clubs = [
+    { name:'Choir', cat:'Arts', bg:'#FFE3B0', body:'The school choir sings at worship, church services and community events.', when:'Rehearses weekly \u00b7 choir dues apply' },
+    { name:'Music Enrichment', cat:'Arts', bg:'#FFE3B0', body:'Instrumental instruction with a separate application form and class fee.', when:'Application required' },
+    { name:'Art Club', cat:'Arts', bg:'#FFD3C6', body:'Drawing, painting and mixed media, with work shown on the student wall.', when:'After school' },
+    { name:'STEM Club', cat:'STEM', bg:'#DCE4FA', body:'Hands-on builds and experiments \u2014 including motorized planes.', when:'Weekly \u00b7 STEM class fee applies' },
+    { name:'Yearbook Club', cat:'STEM', bg:'#DCE4FA', body:'Photography, layout and interviews for the annual yearbook.', when:'Fall through spring' },
+    { name:'Basketball', cat:'Sports', bg:'#C6EFE2', body:'Practices and games in the gym for upper-grade students.', when:'Season play \u00b7 sports dues apply' },
+    { name:'Intramurals', cat:'Sports', bg:'#C6EFE2', body:'Open games and fitness for all grades during and after school.', when:'Year-round' },
+    { name:'Community Service Corps', cat:'Service', bg:'#FFF0C2', body:'Neighborhood service projects that put compassion and responsibility into practice.', when:'Monthly projects' },
+    { name:'Pathfinders & Adventurers', cat:'Service', bg:'#FFF0C2', body:'Church-affiliated clubs for outdoor skills, service and leadership.', when:'With the Brooklyn SDA Church' }
+  ];
+  wall = [
+    { caption:'Building motorized planes as part of an interactive STEM program.', tilt:'-1.2deg', h:'190px', span:1 },
+    { caption:'Our students are an important part of the Brooklyn Seventh-day Adventist Church.', tilt:'1deg', h:'240px', span:1 },
+    { caption:'Nativity play at the Brooklyn Seventh-day Adventist Church.', tilt:'-.8deg', h:'190px', span:1 },
+    { caption:'Field day on the yard.', tilt:'1.4deg', h:'240px', span:1 },
+    { caption:'Choir performance.', tilt:'.9deg', h:'240px', span:1 },
+    { caption:'Science fair boards, grades 5\u20138.', tilt:'-1.4deg', h:'190px', span:1 },
+    { caption:'Community service day in the neighborhood.', tilt:'.6deg', h:'190px', span:1 },
+    { caption:'Graduation, grade 8.', tilt:'-1deg', h:'240px', span:1 }
+  ];
+  roomList = [
+    { id:'office', name:'Main Office', floor:'Ground floor', span:2, body:'Admissions, tuition and records. Stop here first \u2014 the registrar can answer most questions about paperwork and fees.' },
+    { id:'prek', name:'Pre-K Room', floor:'Ground floor', span:1, body:'A dedicated early-childhood classroom with its own quiet corner, reading rug and art table.' },
+    { id:'k12', name:'Grades 1\u20132', floor:'Ground floor', span:1, body:'Foundational reading, writing and math for our youngest full-day students.' },
+    { id:'g34', name:'Grades 3\u20134', floor:'Second floor', span:1, body:'Where reading to learn begins \u2014 research corners, multiplication walls and project tables.' },
+    { id:'g56', name:'Grades 5\u20136', floor:'Second floor', span:1, body:'Pre-algebra, lab science and the first long-form research writing.' },
+    { id:'g78', name:'Grades 7\u20138', floor:'Second floor', span:1, body:'Algebra, essay writing and high school preparation for our graduating classes.' },
+    { id:'stem', name:'STEM Lab', floor:'Second floor', span:1, body:'Build days happen here. Motorized planes, circuits and experiments across grades 3 through 8.' },
+    { id:'library', name:'Library', floor:'Second floor', span:1, body:'Guided reading groups, independent reading and research time.' },
+    { id:'music', name:'Music Room', floor:'Ground floor', span:1, body:'Choir rehearsal and the Music Enrichment program \u2014 instruments, theory and performance prep.' },
+    { id:'gym', name:'Gym & Fellowship Hall', floor:'Lower level', span:2, body:'PE, basketball, indoor recess, assemblies and school-wide worship when the whole school gathers.' },
+    { id:'cafeteria', name:'Cafeteria', floor:'Lower level', span:1, body:'Lunch service and after-school program home base.' },
+    { id:'yard', name:'Play Yard', floor:'Outdoors', span:1, body:'Morning recess and field day. Fenced and supervised.' }
+  ];
+  yearbooks = [
+    { title:'Yearbook 2022\u20132023', note:'Principal transition year, STEM program expansion and spring graduation.', bg:'#DCE4FA' },
+    { title:'Yearbook 2021\u20132022', note:'A full year back together \u2014 choir, sports and service projects.', bg:'#FFE3B0' }
+  ];
+  products = [
+    { name:'Uniform Polo', cat:'Uniform', price:'$\u2014' },
+    { name:'School Cardigan', cat:'Uniform', price:'$\u2014' },
+    { name:'Gym T-Shirt', cat:'PE', price:'$\u2014' },
+    { name:'Gym Shorts', cat:'PE', price:'$\u2014' },
+    { name:'Spirit Hoodie', cat:'Spirit wear', price:'$\u2014' },
+    { name:'Water Bottle', cat:'Spirit wear', price:'$\u2014' },
+    { name:'Tote Bag', cat:'Spirit wear', price:'$\u2014' },
+    { name:'Yearbook Pre-Order', cat:'Archive', price:'$\u2014' }
+  ];
+  giving = [
+    { amount:'$25', title:'Classroom supplies', bg:'#FFE3B0', body:'Books, materials and the small things that make a classroom work all year.' },
+    { amount:'$100', title:'STEM program', bg:'#DCE4FA', body:'Kits, components and build materials for hands-on science across the grades.' },
+    { amount:'$500', title:'Tuition assistance', bg:'#C6EFE2', body:'Direct support so a Brooklyn family can choose Adventist education for their child.' }
+  ];
+  portals = [
+    { title:'Students', bg:'#DCE4FA', body:'Assignments, grades and class resources in one place.' },
+    { title:'Parents', bg:'#FFE3B0', body:'Attendance, report cards, tuition balance and school communication.' },
+    { title:'School Board', bg:'#C6EFE2', body:'Board documents, meeting minutes and governance resources.' }
+  ];
+
+  // ---------- form ----------
+  required = {
+    0: { firstName:'Student first name is required.', lastName:'Student last name is required.', dob:'Please enter a date of birth.', gradeApplying:'Choose the grade you are applying for.' },
+    1: { guardian:'Please enter a parent or guardian name.', relationship:'Select a relationship.', email:'Please enter a valid email address.', phone:'Please enter a phone number.', address:'Please enter a home address.' },
+    2: { currentSchool:'Enter a school name, or write “none”.' },
+    3: { agree:'Please confirm before submitting.' }
+  };
+
+  setField = (k) => (e) => {
+    const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const errors = Object.assign({}, this.state.errors);
+    delete errors[k];
+    this.setState({ form: Object.assign({}, this.state.form, { [k]: v }), errors: errors });
+  };
+
+  validate = (step) => {
+    const rules = this.required[step] || {};
+    const errors = {};
+    Object.keys(rules).forEach((k) => {
+      const v = this.state.form[k];
+      if (k === 'agree') { if (!v) errors[k] = rules[k]; return; }
+      if (!String(v || '').trim()) { errors[k] = rules[k]; return; }
+      if (k === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) errors[k] = rules[k];
+      if (k === 'phone' && String(v).replace(/\D/g,'').length < 10) errors[k] = 'Please enter a 10-digit phone number.';
+    });
+    this.setState({ errors: errors });
+    return Object.keys(errors).length === 0;
+  };
+
+  onNext = () => { if (this.validate(this.state.step)) this.setState({ step: Math.min(3, this.state.step + 1) }); };
+  onBack = () => this.setState({ step: Math.max(0, this.state.step - 1), errors: {} });
+  onSubmit = (e) => {
+    e.preventDefault();
+    if (!this.validate(3)) return;
+    this.setState({ submitted: true, submittedName: this.state.form.guardian || this.state.form.firstName });
+  };
+  onReset = () => this.setState({ submitted:false, step:0, errors:{}, form: { firstName:'', lastName:'', dob:'', gradeApplying:'', guardian:'', relationship:'', email:'', phone:'', address:'', currentSchool:'', lastGrade:'', church:'', heard:'', notes:'', agree:false } });
+  onContact = (e) => { e.preventDefault(); this.setState({ contactSent: true }); };
+
+  renderVals() {
+    const r = this.state.route;
+    const nav = [
+      ['About','about'], ['Admissions','admissions'], ['Student Life','life'], ['Events','events'], ['News','news'], ['Give','give']
+    ];
+    const grade = this.grades[this.state.grade] || this.grades['3'];
+    const ticker = ['Empowered to Lead','Equipped to Learn','Encouraged to Serve','Pre-K through Grade 8','Brooklyn since 1938'];
+    const clubCat = this.state.clubCat;
+    const evFilter = this.state.evFilter;
+    const room = this.roomList.filter((x) => x.id === this.state.room)[0] || this.roomList[0];
+    const f = {};
+    const fieldKeys = ['firstName','lastName','dob','gradeApplying','guardian','relationship','email','phone','address','currentSchool','lastGrade','church','heard','notes','agree'];
+    fieldKeys.forEach((k) => { f[k] = { value: this.state.form[k], onChange: this.setField(k), error: this.state.errors[k] || '' }; });
+
+    const sum = (label, v) => ({ label: label, value: v || '—' });
+
+    return {
+      // routing
+      isHome: r === 'home', isAbout: r === 'about', isFaculty: r === 'faculty', isAdmissions: r === 'admissions',
+      isApply: r === 'apply', isLife: r === 'life', isEvents: r === 'events', isNews: r === 'news',
+      isYearbooks: r === 'yearbooks', isStore: r === 'store', isGive: r === 'give', isPortals: r === 'portals', isContact: r === 'contact',
+      goHome: this.go('home'), goAbout: this.go('about'), goFaculty: this.go('faculty'), goAdmissions: this.go('admissions'),
+      goApply: this.go('apply'), goLife: this.go('life'), goEvents: this.go('events'), goNews: this.go('news'),
+      goGive: this.go('give'), goPortals: this.go('portals'), goContact: this.go('contact'),
+
+      navItems: nav.map(([label, key]) => ({
+        label: label, href: '#' + key, onClick: this.go(key),
+        bg: r === key ? '#14162B' : 'transparent',
+        color: r === key ? '#FBF6EC' : '#14162B'
+      })),
+      footerLinks: [['About','about'],['Faculty & Staff','faculty'],['Admissions','admissions'],['Enrollment form','apply'],['Student life','life'],['Events','events'],['News','news'],['12 Stones Fund','give'],['Store','store'],['Yearbooks','yearbooks'],['Portals','portals'],['Contact','contact']]
+        .map(([label, key]) => ({ label: label, href: '#' + key, onClick: this.go(key) })),
+
+      tickerOn: this.props.showTicker !== false,
+      tickerRun: ticker.concat(ticker).map((t, i) => ({ text: t, key: i })),
+
+      pillars: this.pillars.map((p) => Object.assign({}, p, { tags: p.tags.map((t) => ({ label: t })) })),
+      missionTags: this.missionTags.map((m) => ({ label: m })),
+      missionPoints: this.missionPoints.map((m) => ({ label: m })),
+      philosophyPoints: this.philosophyPoints.map((p) => ({ label: p })),
+      principalLetter: this.principalLetter.map((t) => ({ text: t })),
+      history: this.history,
+      faculty: this.faculty,
+      admitSteps: this.admitSteps.map((s) => Object.assign({}, s, { items: s.items.map((i) => ({ label: i })) })),
+      documents: this.documents.map((d) => ({ label: d })),
+      testDates: this.testDates,
+      dayRail: this.dayFull.slice(0, 6),
+      dayFull: this.dayFull,
+      news: this.news,
+      homeNews: this.news.slice(0, 2),
+      homeEvents: this.events.slice(0, 3).map((e) => ({ day: e.day, month: e.month, title: e.title, meta: e.cat })),
+      yearbooks: this.yearbooks,
+      products: this.products,
+      giving: this.giving,
+      portals: this.portals,
+      wall: this.wall,
+
+      gradeTabs: this.gradeOrder.map((g) => ({
+        label: g === 'Pre-K' || g === 'K' ? g : 'Grade ' + g,
+        onClick: () => this.setState({ grade: g }),
+        bg: this.state.grade === g ? '#FFC53D' : 'transparent',
+        color: this.state.grade === g ? '#14162B' : '#FBF6EC'
+      })),
+      activeGrade: Object.assign({}, grade, { learn: grade.learn.map((l) => ({ label: l })) }),
+
+      clubCats: ['All','Arts','STEM','Sports','Service'].map((c) => ({
+        label: c, onClick: () => this.setState({ clubCat: c }),
+        bg: clubCat === c ? '#14162B' : 'transparent',
+        color: clubCat === c ? '#FBF6EC' : '#14162B'
+      })),
+      visibleClubs: this.clubs.filter((c) => clubCat === 'All' || c.cat === clubCat),
+
+      eventCats: ['All','Registration','Placement','Community'].map((c) => ({
+        label: c, onClick: () => this.setState({ evFilter: c }),
+        bg: evFilter === c ? '#14162B' : 'transparent',
+        color: evFilter === c ? '#FBF6EC' : '#14162B'
+      })),
+      visibleEvents: this.events.filter((e) => evFilter === 'All' || e.cat === evFilter),
+
+      rooms: this.roomList.map((x) => Object.assign({}, x, {
+        onClick: () => this.setState({ room: x.id }),
+        bg: this.state.room === x.id ? '#2F5FD0' : '#FBF6EC',
+        color: this.state.room === x.id ? '#FFFFFF' : '#14162B'
+      })),
+      activeRoom: room,
+
+      // form
+      f: f,
+      gradeOptions: this.gradeOrder.map((g) => ({ label: g === 'Pre-K' || g === 'K' ? g : 'Grade ' + g })),
+      stepTabs: ['Student','Guardian','School & church','Review'].map((label, i) => ({
+        n: i + 1, label: label,
+        bg: this.state.step === i ? '#FFC53D' : (this.state.step > i ? '#C6EFE2' : 'transparent'),
+        color: '#14162B'
+      })),
+      step0: this.state.step === 0, step1: this.state.step === 1, step2: this.state.step === 2, step3: this.state.step === 3,
+      atFirstStep: this.state.step === 0,
+      backOpacity: this.state.step === 0 ? 0.35 : 1,
+      notLastStep: this.state.step < 3,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      submittedName: this.state.submittedName,
+      summary: [
+        sum('Student', (this.state.form.firstName + ' ' + this.state.form.lastName).trim()),
+        sum('Date of birth', this.state.form.dob),
+        sum('Grade applying for', this.state.form.gradeApplying),
+        sum('Guardian', this.state.form.guardian),
+        sum('Relationship', this.state.form.relationship),
+        sum('Email', this.state.form.email),
+        sum('Phone', this.state.form.phone),
+        sum('Address', this.state.form.address),
+        sum('Current school', this.state.form.currentSchool),
+        sum('Home church', this.state.form.church)
+      ],
+      onNext: this.onNext, onBack: this.onBack, onSubmit: this.onSubmit, onReset: this.onReset,
+      onContact: this.onContact, contactSent: this.state.contactSent
+    };
+  }
+}
+</script>
+</body>
+</html>
