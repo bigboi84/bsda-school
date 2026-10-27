@@ -104,9 +104,6 @@ class Component extends DCLogic {
     window.addEventListener('hashchange', this.onHash);
     this._bar = setTimeout(() => { this.state.barReady = true; this.updateLive(); }, 260);
     this.startCount();
-    this._auto = setInterval(() => {
-      if (this.state.route === 'home' && !this.state.menuOpen) this.setState({ slide: (this.state.slide + 1) % this.slides.length });
-    }, 7000);
   }
   componentWillUnmount() {
     window.removeEventListener('hashchange', this.onHash);
@@ -165,6 +162,59 @@ class Component extends DCLogic {
       body:'Compassion, respect and responsibility \u2014 practiced through neighborhood service projects, church partnership and care for the people around us in Brooklyn.',
       cta:'Our mission', ctaKey:'about' }
   ];
+
+  // ---------- homepage ----------
+  // asset file names do not match their content; these alts describe what each photo really shows
+  heroPhotos = [
+    { img:'assets/students-worship.jpg', alt:'Students in uniform leading worship', pos:'50% 40%' },
+    { img:'assets/classroom.jpg', alt:'Kindergarten class with their teacher', pos:'50% 60%' },
+    { img:'assets/class-kindergarten.jpg', alt:'Students carolling in the neighborhood', pos:'40% 40%' },
+    { img:'assets/building-front.jpg', alt:'The school at 1260 Ocean Avenue', pos:'50% 50%' }
+  ];
+  heroWords = ['grow in faith', 'dream bigger', 'build their future', 'serve others'];
+  marquee = ['Christ-centered', 'Pre-K to Grade 8', 'STEM & robotics', 'Music & choir', 'Regents in middle school', 'After-school until 6:15', 'Accredited', 'Flatbush since 1938'];
+  proof = [
+    { n:60, suffix:'%', label:'ELA proficiency', sub:'New York State average: 48% (2025–26).', bar:'#8CC63F' },
+    { n:100, suffix:'%', label:'High school acceptance', sub:'Our graduates get in.', bar:'#4A6FD0' },
+    { n:11, suffix:' of 12', label:'Seventh graders', sub:'passed the English Regents, a high-school exam, in June 2026.', bar:'#FFD24A' },
+    { n:1938, static:true, suffix:'', label:'Serving Brooklyn since', sub:'Generations of Christian education in Flatbush.', bar:'#131A2E' }
+  ];
+  why = [
+    { kicker:'Faith', title:'Faith at the center', body:'Daily worship, Bible class and weeks of prayer help every child know Jesus personally and grow in character.', img:'assets/students-worship.jpg', alt:'Students in uniform leading worship with microphones', key:'about', cta:'Our mission', accent:'#4A6FD0' },
+    { kicker:'Excellence', title:'Results you can see', body:'English scores above the New York State average, and seventh graders already passing high-school Regents exams.', img:'assets/students-service.jpg', alt:'Elementary students at their desks', key:'academics', cta:'Academics', accent:'#8CC63F' },
+    { kicker:'Community', title:'A day that works for families', body:'After-school program Monday to Thursday until 6:15 PM, with homework help, test prep, robotics and coding.', img:'assets/building-front.jpg', alt:'The school entrance at 1260 Ocean Avenue', key:'academics', cta:'After-school program', accent:'#FFD24A' }
+  ];
+  bands = [
+    { grades:'Pre-K & K', title:'Where little minds grow', body:'Phonics, early math, Bible stories and hands-on discovery in a warm, Christ-centered classroom.', img:'assets/classroom.jpg', alt:'Kindergarten class with their teacher', bg:'#FFD24A', color:'#2E2306', key:'academics' },
+    { grades:'Grades 1–4', title:'Confident readers & thinkers', body:'Strong foundations in reading, writing and math, plus music, art, PE and STEM.', img:'assets/students-service.jpg', alt:'Elementary students in their classroom', bg:'#4A6FD0', color:'#ffffff', key:'life' },
+    { grades:'Grades 5–8', title:'Ready for high school', body:'Lab science, Algebra I and Regents exams, robotics, leadership and service before graduation.', img:'assets/class-kindergarten.jpg', alt:'Students carolling and handing out gifts in the neighborhood', bg:'#8CC63F', color:'#16240A', key:'life' }
+  ];
+  growth = [
+    { subject:'English Language Arts', from:47.5, to:60, state:48, delta:'+12.5 points in four years', note:'12 points above New York State' },
+    { subject:'Mathematics', from:45, to:57, state:57, delta:'+12 points in four years', note:'Matching New York State' },
+    { subject:'Science', from:26, to:50, state:47, delta:'+24 points in one year', note:'3 points above New York State' }
+  ];
+  joinSteps = [
+    { n:'01', title:'Apply', body:'Fill in the application online or on paper.' },
+    { n:'02', title:'Meet & test', body:'Meet the principal, in person or by video, and sit a placement test.' },
+    { n:'03', title:'Register', body:'Bring the required documents to the school office.' },
+    { n:'04', title:'Enroll', body:'Sign the contract and get your welcome packet, uniform info and supply list.' }
+  ];
+  visitOptions = [
+    { title:'Visit the school', body:'Tour the classrooms at 1260 Ocean Avenue and meet our teachers.', cta:'Request a tour', key:'contact', bg:'#8CC63F', color:'#16240A',
+      svg:'<path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/>' },
+    { title:'Video call', body:'Meet the admissions team online, from home or work.', cta:'Book a call', key:'contact', bg:'#4A6FD0', color:'#ffffff',
+      svg:'<path d="M3 7h12v10H3z"/><path d="m15 10 6-3v10l-6-3"/>' },
+    { title:'Email us', body:'Ask about grades, tuition, uniforms or after-school care.', cta:'admissions@bsda.school', href:'mailto:admissions@bsda.school', bg:'#FFD24A', color:'#2E2306',
+      svg:'<path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/>' },
+    { title:'Call the office', body:'Talk to someone at the school office.', cta:'(718) 859-1313', href:'tel:+17188591313', bg:'#ffffff', color:'#131A2E',
+      svg:'<path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 3 5a2 2 0 0 1 2-2z"/>' }
+  ];
+  principalQuote = {
+    quote: 'Behind every number is a child who persevered.',
+    body: 'When our children are rooted in Christ, they can grow with confidence, meet challenges with courage, and rise to become everything God has called them to be.',
+    name: 'Loris F. LaBorde', role: 'Principal'
+  };
 
   // ---------- statement boxes ----------
   statementData = [
@@ -575,6 +625,22 @@ class Component extends DCLogic {
       hudDonors: String(this.props.donors != null ? this.props.donors : 214),
       hudPct: (this.state.barReady ? pct : 0) + '%',
       hudPctLabel: pct + '%',
+
+      // homepage
+      goAcademics: this.go('academics'),
+      heroPhotos: this.heroPhotos.map((x, i) => Object.assign({ i: i }, x)),
+      heroWords: this.heroWords.map((w, i) => ({ label: w, i: i })),
+      marquee: this.marquee.map((m) => ({ label: m })),
+      proof: this.proof,
+      why: this.why.map((x) => Object.assign({}, x, { href: '#' + x.key, onClick: this.go(x.key) })),
+      bands: this.bands.map((x) => Object.assign({}, x, { href: '#' + x.key, onClick: this.go(x.key) })),
+      growth: this.growth,
+      regents: this.results.slice(4, 7),
+      joinSteps: this.joinSteps,
+      visitOptions: this.visitOptions.map((x) => Object.assign({}, x, {
+        href: x.href || '#' + x.key, onClick: x.key ? this.go(x.key) : null
+      })),
+      principalQuote: this.principalQuote,
 
       statements: this.statementData.map((x) => ({
         kicker: x.kicker, title: x.title, body: x.body, cta: x.cta, img: x.img, alt: x.alt,
