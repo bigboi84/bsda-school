@@ -2,7 +2,7 @@
 // Pure function: render values in, HTML string out. Logic lives in app.js.
 (function () {
   window.bsdaView = function view(v, E, H) {
-    const { accreditation, afterItems, afterSchool, bsdas, courses, eceAreas, featured, isAcademics, results, stonesFacts, vision, activeGrade, activeRoom, admitSteps, atFirstStep, backOpacity, c, campaigns, closeMenu, clubCats, col, contactSent, d, dayFull, documents, e, eventCats, f, faculty, facultyStats, footerCols, g, giving, goAbout, goAdmissions, goApply, goContact, goEvents, goFaculty, goFundraisers, goGive, goHome, goLife, goNews, gradeOptions, gradeTabs, h, history, homeEvents, homeNews, hudDonors, hudGoal, hudPct, hudPctLabel, hudRaised, i, isAbout, isAdmissions, isApply, isContact, isEvents, isFaculty, isFundraisers, isGive, isHome, isInner, isLife, isNews, isPortals, isStore, isYearbooks, l, m, menuGroups, menuOpen, missionPoints, mosaic, n, news, notLastStep, notSubmitted, onBack, onContact, onNext, onReset, onSubmit, openMenu, p, page, para, philosophyPoints, portals, principalLetter, products, r, rooms, s, slide, slideDots, statements, step0, step1, step2, step3, stepTabs, submitted, submittedName, summary, t, testDates, visibleClubs, visibleEvents, w, wall, y, yearbooks } = v;
+    const { accreditation, afterItems, afterSchool, bsdas, courses, eceAreas, featured, isAcademics, results, stonesFacts, vision, activeGrade, activeRoom, admitSteps, atFirstStep, backOpacity, c, campaigns, closeMenu, clubCats, col, contactSent, d, dayFull, documents, e, eventCats, faculty, facultyStats, footerCols, g, giving, goAbout, goAdmissions, goApply, goContact, goEvents, goFaculty, goFundraisers, goGive, goHome, goLife, goNews, gradeTabs, h, history, homeEvents, homeNews, hudDonors, hudGoal, hudPct, hudPctLabel, hudRaised, i, isAbout, isAdmissions, isApply, isContact, isEvents, isFaculty, isFundraisers, isGive, isHome, isInner, isLife, isNews, isPortals, isStore, isYearbooks, l, m, menuGroups, menuOpen, missionPoints, mosaic, n, news, notLastStep, notSubmitted, onBack, onContact, onNext, onReset, onSubmit, openMenu, p, page, para, philosophyPoints, portals, principalLetter, products, r, rooms, s, slide, slideDots, statements, stepTabs, submitted, submittedName, summary, t, testDates, visibleClubs, visibleEvents, w, wall, y, yearbooks, applyStep, applyFields, isLastStep } = v;
     return `<div style="min-height:100vh;background:#FFFFFF">
 
   <!-- ============ MEGA MENU OVERLAY ============ -->
@@ -455,6 +455,7 @@
             <h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:26px;text-transform:uppercase;color:#fff">Do it quickly</h3>
             <p style="margin-top:14px;font-size:15.5px;line-height:1.65;color:#A9B1CE">Applications submitted before the September deadline are considered in the first round of decisions. Later applications are reviewed on a space-available basis. Call the Office of Admission at (718) 859-1313 to ask about availability.</p>
             <p style="margin-top:18px;font-family:'Archivo',sans-serif;font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#0C1120;background:#FFD24A;padding:12px 18px;display:inline-block">Application fee $60 · non-refundable</p>
+            <p style="margin-top:16px"><a href="https://bsda.school/wp-content/uploads/2024/04/BSDA-Application-Form.pdf" target="_blank" rel="noopener" style="font-size:15.5px;font-weight:700;color:#8CC63F;text-decoration:underline">Download the paper application (PDF)</a></p>
           </div>
         </div>
       </section>
@@ -494,6 +495,10 @@
     <section data-screen-label="Apply" style="padding:20px var(--gx) 0;max-width:1080px;margin:0 auto">
       ${(notSubmitted) ? `
         <div>
+          <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;margin-bottom:20px;padding:22px 26px;background:#FFF6DC;border-left:5px solid #FFD24A">
+            <p style="font-size:16px;line-height:1.6;max-width:640px"><strong style="font-weight:800">Prefer paper?</strong> Download the application, fill it in and bring it to the school office at 1260 Ocean Avenue, or email it to admissions@bsda.school.</p>
+            <a href="https://bsda.school/wp-content/uploads/2024/04/BSDA-Application-Form.pdf" target="_blank" rel="noopener" style="padding:15px 28px;background:#131A2E;color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap" class="hv10">Download application (PDF)</a>
+          </div>
           <div style="display:flex;gap:14px;flex-wrap:wrap">
             ${(stepTabs).map((s) => `
               <div style="flex:1 1 180px;padding:18px 20px;background:${E(s.bg)};border-bottom:4px solid ${E(s.rule)}">
@@ -504,114 +509,9 @@
           </div>
 
           <form data-submit="${H(onSubmit)}" style="margin-top:20px;background:#F4F2ED;padding:clamp(28px,3.4vw,48px)">
-            ${(step0) ? `
-              <div>
-                <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">About the student</h2>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px">
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Student first name *</span>
-                    <input type="text" data-val="${E(f.firstName.value)}" data-change="${H(f.firstName.onChange)}" placeholder="Amara" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                    ${(f.firstName.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.firstName.error)}</span>` : ''}
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Student last name *</span>
-                    <input type="text" data-val="${E(f.lastName.value)}" data-change="${H(f.lastName.onChange)}" placeholder="Charles" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                    ${(f.lastName.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.lastName.error)}</span>` : ''}
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Date of birth *</span>
-                    <input type="date" data-val="${E(f.dob.value)}" data-change="${H(f.dob.onChange)}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                    ${(f.dob.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.dob.error)}</span>` : ''}
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Grade applying for *</span>
-                    <select data-val="${E(f.gradeApplying.value)}" data-change="${H(f.gradeApplying.onChange)}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px">
-                      <option value="">Select a grade</option>
-                      ${(gradeOptions).map((g) => `<option value="${E(g.label)}">${E(g.label)}</option>`).join('')}
-                    </select>
-                    ${(f.gradeApplying.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.gradeApplying.error)}</span>` : ''}
-                  </label>
-                </div>
-              </div>
-            ` : ''}
-
-            ${(step1) ? `
-              <div>
-                <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">Parent or guardian</h2>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px">
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Full name *</span>
-                    <input type="text" data-val="${E(f.guardian.value)}" data-change="${H(f.guardian.onChange)}" placeholder="Jean Charles" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                    ${(f.guardian.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.guardian.error)}</span>` : ''}
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Relationship to student *</span>
-                    <select data-val="${E(f.relationship.value)}" data-change="${H(f.relationship.onChange)}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px">
-                      <option value="">Select one</option>
-                      <option value="Mother">Mother</option>
-                      <option value="Father">Father</option>
-                      <option value="Grandparent">Grandparent</option>
-                      <option value="Legal guardian">Legal guardian</option>
-                    </select>
-                    ${(f.relationship.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.relationship.error)}</span>` : ''}
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Email *</span>
-                    <input type="email" data-val="${E(f.email.value)}" data-change="${H(f.email.onChange)}" placeholder="you@email.com" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                    ${(f.email.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.email.error)}</span>` : ''}
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Phone *</span>
-                    <input type="tel" data-val="${E(f.phone.value)}" data-change="${H(f.phone.onChange)}" placeholder="(718) 555-0123" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                    ${(f.phone.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.phone.error)}</span>` : ''}
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px;grid-column:1 / -1">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Home address *</span>
-                    <input type="text" data-val="${E(f.address.value)}" data-change="${H(f.address.onChange)}" placeholder="Street, Brooklyn, NY, ZIP" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                    ${(f.address.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.address.error)}</span>` : ''}
-                  </label>
-                </div>
-              </div>
-            ` : ''}
-
-            ${(step2) ? `
-              <div>
-                <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">School &amp; church</h2>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px">
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Current or previous school *</span>
-                    <input type="text" data-val="${E(f.currentSchool.value)}" data-change="${H(f.currentSchool.onChange)}" placeholder="School name, or “none”" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                    ${(f.currentSchool.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(f.currentSchool.error)}</span>` : ''}
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Last grade completed</span>
-                    <input type="text" data-val="${E(f.lastGrade.value)}" data-change="${H(f.lastGrade.onChange)}" placeholder="e.g. Grade 3" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Home church (if any)</span>
-                    <input type="text" data-val="${E(f.church.value)}" data-change="${H(f.church.onChange)}" placeholder="Church name" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">How did you hear about us?</span>
-                    <select data-val="${E(f.heard.value)}" data-change="${H(f.heard.onChange)}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px">
-                      <option value="">Select one</option>
-                      <option value="Family or friend">Family or friend</option>
-                      <option value="Our church">Our church</option>
-                      <option value="Search or social media">Search or social media</option>
-                      <option value="School event">School event</option>
-                    </select>
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:8px;grid-column:1 / -1">
-                    <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">Anything we should know about your child?</span>
-                    <textarea rows="4" data-val="${E(f.notes.value)}" data-change="${H(f.notes.onChange)}" placeholder="Learning support, allergies, interests…" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px;resize:vertical"></textarea>
-                  </label>
-                </div>
-              </div>
-            ` : ''}
-
-            ${(step3) ? `
-              <div>
-                <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">Review &amp; submit</h2>
+            <div>
+              <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;text-transform:uppercase">${E(applyStep.title)}</h2>
+              ${(isLastStep) ? `
                 <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
                   ${(summary).map((s) => `
                     <div style="padding:16px 18px;background:#fff">
@@ -620,20 +520,58 @@
                     </div>
                   `).join('')}
                 </div>
-                <label style="display:flex;gap:14px;align-items:flex-start;margin-top:26px;padding:20px;background:#FFF6DC;border-left:5px solid #FFD24A">
-                  <input type="checkbox" data-checked="${E(f.agree.value)}" data-change="${H(f.agree.onChange)}" style="width:22px;height:22px;margin-top:2px;flex-shrink:0;accent-color:#4A6FD0" />
-                  <span style="font-size:15px;line-height:1.6">I understand the $60 application fee is non-refundable, and that admission also requires a meeting with administration and a placement test.</span>
-                </label>
-                ${(f.agree.error) ? `<p style="font-size:13px;font-weight:700;color:#C0392B;margin-top:10px">${E(f.agree.error)}</p>` : ''}
+              ` : ''}
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px">
+                ${(applyFields).map((fd) => `
+                  ${(fd.isCheckbox) ? `
+                    <div style="grid-column:1 / -1;display:flex;flex-direction:column;gap:8px">
+                      <label style="display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:#fff;border-left:5px solid #FFD24A">
+                        <input type="checkbox" data-field="${E(fd.k)}" data-checked="${E(fd.checked)}" data-change="${H(fd.onChange)}" style="width:22px;height:22px;margin-top:2px;flex-shrink:0;accent-color:#4A6FD0" />
+                        <span style="font-size:15px;line-height:1.6">${E(fd.label)}${(fd.required) ? ' *' : ''}</span>
+                      </label>
+                      ${(fd.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(fd.error)}</span>` : ''}
+                    </div>
+                  ` : ''}
+                  ${(fd.isRadio) ? `
+                    <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;${fd.span ? 'grid-column:1 / -1' : ''}">
+                      <legend style="padding:0;margin-bottom:8px;font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">${E(fd.label)}${(fd.required) ? ' *' : ''}</legend>
+                      ${(fd.help) ? `<span style="font-size:14px;line-height:1.5;color:#5A6180">${E(fd.help)}</span>` : ''}
+                      <div style="display:flex;gap:12px;flex-wrap:wrap">
+                        ${(fd.options).map((o) => `
+                          <label style="display:flex;gap:10px;align-items:center;padding:12px 18px;background:#fff;border:2px solid #CFCBC1;font-size:16px;cursor:pointer">
+                            <input type="radio" name="${E(fd.k)}" value="${E(o.label)}" data-field="${E(fd.k)}:${E(o.label)}" data-checked="${E(o.checked)}" data-change="${H(fd.onChange)}" style="width:18px;height:18px;accent-color:#4A6FD0" />
+                            ${E(o.label)}
+                          </label>
+                        `).join('')}
+                      </div>
+                      ${(fd.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(fd.error)}</span>` : ''}
+                    </fieldset>
+                  ` : ''}
+                  ${(fd.isInput || fd.isSelect || fd.isTextarea) ? `
+                    <label style="display:flex;flex-direction:column;gap:8px;${fd.span ? 'grid-column:1 / -1' : ''}">
+                      <span style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5A6180">${E(fd.label)}${(fd.required) ? ' *' : ''}</span>
+                      ${(fd.help) ? `<span style="font-size:14px;line-height:1.5;color:#5A6180">${E(fd.help)}</span>` : ''}
+                      ${(fd.isInput) ? `<input type="${E(fd.type)}" data-field="${E(fd.k)}" data-val="${E(fd.value)}" data-change="${H(fd.onChange)}" placeholder="${E(fd.ph)}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px" />` : ''}
+                      ${(fd.isTextarea) ? `<textarea rows="3" data-field="${E(fd.k)}" data-val="${E(fd.value)}" data-change="${H(fd.onChange)}" placeholder="${E(fd.ph)}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px;resize:vertical"></textarea>` : ''}
+                      ${(fd.isSelect) ? `
+                        <select data-field="${E(fd.k)}" data-val="${E(fd.value)}" data-change="${H(fd.onChange)}" style="padding:15px 16px;border:2px solid #CFCBC1;background:#fff;font-size:16px">
+                          <option value="">${E(fd.ph)}</option>
+                          ${(fd.options).map((o) => `<option value="${E(o.label)}">${E(o.label)}</option>`).join('')}
+                        </select>
+                      ` : ''}
+                      ${(fd.error) ? `<span style="font-size:13px;font-weight:700;color:#C0392B">${E(fd.error)}</span>` : ''}
+                    </label>
+                  ` : ''}
+                `).join('')}
               </div>
-            ` : ''}
+            </div>
 
             <div style="display:flex;justify-content:space-between;gap:14px;margin-top:34px;padding-top:26px;border-top:2px solid #DCD8CE;flex-wrap:wrap">
               <button type="button" data-click="${H(onBack)}" ${atFirstStep ? 'disabled' : ''} style="padding:16px 30px;border:2px solid #131A2E;background:transparent;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;opacity:${E(backOpacity)}">Back</button>
               ${(notLastStep) ? `
                 <button type="button" data-click="${H(onNext)}" style="padding:16px 34px;border:none;background:#4A6FD0;color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Continue</button>
               ` : ''}
-              ${(step3) ? `
+              ${(isLastStep) ? `
                 <button type="submit" style="padding:16px 34px;border:none;background:#8CC63F;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Submit application</button>
               ` : ''}
             </div>

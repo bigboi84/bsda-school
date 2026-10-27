@@ -11,13 +11,90 @@ class DCLogic {
   }
 }
 
+// ---------- enrollment form ----------
+// Mirrors the online application on the current bsda.school. Left out on purpose: Social Security numbers,
+// card payment, IEP file upload and drawn signatures (none can be handled safely until the platform is connected).
+const YES_NO = ['Yes', 'No'];
+const APPLY_GRADES = ['Pre-K', 'Kindergarten', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8'];
+const APPLY_STEPS = [
+  { label: 'Student', title: 'About the student', fields: [
+    { k:'firstName', label:'First name', type:'text', req:'Student first name is required.', ph:'Amara' },
+    { k:'middleName', label:'Middle name', type:'text', ph:'Optional' },
+    { k:'lastName', label:'Last name', type:'text', req:'Student last name is required.', ph:'Charles' },
+    { k:'dob', label:'Date of birth', type:'date', req:'Please enter a date of birth.' },
+    { k:'gender', label:'Gender', type:'text', ph:'Optional' },
+    { k:'studentEmail', label:'Student email', type:'email', ph:'Only if the student has one' },
+    { k:'address', label:'Street address', type:'text', req:'Please enter a home address.', ph:'1260 Ocean Avenue', span:2 },
+    { k:'apt', label:'Apartment, suite, etc.', type:'text', ph:'Apt 4B' },
+    { k:'city', label:'City', type:'text', req:'Please enter a city.', ph:'Brooklyn' },
+    { k:'state', label:'State', type:'text', req:'Please enter a state.', ph:'NY' },
+    { k:'zip', label:'ZIP code', type:'text', req:'Please enter a ZIP code.', ph:'11230' },
+    { k:'homePhone', label:'Home phone', type:'tel', ph:'(718) 555-0100' },
+    { k:'mobilePhone', label:'Mobile phone', type:'tel', req:'Please enter a mobile phone number.', ph:'(718) 555-0123' }
+  ] },
+  { label: 'Health & school', title: 'Health & school', fields: [
+    { k:'physician', label:'Student physician’s name', type:'text', ph:'Primary physician' },
+    { k:'physicianPhone', label:'Physician’s phone', type:'tel', ph:'(718) 555-0150' },
+    { k:'disabilities', label:'Any physical disabilities?', type:'radio', req:'Please choose yes or no.', options:YES_NO, help:'Does the student have any physical disability the school needs to accommodate?', span:2 },
+    { k:'disabilitiesNotes', label:'Please explain', type:'textarea', ph:'Describe the disability and any accommodation needed', showIf:['disabilities','Yes'], span:2 },
+    { k:'allergies', label:'Any allergies?', type:'radio', req:'Please choose yes or no.', options:YES_NO, span:2 },
+    { k:'allergiesNotes', label:'Please explain', type:'textarea', ph:'List the allergies and any medical response needed', showIf:['allergies','Yes'], span:2 },
+    { k:'specialNeeds', label:'Any special needs?', type:'radio', req:'Please choose yes or no.', options:YES_NO, help:'For example, a learning disability. If your child has an IEP, bring a copy to your meeting with administration.', span:2 },
+    { k:'specialNeedsNotes', label:'Please explain', type:'textarea', ph:'Describe the need and any support your child receives', showIf:['specialNeeds','Yes'], span:2 },
+    { k:'gradeApplying', label:'Grade applying for', type:'select', req:'Choose the grade you are applying for.', options:APPLY_GRADES, ph:'Select a grade' },
+    { k:'attendedPrevious', label:'Attended a previous school?', type:'radio', req:'Please choose yes or no.', options:YES_NO },
+    { k:'previousSchool', label:'Previous school name', type:'text', req:'Please enter the previous school’s name.', ph:'School name', showIf:['attendedPrevious','Yes'], span:2 },
+    { k:'unpaidTuition', label:'Unpaid tuition?', type:'radio', req:'Please choose yes or no.', options:YES_NO, help:'Does the family have an unpaid school account?', span:2 },
+    { k:'unpaidSchool', label:'Name of school', type:'text', req:'Please enter the school’s name.', ph:'School with the unpaid account', showIf:['unpaidTuition','Yes'] },
+    { k:'unpaidAddress', label:'School address', type:'text', ph:'Street, city, state, ZIP', showIf:['unpaidTuition','Yes'] }
+  ] },
+  { label: 'Family', title: 'Parent or guardian', fields: [
+    { k:'prefix', label:'Prefix', type:'select', options:['Mr.', 'Mrs.', 'Ms.', 'Mx.', 'Miss', 'Dr.', 'Prof.'], ph:'Select one' },
+    { k:'guardianFirst', label:'First name', type:'text', req:'Please enter a first name.', ph:'Jean' },
+    { k:'guardianMiddle', label:'Middle name', type:'text', ph:'Optional' },
+    { k:'guardianLast', label:'Last name', type:'text', req:'Please enter a last name.', ph:'Charles' },
+    { k:'relationship', label:'Relation to child', type:'select', req:'Select a relationship.', options:['Mother', 'Father', 'Grandfather', 'Grandmother', 'Legal Guardian', 'Other'], ph:'Select one' },
+    { k:'email', label:'Email address', type:'email', req:'Please enter a valid email address.', ph:'you@email.com' },
+    { k:'phone', label:'Phone', type:'tel', req:'Please enter a phone number.', ph:'(718) 555-0199' },
+    { k:'emergency', label:'Emergency contact?', type:'radio', options:YES_NO, help:'Is this an emergency contact number for the student?' },
+    { k:'sameAddress', label:'Same address as the student', type:'checkbox', span:2 },
+    { k:'gAddress', label:'Street address', type:'text', req:'Please enter an address.', ph:'Street address', showIf:['sameAddress', false], span:2 },
+    { k:'gApt', label:'Apartment, suite, etc.', type:'text', ph:'Apt', showIf:['sameAddress', false] },
+    { k:'gCity', label:'City', type:'text', req:'Please enter a city.', ph:'City', showIf:['sameAddress', false] },
+    { k:'gState', label:'State', type:'text', req:'Please enter a state.', ph:'State', showIf:['sameAddress', false] },
+    { k:'gZip', label:'ZIP code', type:'text', req:'Please enter a ZIP code.', ph:'ZIP', showIf:['sameAddress', false] },
+    { k:'church', label:'Church affiliation', type:'text', ph:'Church name' },
+    { k:'language', label:'Primary language at home', type:'text', ph:'English' },
+    { k:'marital', label:'Marital status', type:'select', options:['Married', 'Widowed', 'Separated', 'Divorced', 'Single'], ph:'Select one' },
+    { k:'occupation', label:'Occupation', type:'text', ph:'Occupation' },
+    { k:'heard', label:'How did you hear about us?', type:'select', options:['Family or friend', 'Our church', 'Search or social media', 'School event', 'Other'], ph:'Select one' }
+  ] },
+  { label: 'Sign & finish', title: 'Review & sign', fields: [
+    { k:'studentType', label:'New or returning student?', type:'radio', req:'Please choose one.', options:['New student', 'Returning student'], span:2 },
+    { k:'consentRules', label:'I agree to the school’s rules and regulations.', type:'checkbox', req:'Please confirm before submitting.', span:2 },
+    { k:'consentInternet', label:'I agree to the school’s Internet User Policy.', type:'checkbox', req:'Please confirm before submitting.', span:2 },
+    { k:'consentPhoto', label:'Optional: I give permission to use my child’s photo on the school website, in school or conference publications and on social media.', type:'checkbox', span:2 },
+    { k:'agree', label:'I understand the $60 application fee is non-refundable, and that admission also requires a meeting with administration and a placement test.', type:'checkbox', req:'Please confirm before submitting.', span:2 },
+    { k:'parentSignature', label:'Parent or guardian signature', type:'text', req:'Type your full name to sign.', ph:'Type your full name to sign' },
+    { k:'studentSignature', label:'Student signature', type:'text', ph:'Optional: student types their name' }
+  ] }
+];
+const APPLY_LAST = APPLY_STEPS.length - 1;
+const applyVisible = (fd, form) => !fd.showIf || form[fd.showIf[0]] === fd.showIf[1];
+const blankForm = () => {
+  const form = {};
+  APPLY_STEPS.forEach((s) => s.fields.forEach((fd) => { form[fd.k] = fd.type === 'checkbox' ? false : ''; }));
+  form.sameAddress = true;
+  return form;
+};
+
 class Component extends DCLogic {
   state = {
     route: 'home', menuOpen: false, slide: 0,
     grade: '3', clubCat: 'All', room: 'stem', evFilter: 'All',
     step: 0, submitted: false, submittedName: '', contactSent: false,
     errors: {}, barReady: false, countUp: 0,
-    form: { firstName:'', lastName:'', dob:'', gradeApplying:'', guardian:'', relationship:'', email:'', phone:'', address:'', currentSchool:'', lastGrade:'', church:'', heard:'', notes:'', agree:false }
+    form: blankForm()
   };
 
   routes = ['home','about','faculty','admissions','academics','apply','life','events','news','fundraisers','give','yearbooks','store','portals','contact'];
@@ -411,33 +488,35 @@ class Component extends DCLogic {
   ];
 
   // ---------- form ----------
-  required = {
-    0: { firstName:'Student first name is required.', lastName:'Student last name is required.', dob:'Please enter a date of birth.', gradeApplying:'Choose the grade you are applying for.' },
-    1: { guardian:'Please enter a parent or guardian name.', relationship:'Select a relationship.', email:'Please enter a valid email address.', phone:'Please enter a phone number.', address:'Please enter a home address.' },
-    2: { currentSchool:'Enter a school name, or write “none”.' },
-    3: { agree:'Please confirm before submitting.' }
-  };
   setField = (k) => (e) => {
     const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     const errors = Object.assign({}, this.state.errors); delete errors[k];
     this.setState({ form: Object.assign({}, this.state.form, { [k]: v }), errors: errors });
   };
   validate = (step) => {
-    const rules = this.required[step] || {}; const errors = {};
-    Object.keys(rules).forEach((k) => {
-      const v = this.state.form[k];
-      if (k === 'agree') { if (!v) errors[k] = rules[k]; return; }
-      if (!String(v || '').trim()) { errors[k] = rules[k]; return; }
-      if (k === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) errors[k] = rules[k];
-      if (k === 'phone' && String(v).replace(/\D/g,'').length < 10) errors[k] = 'Please enter a 10-digit phone number.';
+    const form = this.state.form, errors = {};
+    APPLY_STEPS[step].fields.forEach((fd) => {
+      if (!applyVisible(fd, form)) return;
+      const v = form[fd.k];
+      if (fd.type === 'checkbox') { if (fd.req && !v) errors[fd.k] = fd.req; return; }
+      const s = String(v || '').trim();
+      if (!s) { if (fd.req) errors[fd.k] = fd.req; return; }
+      if (fd.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s)) errors[fd.k] = 'Please enter a valid email address.';
+      if (fd.type === 'tel' && s.replace(/\D/g, '').length < 10) errors[fd.k] = 'Please enter a 10-digit phone number.';
     });
     this.setState({ errors: errors });
     return Object.keys(errors).length === 0;
   };
-  onNext = () => { if (this.validate(this.state.step)) this.setState({ step: Math.min(3, this.state.step + 1) }); };
+  onNext = () => { if (this.validate(this.state.step)) this.setState({ step: Math.min(APPLY_LAST, this.state.step + 1) }); };
   onBack = () => this.setState({ step: Math.max(0, this.state.step - 1), errors: {} });
-  onSubmit = (e) => { e.preventDefault(); if (this.state.step < 3) { this.onNext(); return; } if (!this.validate(3)) return; this.setState({ submitted:true, submittedName: this.state.form.guardian || this.state.form.firstName }); };
-  onReset = () => this.setState({ submitted:false, step:0, errors:{}, form: { firstName:'', lastName:'', dob:'', gradeApplying:'', guardian:'', relationship:'', email:'', phone:'', address:'', currentSchool:'', lastGrade:'', church:'', heard:'', notes:'', agree:false } });
+  onSubmit = (e) => {
+    e.preventDefault();
+    if (this.state.step < APPLY_LAST) { this.onNext(); return; }
+    if (!this.validate(APPLY_LAST)) return;
+    const f = this.state.form;
+    this.setState({ submitted: true, submittedName: f.guardianFirst || f.firstName });
+  };
+  onReset = () => this.setState({ submitted: false, step: 0, errors: {}, form: blankForm() });
   onContact = (e) => { e.preventDefault(); this.setState({ contactSent: true }); };
 
   renderVals() {
@@ -451,9 +530,16 @@ class Component extends DCLogic {
     const s = this.slides[this.state.slide] || this.slides[0];
     const upcoming = this.upcomingEvents();
 
-    const f = {};
-    ['firstName','lastName','dob','gradeApplying','guardian','relationship','email','phone','address','currentSchool','lastGrade','church','heard','notes','agree']
-      .forEach((k) => { f[k] = { value: this.state.form[k], onChange: this.setField(k), error: this.state.errors[k] || '' }; });
+    const form = this.state.form, errors = this.state.errors;
+    const applyStep = APPLY_STEPS[this.state.step];
+    const isLastStep = this.state.step === APPLY_LAST;
+    const applyFields = applyStep.fields.filter((fd) => applyVisible(fd, form)).map((fd) => ({
+      k: fd.k, label: fd.label, type: fd.type, required: !!fd.req, ph: fd.ph || '', help: fd.help || '', span: fd.span === 2,
+      value: form[fd.k], checked: form[fd.k] === true, error: errors[fd.k] || '', onChange: this.setField(fd.k),
+      isInput: fd.type === 'text' || fd.type === 'email' || fd.type === 'tel' || fd.type === 'date',
+      isSelect: fd.type === 'select', isRadio: fd.type === 'radio', isTextarea: fd.type === 'textarea', isCheckbox: fd.type === 'checkbox',
+      options: (fd.options || []).map((o) => ({ label: o, checked: form[fd.k] === o }))
+    }));
     const sum = (label, v) => ({ label: label, value: v || '—' });
 
     return {
@@ -580,31 +666,29 @@ class Component extends DCLogic {
         items: col.items.map(([label, key]) => ({ label: label, href: '#' + key, onClick: this.go(key), color: '#B9C0DA', size: '15px', indent: '0px' }))
       })),
 
-      f: f,
-      gradeOptions: this.gradeOrder.map((g) => ({ label: (g === 'Pre-K' || g === 'K') ? g : 'Grade ' + g })),
-      stepTabs: ['Student','Guardian','School','Review'].map((label, i) => ({
-        n: i + 1, label: label,
+      applyStep: applyStep, applyFields: applyFields, isLastStep: isLastStep,
+      stepTabs: APPLY_STEPS.map((st, i) => ({
+        n: i + 1, label: st.label,
         bg: this.state.step === i ? '#131A2E' : '#F4F2ED',
         rule: this.state.step === i ? '#8CC63F' : (this.state.step > i ? '#8CC63F' : '#DCD8CE'),
         color: this.state.step === i ? '#ffffff' : '#131A2E',
         muted: this.state.step === i ? '#8A93B6' : '#8A90A8'
       })),
-      step0: this.state.step === 0, step1: this.state.step === 1, step2: this.state.step === 2, step3: this.state.step === 3,
       atFirstStep: this.state.step === 0,
       backOpacity: this.state.step === 0 ? 0.35 : 1,
-      notLastStep: this.state.step < 3,
+      notLastStep: !isLastStep,
       submitted: this.state.submitted, notSubmitted: !this.state.submitted, submittedName: this.state.submittedName,
       summary: [
-        sum('Student', (this.state.form.firstName + ' ' + this.state.form.lastName).trim()),
-        sum('Date of birth', this.state.form.dob),
-        sum('Grade applying for', this.state.form.gradeApplying),
-        sum('Guardian', this.state.form.guardian),
-        sum('Relationship', this.state.form.relationship),
-        sum('Email', this.state.form.email),
-        sum('Phone', this.state.form.phone),
-        sum('Address', this.state.form.address),
-        sum('Current school', this.state.form.currentSchool),
-        sum('Home church', this.state.form.church)
+        sum('Student', [form.firstName, form.middleName, form.lastName].join(' ').replace(/\s+/g, ' ').trim()),
+        sum('Date of birth', form.dob),
+        sum('Grade applying for', form.gradeApplying),
+        sum('Student address', [form.address, form.apt, form.city, form.state, form.zip].filter(Boolean).join(', ')),
+        sum('Parent or guardian', [form.prefix, form.guardianFirst, form.guardianLast].filter(Boolean).join(' ')),
+        sum('Relation to child', form.relationship),
+        sum('Email', form.email),
+        sum('Phone', form.phone),
+        sum('Previous school', form.attendedPrevious === 'Yes' ? form.previousSchool : (form.attendedPrevious === 'No' ? 'None' : '')),
+        sum('Home church', form.church)
       ],
       onNext: this.onNext, onBack: this.onBack, onSubmit: this.onSubmit, onReset: this.onReset,
       onContact: this.onContact, contactSent: this.state.contactSent
@@ -628,7 +712,7 @@ class Component extends DCLogic {
 
   // A form control that stands for a different field (new step, new page) must not inherit the old one's state.
   const differentControl = (x, y) => /^(INPUT|SELECT|TEXTAREA)$/.test(x.nodeName) &&
-    (x.getAttribute('placeholder') !== y.getAttribute('placeholder') || x.getAttribute('type') !== y.getAttribute('type') || x.getAttribute('data-change') !== y.getAttribute('data-change') && x.hasAttribute('data-val') !== y.hasAttribute('data-val'));
+    (x.getAttribute('data-field') !== y.getAttribute('data-field') || x.getAttribute('placeholder') !== y.getAttribute('placeholder') || x.getAttribute('type') !== y.getAttribute('type') || x.getAttribute('data-change') !== y.getAttribute('data-change') && x.hasAttribute('data-val') !== y.hasAttribute('data-val'));
 
   // Update the live DOM to match `to` without replacing nodes, so focus, scroll and animations survive.
   function morph(from, to) {
