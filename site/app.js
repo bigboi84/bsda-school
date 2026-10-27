@@ -20,7 +20,7 @@ class Component extends DCLogic {
     form: { firstName:'', lastName:'', dob:'', gradeApplying:'', guardian:'', relationship:'', email:'', phone:'', address:'', currentSchool:'', lastGrade:'', church:'', heard:'', notes:'', agree:false }
   };
 
-  routes = ['home','about','faculty','admissions','apply','life','events','news','fundraisers','give','yearbooks','store','portals','contact'];
+  routes = ['home','about','faculty','admissions','academics','apply','life','events','news','fundraisers','give','yearbooks','store','portals','contact'];
 
   componentDidMount() {
     this.onHash();
@@ -109,9 +109,54 @@ class Component extends DCLogic {
     { label:'', sub:'', cols:1, rows:1, img:'assets/hero-stem.jpg', alt:'STEM lab', bg:'#131A2E', color:'#ffffff', subColor:'#D6DBEC', size:'26px', labelOverride:'STEM', subOverride:'Build days, circuits and motorized planes.' },
     { label:'11', sub:'Faculty and staff who know every student by name.', cols:1, rows:1, bg:'#FFD24A', color:'#2E2306', subColor:'#453712', size:'44px' },
     { label:'', sub:'', cols:2, rows:1, img:'assets/students-worship.jpg', alt:'Students leading worship', bg:'#131A2E', color:'#ffffff', subColor:'#D6DBEC', size:'26px', labelOverride:'Worship & choir', subOverride:'Students lead the whole school in song and prayer.' },
-    { label:'2', sub:'Accreditations \u2014 Adventist Accrediting Association and NCPSA.', cols:2, rows:1, bg:'#F4F2ED', color:'#131A2E', subColor:'#5A6180', size:'44px' }
+    { label:'4', sub:'Approvals and accreditations \u2014 NYSED, the North American Division, NCPS and CITA.', cols:2, rows:1, bg:'#F4F2ED', color:'#131A2E', subColor:'#5A6180', size:'44px' }
   ];
 
+  results = [
+    { value:'60%', label:'ELA proficiency', sub:'New York State: 48%', bg:'#4A6FD0', color:'#ffffff', subColor:'#D9E2FA' },
+    { value:'57%', label:'Math proficiency', sub:'New York State: 57%', bg:'#FFD24A', color:'#2E2306', subColor:'#453712' },
+    { value:'50%', label:'Science proficiency', sub:'New York State: 47%', bg:'#8CC63F', color:'#16240A', subColor:'#2C4212' },
+    { value:'100%', label:'High school acceptance', sub:'Our graduates get in.', bg:'#F4F2ED', color:'#131A2E', subColor:'#5A6180' },
+    { value:'92%', label:'English Regents pass rate', sub:'Taken in middle school.', bg:'#1B2340', color:'#ffffff', subColor:'#8A93B6' },
+    { value:'67%', label:'Biology Regents pass rate', sub:'Life Science: Biology.', bg:'#1B2340', color:'#ffffff', subColor:'#8A93B6' },
+    { value:'46%', label:'Algebra 1 Regents pass rate', sub:'High-school math before high school.', bg:'#1B2340', color:'#ffffff', subColor:'#8A93B6' },
+    { value:'14 → 8', label:'Baptismal decisions', sub:'2025 and 2026.', bg:'#1B2340', color:'#8CC63F', subColor:'#8A93B6' }
+  ];
+  vision = {
+    statement: 'To inspire every student to know Jesus personally, pursue academic excellence without compromise, develop exemplary character, discover their God-given purpose, and transform their communities through lives of faith, service, and leadership.',
+    motto: 'Excellence in Learning. Excellence in Character. Excellence for Eternity.'
+  };
+  bsdas = [
+    { letter:'B', word:'Believe', bg:'#4A6FD0', color:'#ffffff' },
+    { letter:'S', word:'Serve', bg:'#FFD24A', color:'#2E2306' },
+    { letter:'D', word:'Disciple', bg:'#8CC63F', color:'#16240A' },
+    { letter:'A', word:'Achieve', bg:'#131A2E', color:'#8CC63F' },
+    { letter:'S', word:'Shine', bg:'#F4F2ED', color:'#131A2E' }
+  ];
+  accreditation = {
+    text: 'Brooklyn Seventh-day Adventist School is approved by the New York State Education Department. It is accredited by the North American Division of Seventh-day Adventists, the National Council for Private Schools and the Commission on International and Trans-Regional Accreditation.',
+    courses: ['Art','Bible','Technology','Foreign language','Mathematics','Language arts','Physical education','Science','Social studies','Music','STEM'],
+    regents: 'Students are encouraged to take the Algebra 1, Life Science: Biology, English Language Arts and US Government Regents classes and state exams in grades 3–8.'
+  };
+  eceAreas = [
+    { title:'English language arts & early literacy', body:'Phonemic awareness, phonics, letter recognition, vocabulary and listening comprehension. Storytelling and guided reading turn children into confident young readers and writers.', bar:'#4A6FD0', barText:'#ffffff' },
+    { title:'Mathematics & problem-solving', body:'Counting, number recognition, addition and subtraction, shapes, patterns, measurement and sorting, with manipulatives and games that build number sense.', bar:'#FFD24A', barText:'#2E2306' },
+    { title:'Science & discovery', body:'Plants, animals, weather, seasons and living things. Children observe, question and explore God’s creation.', bar:'#8CC63F', barText:'#16240A' },
+    { title:'Social studies & community', body:'Families, school, community helpers, citizenship, cultural diversity and the importance of respecting and caring for others.', bar:'#131A2E', barText:'#8CC63F' },
+    { title:'Social-emotional learning & character', body:'Recognizing emotions, building friendships, cooperating, resolving conflict peacefully and growing in independence and self-confidence.', bar:'#4A6FD0', barText:'#ffffff' },
+    { title:'Creative arts, music & movement', body:'Singing, movement, drawing and painting build coordination, imagination and fine and gross motor skills.', bar:'#FFD24A', barText:'#2E2306' }
+  ];
+  afterSchool = {
+    when: 'Monday–Thursday · 3:45–6:15 PM · Pre-K–Grade 12',
+    items: ['Homework support','Study hall and academic support','Test prep: Regents, PSAT, SAT, ACT','Robotics, coding and gaming']
+  };
+  stonesFacts = [
+    'Access to quality, Christ-centered education for children whose families face financial hardship.',
+    'Support for qualified, dedicated Christian educators.',
+    'Strong academic programs and innovative learning opportunities.',
+    'Educational resources, technology, music and enrichment programs.',
+    'Greater financial stability, so the school can focus on its mission.'
+  ];
   missionPoints = ['Build characters for Christ','Foster social, mental, physical and spiritual development','Develop a culture of service','Equip students with the skills necessary for high school and beyond'];
   philosophyPoints = ['develop a personal relationship with God and his fellow men','master the basic academic skills','value labor, physical and mental, as the blessing God intended','cultivate physical fitness, mental ability and moral purity'];
   principalLetter = [
@@ -156,16 +201,94 @@ class Component extends DCLogic {
     { date:'May 19', kind:'Placement test' }, { date:'Jul 21', kind:'Placement test' },
     { date:'Aug 19\u201323', kind:'Registration week' }
   ];
-  events = [
-    { day:'19\u201323', month:'Aug', title:'Registration week', body:'Pre-K & K on the 19th, grades 1\u20132 on the 20th, 3\u20134 on the 21st, 5\u20136 on the 22nd, 7\u20138 on the 23rd.', cat:'Registration', bar:'#4A6FD0', barText:'#ffffff' },
-    { day:'08', month:'Sep', title:'Placement test', body:'Second session on September 15. Reserve a slot with the admissions office.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
-    { day:'01\u201331', month:'Oct', title:'Pastor Appreciation Month', body:'A month-long celebration with the Brooklyn Seventh-day Adventist Church. Repeats yearly.', cat:'Community', bar:'#8CC63F', barText:'#16240A' },
-    { day:'12', month:'Nov', title:'Placement test', body:'Autumn placement session for new applicants.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
-    { day:'21', month:'Jan', title:'Placement test', body:'Winter placement session for new applicants.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
-    { day:'17', month:'Mar', title:'Placement test', body:'Spring placement session for new applicants.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
-    { day:'19', month:'May', title:'Placement test', body:'End-of-year placement session for new applicants.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' },
-    { day:'21', month:'Jul', title:'Placement test', body:'Summer session ahead of registration week.', cat:'Placement', bar:'#FFD24A', barText:'#2E2306' }
+  // 2026-27 calendar (school office, "BSDAS CALENDAR 2027 finale") plus the events preview from the principal.
+  // [start, end or null, title, body, category, featured]
+  calendar = [
+    ['2026-08-24', null, 'First day of school', 'The first marking period begins.', 'School life'],
+    ['2026-09-07', null, 'Labor Day', 'School closed.', 'Closed'],
+    ['2026-09-10', null, 'Parent orientation', '3:15 PM.', 'School life'],
+    ['2026-09-11', null, 'Special chapel on bullying & harassment', 'A whole-school chapel.', 'Faith'],
+    ['2026-09-18', null, 'Dress down day', '$5.00.', 'School life'],
+    ['2026-09-19', null, 'Consecration service', '11:00 AM.', 'Faith'],
+    ['2026-09-30', null, 'Apple picking', 'Class trip, $70.', 'School life'],
+    ['2026-10-06', '2026-10-09', 'MAP testing', 'Measures of Academic Progress for all grades.', 'Exams'],
+    ['2026-10-12', null, 'Columbus Day', 'School closed.', 'Closed'],
+    ['2026-10-16', null, 'Dress down day', '$5.00.', 'School life'],
+    ['2026-10-19', '2026-10-23', 'Fall Week of Prayer', 'Theme: Rooted in Christ.', 'Faith', true],
+    ['2026-10-26', '2026-10-30', 'First marking period exams', 'The first marking period ends October 30.', 'Exams'],
+    ['2026-10-30', null, 'Breast Cancer Awareness Walk', 'A school and community walk.', 'School life'],
+    ['2026-11-02', null, 'Second marking period begins', '', 'School life'],
+    ['2026-11-05', null, 'Professional development day', 'School closed.', 'Closed'],
+    ['2026-11-08', null, 'Grade 8 Walk-a-Thon', 'Every Step Matters.', 'School life'],
+    ['2026-11-10', null, 'Parent-teacher conferences', '3:45–7:00 PM, followed by the Parent Teacher Association meeting at 7:30 PM.', 'School life'],
+    ['2026-11-11', null, 'Veterans Day', 'School closed.', 'Closed'],
+    ['2026-11-20', null, 'Dress down day', '$5.00.', 'School life'],
+    ['2026-11-24', null, 'Thanksgiving program & awards ceremony', 'First marking period awards, the Thanksgiving program and Pastor’s Appreciation.', 'School life', true],
+    ['2026-11-25', '2026-11-27', 'Thanksgiving break', 'School closed.', 'Closed'],
+    ['2026-12-07', '2026-12-11', 'Health Emphasis Week', '', 'School life'],
+    ['2026-12-13', null, 'Christmas play', '', 'School life', true],
+    ['2026-12-18', null, 'Dress down day', '$5.00.', 'School life'],
+    ['2026-12-21', '2026-12-31', 'Christmas break', 'School closed.', 'Closed'],
+    ['2027-01-18', null, 'Martin Luther King Jr. Day', 'School closed.', 'Closed'],
+    ['2027-01-19', '2027-01-22', 'Second marking period exams', 'The second marking period ends January 22.', 'Exams'],
+    ['2027-01-26', null, 'English Language Arts Regents', '9:15 AM.', 'Exams'],
+    ['2027-01-27', null, 'Algebra I Regents', '1:15 PM.', 'Exams'],
+    ['2027-01-29', null, 'Life Science: Biology Regents', '9:15 AM.', 'Exams'],
+    ['2027-02-01', '2027-02-05', 'Spirit of Prophecy Week', '', 'Faith', true],
+    ['2027-02-09', '2027-02-12', 'MAP testing', '', 'Exams'],
+    ['2027-02-12', null, 'Dress down day', '$5.00.', 'School life'],
+    ['2027-02-13', null, 'Art auction & tea party', '', 'School life', true],
+    ['2027-02-15', '2027-02-19', 'Mid-winter break', 'School resumes February 22.', 'Closed'],
+    ['2027-02-24', null, 'Medieval Times', 'Class trip.', 'School life'],
+    ['2027-03-04', null, 'Career Day', '', 'School life'],
+    ['2027-03-16', '2027-03-19', 'Third marking period exams', 'The third marking period ends March 24.', 'Exams'],
+    ['2027-03-19', null, 'Dress down day', '$5.00.', 'School life'],
+    ['2027-03-24', null, 'Sight & Sound trip', 'Class trip, $140.', 'School life'],
+    ['2027-03-25', '2027-03-31', 'Spring break', 'Runs through April 2. School resumes April 5.', 'Closed'],
+    ['2027-04-05', '2027-05-14', 'New York State exams', 'State testing window, April 5 to May 14.', 'Exams'],
+    ['2027-04-15', '2027-04-16', 'Dress down days', '$5.00.', 'School life'],
+    ['2027-04-19', '2027-04-23', 'Spring Week of Prayer', '', 'Faith', true],
+    ['2027-04-24', null, 'Education Day', '', 'School life'],
+    ['2027-05-01', null, 'Teachers’ commissioning', '', 'Faith'],
+    ['2027-05-04', '2027-05-08', 'Teacher Appreciation Week', '', 'School life'],
+    ['2027-05-10', null, 'National Junior Honor Society program', '', 'School life'],
+    ['2027-05-21', null, 'Dress down day', '$5.00.', 'School life'],
+    ['2027-05-24', '2027-05-28', 'Grade 8 finals', '', 'Exams'],
+    ['2027-05-25', null, 'Science Fair', '', 'School life', true],
+    ['2027-05-26', null, 'Teachers’ professional development', 'School closed.', 'Closed'],
+    ['2027-05-31', null, 'Memorial Day', 'School closed.', 'Closed'],
+    ['2027-06-01', null, 'Grade 8 banquet', '', 'School life'],
+    ['2027-06-03', null, 'Kindergarten graduation', '', 'School life', true],
+    ['2027-06-05', null, 'Baccalaureate service', '', 'Faith'],
+    ['2027-06-06', null, 'Grade 8 commencement', '', 'School life', true],
+    ['2027-06-07', '2027-06-10', 'MAP testing & final exams', 'Fourth marking period exams.', 'Exams'],
+    ['2027-06-11', null, 'Last day of classes', '', 'School life'],
+    ['2027-06-14', null, 'Field Day', '', 'School life'],
+    ['2027-06-15', null, 'Award ceremony', 'Last day of school, 5:00 PM.', 'School life'],
+    ['2027-06-15', '2027-06-17', 'June Regents', 'ELA on the 15th, Global History and Algebra I on the 16th, Biology on the 17th.', 'Exams'],
+    ['2027-06-28', null, 'Summer school begins', '', 'School life']
   ];
+  eventColors = { 'School life':['#4A6FD0','#ffffff'], 'Faith':['#FFD24A','#2E2306'], 'Exams':['#8CC63F','#16240A'], 'Closed':['#131A2E','#8CC63F'] };
+  buildEvents() {
+    const mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const pad = (n) => (n < 10 ? '0' : '') + n;
+    return this.calendar.map(([start, end, title, body, cat, featured]) => {
+      const a = new Date(start + 'T00:00:00'), b = new Date((end || start) + 'T00:00:00');
+      const c = this.eventColors[cat];
+      return {
+        title: title, body: body, cat: cat, bar: c[0], barText: c[1], featured: !!featured,
+        day: end ? pad(a.getDate()) + '–' + pad(b.getDate()) : pad(a.getDate()), month: mon[a.getMonth()],
+        label: end ? mon[a.getMonth()] + ' ' + a.getDate() + ' – ' + (b.getMonth() === a.getMonth() ? '' : mon[b.getMonth()] + ' ') + b.getDate() : mon[a.getMonth()] + ' ' + a.getDate(),
+        endISO: end || start
+      };
+    });
+  }
+  events = this.buildEvents();
+  upcomingEvents() {
+    const t = new Date(); const iso = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+    const up = this.events.filter((e) => e.endISO >= iso);
+    return up.length ? up : this.events.slice(-4);
+  }
   news = [
     { date:'07.29.24', title:'2024/2025 School Year Calendar Now Available', excerpt:'Check out the new school calendar for Brooklyn Seventh-day Adventist School. We have a lot of amazing things planned for this coming year.', img:'assets/calendar.jpg' },
     { date:'06.24.24', title:'Join the Summer Blast Program for an Unforgettable Summer', excerpt:'Our Summer Blast program offers engaging activities for Pre-K to 8th grade students through the summer months.', img:'assets/summer-blast.jpg' },
@@ -229,14 +352,14 @@ class Component extends DCLogic {
     { id:'yard', name:'Play Yard', floor:'Outdoors', span:1, body:'Morning recess and field day. Fenced and supervised.' }
   ];
   campaignData = [
-    { title:'12 Stones Fund', tag:'Flagship', tagBg:'#8CC63F', tagColor:'#16240A', img:'assets/12stones-logo.png', fit:'contain', body:'A contributor-funded initiative empowering Adventist education at Brooklyn SDA School \u2014 tuition assistance, classroom resources and the building itself.', raised:18400, goal:55000 },
+    { title:'12 Stones Fund', tag:'Flagship', tagBg:'#8CC63F', tagColor:'#16240A', img:'assets/12stones-logo.png', fit:'contain', body:'A community-funded foundation so a family\u2019s finances never decide a child\u2019s education. Become a monthly partner for about $1 a day.', raised:18400, goal:55000 },
     { title:'55 in 25 for the 12 Stones Fund', tag:'Campaign', tagBg:'#FFD24A', tagColor:'#2E2306', img:'assets/stones.jpg', fit:'cover', body:'A focused push toward the 12 Stones goal. Campaign copy and targets to be confirmed by the school office.', raised:9200, goal:25000 },
     { title:'Fruit Fundraiser', tag:'Seasonal', tagBg:'#4A6FD0', tagColor:'#ffffff', img:'assets/summer-blast.jpg', fit:'cover', body:'The annual fruit sale run by students and families. Ordering details and dates to be confirmed each season.', raised:4600, goal:12000 }
   ];
   giving = [
-    { amount:'$25', title:'Classroom supplies', bar:'#FFD24A', barText:'#2E2306', body:'Books, materials and the small things that make a classroom work all year.' },
-    { amount:'$100', title:'STEM program', bar:'#4A6FD0', barText:'#ffffff', body:'Kits, components and build materials for hands-on science across the grades.' },
-    { amount:'$500', title:'Tuition assistance', bar:'#8CC63F', barText:'#16240A', body:'Direct support so a Brooklyn family can choose Adventist education for their child.' }
+    { amount:'$30/mo', title:'Monthly partner', bar:'#FFD24A', barText:'#2E2306', body:'About $1 a day. Your gift joins the gifts of other supporters. 54 people giving $30 a month raise $19,440 a year.' },
+    { amount:'Any gift', title:'One-time donation', bar:'#4A6FD0', barText:'#ffffff', body:'Give what you are able. The size of your gift does not decide its significance; your willingness to participate does.' },
+    { amount:'Groups', title:'Church or corporate sponsor', bar:'#8CC63F', barText:'#16240A', body:'Churches and businesses can sponsor groups of students or make larger commitments.' }
   ];
   yearbooks = [
     { title:'Yearbook 2022\u20132023', note:'Principal transition year, STEM program expansion and spring graduation.', img:'assets/students-worship.jpg' },
@@ -262,12 +385,13 @@ class Component extends DCLogic {
     about:      { kicker:'About us', title:'A Brooklyn school since 1938', img:'assets/building-front.jpg', blurb:'A private, co-educational day school owned and operated by the Greater New York Conference of Seventh-day Adventists, offering grades Pre-K through 8.' },
     faculty:    { kicker:'About', title:'Faculty & staff', img:'assets/classroom.jpg', blurb:'Our teachers form a professional learning community, committed to serving and inspiring students, with regular training in current teaching methods.' },
     admissions: { kicker:'Admissions', title:'Come learn with us', img:'assets/students-worship.jpg', blurb:'We welcome applications from girls and boys of all races, ethnicities and economic backgrounds. Decisions are made on a candidate\u2019s individual strengths and talents, potential to thrive, and ability to contribute positively to our community.' },
+    academics:  { kicker:'Academics', title:'Rooted in Christ, rising in excellence', img:'assets/class-kindergarten.jpg', blurb:'Pre-K through grade 8 in a Christ-centered classroom, aligned with North American Division standards and the New York State learning standards.' },
     apply:      { kicker:'Enrollment form', title:'Apply to BSDA', img:'assets/classroom.jpg', blurb:'Four short steps. You can save the $60 application fee for the end \u2014 nothing is submitted until you review it.' },
     life:       { kicker:'Student life', title:'What it\u2019s like to go here', img:'assets/hero-stem.jpg', blurb:'Rigorous classrooms, plus clubs, performing arts, athletics and events. Here\u2019s the whole day, grade by grade, room by room.' },
-    events:     { kicker:'Calendar', title:'School events', img:'assets/calendar.jpg', blurb:'Registration windows, placement tests and community dates for the school year.' },
+    events:     { kicker:'Calendar', title:'School events', img:'assets/calendar.jpg', blurb:'Upcoming dates from the 2026\u20132027 school calendar: exams, weeks of prayer, programs and closures.' },
     news:       { kicker:'News', title:'From the school', img:'assets/calendar.jpg', blurb:'Announcements, programs and stories from 1260 Ocean Avenue.' },
     fundraisers:{ kicker:'Fundraisers', title:'Every gift builds a student', img:'assets/stones.jpg', blurb:'Three active campaigns keep tuition affordable, classrooms stocked and the building on Ocean Avenue ready for the next generation.' },
-    give:       { kicker:'12 Stones Fund', title:'Give to BSDA', img:'assets/stones.jpg', blurb:'Building human monuments for eternity \u2014 a contributor-funded initiative empowering Seventh-day Adventist education in Brooklyn.' },
+    give:       { kicker:'12 Stones Fund', title:'Every gift builds a future', img:'assets/stones.jpg', blurb:'Building a legacy of faith, investing in excellence, transforming lives. A community-funded foundation so a family\u2019s finances never decide a child\u2019s education.' },
     yearbooks:  { kicker:'Archive', title:'Yearbooks', img:'assets/students-worship.jpg', blurb:'Every class, every year. Flip through past editions.' },
     store:      { kicker:'Store', title:'Uniforms & spirit wear', img:'assets/classroom.jpg', blurb:'Everything on the supply list, plus gear for game day.' },
     portals:    { kicker:'Portals', title:'Sign in', img:'assets/building-front.jpg', blurb:'Secure portals for students, parents and the school board. Coming soon.' },
@@ -276,6 +400,7 @@ class Component extends DCLogic {
 
   navTree = [
     { label:'About', key:'about', items:[['Faculty & Staff','faculty'],['Our mission','about'],['History','about'],['Privacy policy','about']] },
+    { label:'Academics', key:'academics', items:[['Pre-K & Kindergarten','academics'],['After-school program','academics'],['Accreditation','academics'],['Grade explorer','life']] },
     { label:'Admissions', key:'admissions', items:[['Enrollment form','apply'],['Tuition & fees','admissions'],['Placement dates','events']] },
     { label:'Student Life', key:'life', items:[['A day in the life','life'],['Grade explorer','life'],['Clubs & activities','life'],['Campus map','life']] },
     { label:'Events', key:'events', items:[['Full calendar','events'],['Event management','events'],['Add new event','events']] },
@@ -324,6 +449,7 @@ class Component extends DCLogic {
     const clubCat = this.state.clubCat, evFilter = this.state.evFilter;
     const room = this.roomList.filter((x) => x.id === this.state.room)[0] || this.roomList[0];
     const s = this.slides[this.state.slide] || this.slides[0];
+    const upcoming = this.upcomingEvents();
 
     const f = {};
     ['firstName','lastName','dob','gradeApplying','guardian','relationship','email','phone','address','currentSchool','lastGrade','church','heard','notes','agree']
@@ -332,7 +458,7 @@ class Component extends DCLogic {
 
     return {
       isHome: r === 'home', isInner: r !== 'home',
-      isAbout: r === 'about', isFaculty: r === 'faculty', isAdmissions: r === 'admissions', isApply: r === 'apply',
+      isAbout: r === 'about', isAcademics: r === 'academics', isFaculty: r === 'faculty', isAdmissions: r === 'admissions', isApply: r === 'apply',
       isLife: r === 'life', isEvents: r === 'events', isNews: r === 'news', isFundraisers: r === 'fundraisers',
       isGive: r === 'give', isYearbooks: r === 'yearbooks', isStore: r === 'store', isPortals: r === 'portals', isContact: r === 'contact',
       page: this.pageMeta[r] || this.pageMeta.about,
@@ -399,10 +525,13 @@ class Component extends DCLogic {
       dayFull: this.dayFull,
       news: this.news,
       homeNews: this.news.slice(0, 2),
-      homeEvents: this.events.slice(0, 3).map((e) => ({ day: e.day, month: e.month, title: e.title, meta: e.cat })),
+      homeEvents: upcoming.slice(0, 3).map((e) => ({ day: e.day, month: e.month, title: e.title, meta: e.cat })),
       yearbooks: this.yearbooks,
       products: this.products,
       giving: this.giving,
+      results: this.results, vision: this.vision, bsdas: this.bsdas, accreditation: this.accreditation,
+      courses: this.accreditation.courses.map((x) => ({ label: x })), eceAreas: this.eceAreas, afterSchool: this.afterSchool,
+      afterItems: this.afterSchool.items.map((x) => ({ label: x })), stonesFacts: this.stonesFacts.map((x) => ({ label: x })),
       portals: this.portals,
       wall: this.wall,
       campaigns: this.campaignData.map((c) => ({
@@ -426,12 +555,13 @@ class Component extends DCLogic {
       })),
       visibleClubs: this.clubs.filter((c) => clubCat === 'All' || c.cat === clubCat),
 
-      eventCats: ['All','Registration','Placement','Community'].map((c) => ({
+      eventCats: ['All','School life','Faith','Exams','Closed'].map((c) => ({
         label: c, onClick: () => this.setState({ evFilter: c }),
         bg: evFilter === c ? '#131A2E' : 'transparent',
         color: evFilter === c ? '#ffffff' : '#131A2E'
       })),
-      visibleEvents: this.events.filter((e) => evFilter === 'All' || e.cat === evFilter),
+      visibleEvents: upcoming.filter((e) => evFilter === 'All' || e.cat === evFilter),
+      featured: upcoming.filter((e) => e.featured)[0] || null,
 
       rooms: this.roomList.map((x) => Object.assign({}, x, {
         onClick: () => this.setState({ room: x.id }),
@@ -442,7 +572,7 @@ class Component extends DCLogic {
       activeRoom: room,
 
       footerCols: [
-        { title: 'Quick links', items: [['About','about'],['Faculty & Staff','faculty'],['Admissions','admissions'],['Enrollment form','apply'],['Student life','life'],['Events','events'],['News','news']] },
+        { title: 'Quick links', items: [['About','about'],['Faculty & Staff','faculty'],['Academics','academics'],['Admissions','admissions'],['Enrollment form','apply'],['Student life','life'],['Events','events'],['News','news']] },
         { title: 'Giving & shop', items: [['Fundraisers','fundraisers'],['12 Stones Fund','give'],['55 in 25','fundraisers'],['Fruit Fundraiser','fundraisers'],['Donor dashboard','portals'],['Store','store'],['Yearbooks','yearbooks']] },
         { title: 'Portals & legal', items: [['Students (soon)','portals'],['Parents (soon)','portals'],['School Board (soon)','portals'],['Contact','contact'],['Privacy policy','about'],['Legal notice','about'],['Cookies','about']] }
       ].map((col) => ({

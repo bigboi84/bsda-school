@@ -2,7 +2,7 @@
 // Pure function: render values in, HTML string out. Logic lives in app.js.
 (function () {
   window.bsdaView = function view(v, E, H) {
-    const { activeGrade, activeRoom, admitSteps, atFirstStep, backOpacity, c, campaigns, closeMenu, clubCats, col, contactSent, d, dayFull, documents, e, eventCats, f, faculty, facultyStats, footerCols, g, giving, goAbout, goAdmissions, goApply, goContact, goEvents, goFaculty, goFundraisers, goGive, goHome, goLife, goNews, gradeOptions, gradeTabs, h, history, homeEvents, homeNews, hudDonors, hudGoal, hudPct, hudPctLabel, hudRaised, i, isAbout, isAdmissions, isApply, isContact, isEvents, isFaculty, isFundraisers, isGive, isHome, isInner, isLife, isNews, isPortals, isStore, isYearbooks, l, m, menuGroups, menuOpen, missionPoints, mosaic, n, news, notLastStep, notSubmitted, onBack, onContact, onNext, onReset, onSubmit, openMenu, p, page, para, philosophyPoints, portals, principalLetter, products, r, rooms, s, slide, slideDots, statements, step0, step1, step2, step3, stepTabs, submitted, submittedName, summary, t, testDates, visibleClubs, visibleEvents, w, wall, y, yearbooks } = v;
+    const { accreditation, afterItems, afterSchool, bsdas, courses, eceAreas, featured, isAcademics, results, stonesFacts, vision, activeGrade, activeRoom, admitSteps, atFirstStep, backOpacity, c, campaigns, closeMenu, clubCats, col, contactSent, d, dayFull, documents, e, eventCats, f, faculty, facultyStats, footerCols, g, giving, goAbout, goAdmissions, goApply, goContact, goEvents, goFaculty, goFundraisers, goGive, goHome, goLife, goNews, gradeOptions, gradeTabs, h, history, homeEvents, homeNews, hudDonors, hudGoal, hudPct, hudPctLabel, hudRaised, i, isAbout, isAdmissions, isApply, isContact, isEvents, isFaculty, isFundraisers, isGive, isHome, isInner, isLife, isNews, isPortals, isStore, isYearbooks, l, m, menuGroups, menuOpen, missionPoints, mosaic, n, news, notLastStep, notSubmitted, onBack, onContact, onNext, onReset, onSubmit, openMenu, p, page, para, philosophyPoints, portals, principalLetter, products, r, rooms, s, slide, slideDots, statements, step0, step1, step2, step3, stepTabs, submitted, submittedName, summary, t, testDates, visibleClubs, visibleEvents, w, wall, y, yearbooks } = v;
     return `<div style="min-height:100vh;background:#FFFFFF">
 
   <!-- ============ MEGA MENU OVERLAY ============ -->
@@ -157,6 +157,23 @@
         </div>
       </section>
 
+      <!-- OUR RESULTS -->
+      <section style="padding:44px var(--gx) 0">
+        <div style="background:#131A2E;padding:clamp(32px,3.6vw,56px)">
+          <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#8CC63F">Rooted in Christ · Rising in excellence</span>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(30px,3.4vw,46px);text-transform:uppercase;color:#fff;line-height:1;margin-top:14px">Our results</h2>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px">
+            ${(results).map((r) => `
+              <div style="background:${E(r.bg)};padding:26px;display:flex;flex-direction:column;justify-content:flex-end;min-height:170px">
+                <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(34px,3.6vw,52px);line-height:1;color:${E(r.color)}">${E(r.value)}</span>
+                <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-top:12px;color:${E(r.color)}">${E(r.label)}</span>
+                <span style="font-size:14px;line-height:1.45;margin-top:6px;color:${E(r.subColor)}">${E(r.sub)}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+
       <!-- NEWS + EVENTS -->
       <section style="padding:64px var(--gx)">
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;border-bottom:3px solid #131A2E;padding-bottom:22px">
@@ -305,6 +322,38 @@
           <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#D9E2FA">Our aim</span>
           <p style="font-family:'Archivo',sans-serif;font-size:clamp(22px,2.7vw,34px);line-height:1.34;font-weight:700;margin:18px auto 0;color:#fff;max-width:900px">“To restore in man the image of his maker… to promote the development of body, mind and soul, that the divine purpose in His creation might be realized.”</p>
           <p style="margin-top:20px;font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#FFD24A">Ellen G. White · Education, page 15</p>
+        </div>
+      </section>
+
+      <section style="padding:24px var(--gx) 0">
+        <div style="background:#131A2E;padding:clamp(34px,4vw,60px)">
+          <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#8CC63F">Our vision</span>
+          <p style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,2.3vw,30px);line-height:1.34;color:#fff;margin-top:16px;max-width:980px">${E(vision.statement)}</p>
+          <p style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(15px,1.5vw,19px);letter-spacing:.06em;text-transform:uppercase;color:#FFD24A;margin-top:22px">${E(vision.motto)}</p>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:32px">
+            ${(bsdas).map((b) => `
+              <div style="background:${E(b.bg)};padding:22px 22px 20px">
+                <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:54px;line-height:1;color:${E(b.color)}">${E(b.letter)}</div>
+                <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-top:10px;color:${E(b.color)}">${E(b.word)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:24px var(--gx) 0">
+        <div style="background:#F4F2ED;padding:clamp(30px,3.4vw,52px);display:grid;grid-template-columns:1fr 1fr;gap:40px">
+          <div>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,38px);text-transform:uppercase">Accreditation</h2>
+            <p style="margin-top:16px;font-size:16.5px;line-height:1.7;color:#5A6180">${E(accreditation.text)}</p>
+          </div>
+          <div>
+            <div style="font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#8A90A8">The curriculum includes</div>
+            <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:14px">
+              ${(courses).map((c) => `<span style="padding:9px 15px;background:#fff;font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase">${E(c.label)}</span>`).join('')}
+            </div>
+            <p style="margin-top:18px;font-size:15px;line-height:1.65;color:#5A6180">${E(accreditation.regents)}</p>
+          </div>
         </div>
       </section>
 
@@ -721,22 +770,84 @@
     </div>
   ` : ''}
 
+  <!-- ============ ACADEMICS ============ -->
+  ${(isAcademics) ? `
+    <div data-screen-label="Academics">
+      <section style="padding:20px var(--gx) 0">
+        <div style="display:grid;grid-template-columns:42% 1fr;background:#F4F2ED;min-height:460px">
+          <div style="position:relative;overflow:hidden;min-height:340px"><img src="assets/class-kindergarten.jpg" alt="Kindergarten class" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
+          <div style="padding:clamp(32px,3.6vw,58px);display:flex;flex-direction:column;justify-content:center">
+            <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#4A6FD0">Early childhood education</span>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,44px);line-height:1.04;text-transform:uppercase;margin-top:14px">Pre-K &amp; Kindergarten: where little minds grow and faith takes root</h2>
+            <p style="margin-top:18px;font-size:16.5px;line-height:1.7;color:#5A6180">A warm, Christ-centered classroom where curiosity is encouraged and a lifelong love of learning begins. The curriculum joins the educational philosophy and standards of the North American Division of Seventh-day Adventists with the New York State Kindergarten Learning Standards.</p>
+            <p style="margin-top:14px;font-size:16.5px;line-height:1.7;color:#5A6180">Faith is at the heart of the day: prayer, Bible stories, worship and Christian songs, with kindness, honesty, respect and service woven through.</p>
+            <a href="#apply" data-click="${H(goApply)}" style="margin-top:26px;align-self:flex-start;padding:16px 30px;background:#4A6FD0;color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase" class="hv7">Enroll your child</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:20px var(--gx) 0">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+          ${(eceAreas).map((a) => `
+            <article style="background:#F4F2ED;display:flex;flex-direction:column">
+              <div style="background:${E(a.bar)};padding:14px 24px;font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:${E(a.barText)}">${E(a.title)}</div>
+              <p style="padding:24px;font-size:15.5px;line-height:1.65;color:#5A6180">${E(a.body)}</p>
+            </article>
+          `).join('')}
+        </div>
+      </section>
+
+      <section style="padding:20px var(--gx) 0;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div style="background:#131A2E;padding:clamp(30px,3.4vw,50px)">
+          <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#8CC63F">After-school program</span>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase;color:#fff;margin-top:14px;line-height:1.04">Homework, test prep and robotics</h2>
+          <p style="font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#FFD24A;margin-top:16px">${E(afterSchool.when)}</p>
+          <ul style="list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:12px">
+            ${(afterItems).map((i) => `<li style="display:flex;gap:13px;align-items:flex-start;font-size:16.5px;line-height:1.5;color:#D6DBEC"><span style="flex:0 0 9px;height:9px;background:#8CC63F;margin-top:8px"></span>${E(i.label)}</li>`).join('')}
+          </ul>
+        </div>
+        <div style="background:#4A6FD0;padding:clamp(30px,3.4vw,50px);display:flex;flex-direction:column;justify-content:center">
+          <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FFD24A">Preparing for first grade</span>
+          <p style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,2.2vw,28px);line-height:1.3;color:#fff;margin-top:16px">We do more than teach children to read, write and count. We nurture character, inspire excellence, strengthen faith and help children discover their God-given potential.</p>
+          <p style="font-family:'Archivo',sans-serif;font-weight:900;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#D9E2FA;margin-top:20px">Little hearts. Growing minds. Strong faith. Bright futures.</p>
+        </div>
+      </section>
+
+      <section style="padding:20px var(--gx) 0">
+        <div style="background:#F4F2ED;padding:clamp(30px,3.4vw,52px);display:grid;grid-template-columns:1fr 1fr;gap:40px">
+          <div>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,38px);text-transform:uppercase">Accredited &amp; state-approved</h2>
+            <p style="margin-top:16px;font-size:16.5px;line-height:1.7;color:#5A6180">${E(accreditation.text)}</p>
+          </div>
+          <div>
+            <div style="display:flex;flex-wrap:wrap;gap:9px">
+              ${(courses).map((c) => `<span style="padding:9px 15px;background:#fff;font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase">${E(c.label)}</span>`).join('')}
+            </div>
+            <p style="margin-top:18px;font-size:15px;line-height:1.65;color:#5A6180">${E(accreditation.regents)}</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  ` : ''}
+
   <!-- ============ EVENTS ============ -->
   ${(isEvents) ? `
     <div data-screen-label="Events">
+      ${(featured) ? `
       <section style="padding:20px var(--gx) 0">
         <div style="display:grid;grid-template-columns:38% 1fr;background:#F4F2ED;min-height:340px">
           <div style="position:relative;overflow:hidden;min-height:300px"><img src="assets/bible.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
           <div style="padding:clamp(30px,3.4vw,50px);display:flex;flex-direction:column;justify-content:center">
             <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
-              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;background:#8CC63F;color:#16240A;padding:8px 14px">Featured · repeats yearly</span>
-              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:#5A6180">01 – 31 October</span>
+              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;background:#8CC63F;color:#16240A;padding:8px 14px">Next highlight</span>
+              <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:#5A6180">${E(featured.label)}</span>
             </div>
-            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,38px);text-transform:uppercase;margin-top:18px;line-height:1.08">Pastor Appreciation Month</h2>
-            <p style="margin-top:16px;font-size:16px;line-height:1.7;color:#5A6180">Pastor Appreciation Month is a cherished occasion when congregations come together each year to show gratitude and honor their pastors and pastoral families. It's a time to recognize the tireless dedication, sacrificial efforts, and countless blessings brought forth by these exceptional individuals. Appreciating, affirming and offering prayer support to our spiritual leaders is equally important throughout the entire year.</p>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,38px);text-transform:uppercase;margin-top:18px;line-height:1.08">${E(featured.title)}</h2>
+            <p style="margin-top:16px;font-size:16px;line-height:1.7;color:#5A6180">${E(featured.body || 'Mark your calendar and join the Brooklyn SDA community.')}</p>
           </div>
         </div>
       </section>
+      ` : ''}
       <section style="padding:20px var(--gx) 0">
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           ${(eventCats).map((c) => `
@@ -816,10 +927,10 @@
         <div style="display:grid;grid-template-columns:1fr 1fr;background:#131A2E;min-height:440px">
           <div style="padding:clamp(32px,3.6vw,56px);display:flex;flex-direction:column;justify-content:center">
             <img src="assets/12stones-logo.png" alt="12 Stones Fund" style="width:110px;height:110px;object-fit:contain" />
-            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,44px);text-transform:uppercase;color:#fff;margin-top:22px;line-height:1.02">Building human monuments for eternity</h2>
-            <p style="margin-top:18px;font-size:17px;line-height:1.68;color:#A9B1CE;max-width:520px">A contributor-funded initiative dedicated to empowering Seventh-day Adventist education at Brooklyn SDA School — tuition assistance, classroom resources and the building itself.</p>
+            <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,44px);text-transform:uppercase;color:#fff;margin-top:22px;line-height:1.02">Building a legacy of faith</h2>
+            <p style="margin-top:18px;font-size:17px;line-height:1.68;color:#A9B1CE;max-width:520px">Every child deserves an opportunity. For about $1 a day you can become a 12 Stones Fund partner, so a family’s finances never decide a child’s Christian education.</p>
             <div style="display:flex;gap:14px;margin-top:28px;flex-wrap:wrap">
-              <a href="#contact" data-click="${H(goContact)}" style="padding:17px 32px;background:#FFD24A;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase" class="hv2">Donate now</a>
+              <a href="#contact" data-click="${H(goContact)}" style="padding:17px 32px;background:#FFD24A;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase" class="hv2">Become a monthly partner</a>
               <a href="#fundraisers" data-click="${H(goFundraisers)}" style="padding:17px 32px;border:2px solid rgba(255,255,255,.35);color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase" class="hv5">All fundraisers</a>
             </div>
           </div>
@@ -837,8 +948,38 @@
           </div>
         </div>
       </section>
+      <section style="padding:20px var(--gx) 0;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div style="background:#4A6FD0;padding:clamp(30px,3.4vw,50px)">
+          <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FFD24A">Inspired by Scripture</span>
+          <p style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,2.3vw,30px);line-height:1.32;color:#fff;margin-top:16px">“These stones shall be for a memorial unto the children of Israel for ever.”</p>
+          <p style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#FFD24A;margin-top:16px">Joshua 4:7</p>
+          <p style="margin-top:20px;font-size:16px;line-height:1.7;color:#E3EAFB">In Joshua 4, God told Israel to take twelve stones from the Jordan and build a memorial so future generations would remember how He had led them. Each gift is a stone of faith. Each donor is a builder of hope.</p>
+        </div>
+        <div style="background:#FFD24A;padding:clamp(30px,3.4vw,50px)">
+          <span style="font-family:'Archivo',sans-serif;font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#453712">Just $30 a month</span>
+          <p style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);line-height:1.08;color:#2E2306;margin-top:14px">54 people giving $30 a month = $19,440 a year.</p>
+          <ul style="list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+            ${(stonesFacts).map((f) => `<li style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:#2E2306"><span style="flex:0 0 8px;height:8px;background:#131A2E;margin-top:8px"></span>${E(f.label)}</li>`).join('')}
+          </ul>
+        </div>
+      </section>
       <section style="padding:20px var(--gx) 0">
-        <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase;border-bottom:3px solid #131A2E;padding-bottom:18px">Where a gift goes</h2>
+        <div style="background:#F4F2ED;padding:clamp(30px,3.4vw,50px)">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase">Excellence worth investing in</h2>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px">
+            ${(results).slice(0, 3).map((r) => `
+              <div style="background:#fff;padding:24px;border-left:5px solid #4A6FD0">
+                <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:44px;line-height:1;color:#4A6FD0">${E(r.value)}</div>
+                <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:10px">${E(r.label)}</div>
+                <div style="font-size:14px;color:#5A6180;margin-top:5px">${E(r.sub)}</div>
+              </div>
+            `).join('')}
+          </div>
+          <p style="margin-top:20px;font-size:16px;line-height:1.7;color:#5A6180">Students take high-school-level Regents exams while still in middle school, with programs in STEM, robotics, technology, music, character development and Christian leadership.</p>
+        </div>
+      </section>
+      <section style="padding:20px var(--gx) 0">
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);text-transform:uppercase;border-bottom:3px solid #131A2E;padding-bottom:18px">Ways to give</h2>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px">
           ${(giving).map((g) => `
             <article style="background:#F4F2ED;display:flex;flex-direction:column;min-height:250px">
@@ -850,7 +991,17 @@
             </article>
           `).join('')}
         </div>
-        <p style="margin-top:22px;font:600 13px/1.6 ui-monospace,monospace;color:#8A90A8;background:#F4F2ED;padding:20px 22px">Giving levels, campaign goal, raised total and donor count are placeholders. Wire the counter to the school's donation processor before launch.</p>
+        <p style="margin-top:22px;font:600 13px/1.6 ui-monospace,monospace;color:#8A90A8;background:#F4F2ED;padding:20px 22px">Giving options and copy come from the school’s 12 Stones Fund document. The campaign goal, raised total and donor count are still placeholders, and the buttons link to the contact page until a donation processor is connected.</p>
+      </section>
+      <section style="padding:20px var(--gx) 0">
+        <div style="background:#131A2E;padding:clamp(32px,3.6vw,54px);text-align:center">
+          <p style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(22px,2.6vw,34px);text-transform:uppercase;color:#fff;line-height:1.12">One school. One mission. Twelve stones. Countless futures.</p>
+          <div style="display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap">
+            <a href="#contact" data-click="${H(goContact)}" style="padding:17px 30px;background:#FFD24A;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase" class="hv2">Become a monthly partner</a>
+            <a href="#contact" data-click="${H(goContact)}" style="padding:17px 30px;background:#8CC63F;color:#0C1120;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase" class="hv2">Make a one-time donation</a>
+            <a href="#contact" data-click="${H(goContact)}" style="padding:17px 30px;border:2px solid rgba(255,255,255,.35);color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase" class="hv5">Church or corporate sponsor</a>
+          </div>
+        </div>
       </section>
     </div>
   ` : ''}
